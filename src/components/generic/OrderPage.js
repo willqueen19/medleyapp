@@ -3,10 +3,29 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import { Jumbotron, Container } from 'reactstrap';
+
 class Order extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
   render () {
     return (
-        <div></div>
+        <div>
+          <div>
+            <Jumbotron fluid>
+              <Container fluid>
+                <h1 className="display-3">Your order has been submitted!</h1>
+                <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+              </Container>
+            </Jumbotron>
+          </div>
+        </div>
     )
   }
 }
