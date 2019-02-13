@@ -21,8 +21,8 @@ class MensCasual extends Component {
       <div className="survey survey2">
         <h1>What side of casual clothing are you looking for?</h1>
         <CardDeck>
-          <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/shirt-men'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/shirt-men'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/men/shirt'} />
+          <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/men/shirt'}/>
         </CardDeck>
       </div>
     )

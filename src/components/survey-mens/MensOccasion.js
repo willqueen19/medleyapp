@@ -22,9 +22,9 @@ class MensOccasion extends Component {
       <div className="survey survey3">
         <h1>What's the occasion?</h1>
         <CardDeck>
-          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/shirt-men'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/shirt-men'}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/value-men'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/men/shirt'} />
+          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/men/shirt'}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/men/value'}/>
         </CardDeck>
       </div>
     )

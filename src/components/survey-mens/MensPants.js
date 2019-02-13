@@ -21,8 +21,8 @@ class MensPants extends Component {
       <div className="survey survey2">
         <h1>What style of pants do you prefer?</h1>
         <CardDeck>
-          <SurveyCard surveyImage={img1} surveyTitle={"Shorts"} surveyNext={'/colors-men'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Pants"} surveyNext={'/colors-men'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Shorts"} surveyNext={'/men/colors'} />
+          <SurveyCard surveyImage={img2} surveyTitle={"Pants"} surveyNext={'/men/colors'}/>
         </CardDeck>
       </div>
     )
