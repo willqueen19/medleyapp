@@ -2,56 +2,33 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
-    CardSubtitle, CardBody } from 'reactstrap';
+import { Button, CardDeck } from 'reactstrap';
+import SurveyCard from '../generic/ThreeSurveyCard.js';
+import img1 from '../../assets/MW-1.jpeg';
+import img2 from '../../assets/MW-2.jpeg';
+import img3 from '../../assets/MW-2.jpeg';
 
 class WomensOccasion extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-        };
-    }
+    };
+  }
 
-    render () {
-        return (
-            <div>
-                <CardDeck>
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Party</CardTitle>
-                            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                            <Button>
-                                Button
-                            </Button>
-                        </CardBody>
-                    </Card>
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Work</CardTitle>
-                            <CardText>This card has supporting text below as a natural lead-in to additional content.</CardText>
-                            <Button>
-                                Button
-                            </Button>
-                        </CardBody>
-                    </Card>
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Everyday Wear</CardTitle>
-                            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CardText>
-                            <Button>
-                                Button
-                            </Button>
-                        </CardBody>
-                    </Card>
-                </CardDeck>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className="survey survey3">
+        <h1>What's the occasion?</h1>
+        <CardDeck>
+          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/women/type'} />
+          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/women/type'}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/women/values'}/>
+        </CardDeck>
+      </div>
+    )
+  }
 }
 
 export default WomensOccasion;

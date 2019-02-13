@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './css/generic.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
-import logo from '../../hm-logo.png';
+import logo from '../../assets/hm-logo.png';
 
 class Header extends Component {
 

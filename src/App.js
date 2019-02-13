@@ -6,15 +6,16 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Header from './components/generic/Header';
 import Landing from './components/generic/LandingPage'
-import Survey from './components/generic/SurveyPage'
+import Survey from './components/generic/SurveyMensWomens'
+import ThreeSurvey from './components/generic/test-3-SurveyPage'
 import Recommend from './components/generic/RecommendationPage';
 import Order from './components/generic/OrderPage'
-import GenderSelection from "./components/generic/GenderSelection";
 import WomensOccasion from "./components/survey-womens/WomensOccasion";
 import MensOccasion from "./components/survey-mens/MensOccasion";
 import WomensValues from "./components/survey-womens/WomensValues";
 import WomensStyle from "./components/survey-womens/WomensStyle";
 import WomensType from "./components/survey-womens/WomensType";
+import WomensColors from "./components/survey-womens/WomensColors";
 import MensValues from "./components/survey-mens/MensValues";
 import MensStyles from "./components/survey-mens/MensStyles";
 import MensCasual from "./components/survey-mens/MensCasual";
@@ -31,13 +32,13 @@ class App extends Component {
             <div className="app-body">
               <Route path="/" exact component={ Landing } />
               <Route path="/survey/" component={ Survey } />
-              <Route path="/gender/" component={ GenderSelection }/>
+              <Route path="/survey3/" component={ ThreeSurvey } />
 
-              <Route path="/occasion-women/" component={ WomensOccasion } />
-              <Route path="/values-women/" component={ WomensValues} />
-              <Route path="/style-women/" component={ WomensStyle } />
-              <Route path="/type-women/" component={ WomensType } />
-              <Route path="/colors-women/" component={ WomensType } />
+              <Route path="/women/occasion/" component={ WomensOccasion } />
+              <Route path="/women/values/" component={ WomensValues } />
+              <Route path="/women/style/" component={ WomensStyle } />
+              <Route path="/women/type/" component={ WomensType } />
+              <Route path="/women/color/" component={ WomensColors } />
 
               <Route path="/occasion-men/" component={ MensOccasion} />
               <Route path="/value-men/" component={ MensValues } />

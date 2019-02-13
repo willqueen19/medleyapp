@@ -22,6 +22,7 @@ class Order extends Component {
               <Container fluid>
                 <h1 className="display-3">Your order has been submitted!</h1>
                 <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                <button><Link to={"/"}>Go back to beginning</Link></button>
               </Container>
             </Jumbotron>
           </div>
