@@ -9,6 +9,7 @@ import Landing from './components/generic/LandingPage'
 import Survey from './components/generic/SurveyPage'
 import Recommend from './components/generic/RecommendationPage';
 import Order from './components/generic/OrderPage'
+import GenderSelection from "./components/generic/GenderSelection";
 
 class App extends Component {
   render() {
@@ -26,6 +27,9 @@ class App extends Component {
                     <Link to="/survey/">Survey</Link>
                   </li>
                   <li>
+                    <Link to="/gender/">Gender</Link>
+                  </li>
+                  <li>
                     <Link to="/recommend/">Recommend</Link>
                   </li>
                   <li>
@@ -36,6 +40,7 @@ class App extends Component {
 
               <Route path="/" exact component={ Landing } />
               <Route path="/survey/" component={ Survey } />
+              <Route path="/gender/" component={ GenderSelection }/>
               <Route path="/recommend/" component={ Recommend }/>
               <Route path="/order/" component={ Order } />
 
