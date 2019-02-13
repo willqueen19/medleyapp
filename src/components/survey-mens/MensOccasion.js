@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from '../generic/ThreeSurveyCard.js';
-import img1 from '../../assets/MW-1.jpeg';
-import img2 from '../../assets/MW-2.jpeg';
-import img3 from '../../assets/MW-2.jpeg';
+import img1 from '../../assets/MOcc-1.jpeg';
+import img2 from '../../assets/MOcc-2.jpeg';
+import img3 from '../../assets/MOcc-3.jpeg';
 
 class MensOccasion extends Component {
 
