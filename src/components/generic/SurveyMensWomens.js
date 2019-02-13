@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from './TwoSurveyCard.js';
-import womensImg from '../womensmens.jpeg';
+import womensImg from '../../assets/MW-1.jpeg';
+import mensImg from '../../assets/MW-2.jpeg';
 
 class SurveyMensWomens extends Component {
 
@@ -18,10 +19,10 @@ class SurveyMensWomens extends Component {
   render () {
     return (
       <div className="survey survey2">
-        <h1>Question?</h1>
+        <h1>Choose a Department</h1>
         <CardDeck>
-          <SurveyCard surveyImage={womensImg} />
-          <SurveyCard surveyImage={womensImg}/>
+          <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/occasion-women'} />
+          <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/occasion-men'}/>
         </CardDeck>
       </div>
     )

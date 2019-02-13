@@ -16,6 +16,7 @@ import MensOccasion from "./components/survey-mens/MensOccasion";
 import WomensValues from "./components/survey-womens/WomensValues";
 import WomensStyle from "./components/survey-womens/WomensStyle";
 import WomensType from "./components/survey-womens/WomensType";
+import WomensColors from "./components/survey-womens/WomensColors";
 import MensValues from "./components/survey-mens/MensValues";
 import MensStyles from "./components/survey-mens/MensStyles";
 import MensCasual from "./components/survey-mens/MensCasual";
@@ -39,7 +40,7 @@ class App extends Component {
               <Route path="/values-women/" component={ WomensValues} />
               <Route path="/style-women/" component={ WomensStyle } />
               <Route path="/type-women/" component={ WomensType } />
-              <Route path="/colors-women/" component={ WomensType } />
+              <Route path="/colors-women/" component={ WomensColors } />
 
               <Route path="/occasion-men/" component={ MensOccasion} />
               <Route path="/value-men/" component={ MensValues } />

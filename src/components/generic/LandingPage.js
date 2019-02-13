@@ -23,7 +23,7 @@ class Landing extends Component {
           <p className="lead">Personalized Outfit Recommendations</p>
           <p className="lead">
             <Button>
-              <Link to="/gender/">Style me: Create my outfit</Link>
+              <Link to="/survey/">Style me: Create my outfit</Link>
             </Button>
           </p>
       </div>
