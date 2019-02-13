@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
 import logo from '../../hm-logo.png';
 
-
 class Header extends Component {
 
     constructor(props) {
@@ -33,7 +32,6 @@ class Header extends Component {
             </div>
         )
     }
-
 }
 
 export default Header;
