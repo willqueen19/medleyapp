@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './css/generic.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
+import logo from '../../hm-logo.png';
 
 
 class Header extends Component {
@@ -24,9 +25,10 @@ class Header extends Component {
     render () {
         return (
             <div>
-                <Navbar style={{'background-color': 'black' }} color="light" light expand="md">
-                    <NavbarBrand style={{'color': 'white'}} href="/">Medley Logo</NavbarBrand>
+                <Navbar expand="md">
+                    {/* <NavbarBrand href="/">Medley Logo</NavbarBrand> */}
                     <NavbarToggler onClick={this.toggle} />
+                    <img className="ml-auto" src={logo} alt="Logo" />
                 </Navbar>
             </div>
         )

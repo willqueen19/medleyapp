@@ -2,3 +2,13 @@
     background-color: black;
     color: white;
 }
+
+nav {
+  background-color: black;
+  color: white;
+}
+
+nav img {
+  height: 50px;
+  float: right;
+}

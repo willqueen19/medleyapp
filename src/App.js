@@ -17,28 +17,10 @@ class App extends Component {
           <Header/>
           <Router>
             <div>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/">Landing</Link>
-                  </li>
-                  <li>
-                    <Link to="/survey/">Survey</Link>
-                  </li>
-                  <li>
-                    <Link to="/recommend/">Recommend</Link>
-                  </li>
-                  <li>
-                    <Link to="/order/">Order</Link>
-                  </li>
-                </ul>
-              </nav>
-
               <Route path="/" exact component={ Landing } />
               <Route path="/survey/" component={ Survey } />
               <Route path="/recommend/" component={ Recommend }/>
               <Route path="/order/" component={ Order } />
-
             </div>
           </Router>
       </div>
