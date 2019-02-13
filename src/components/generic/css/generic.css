@@ -1,4 +1,37 @@
-.brandName {
-    background-color: black;
-    color: white;
+/* Header styling */
+nav {
+  background-color: black;
+  color: white;
+}
+
+nav img {
+  height: 50px;
+  float: right;
+}
+
+/* Main body */
+html, body, div#root, div.App {
+  height: 100%;
+  background-color: #303030;
+}
+
+/* Landing page */
+div.landing {
+  color: #f88788;
+  font-family: cresta, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  padding-top: 10%;
+}
+
+div.landing button {
+  background-color: #f88788;
+}
+
+div.landing button a {
+  color: #fff;
+}
+
+div.landing button a:hover {
+  text-decoration: none;
 }
