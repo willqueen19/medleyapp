@@ -35,3 +35,17 @@ div.landing button a {
 div.landing button a:hover {
   text-decoration: none;
 }
+
+/* All Cards & Surveys */
+div.card {
+  background-color: #f88788;
+  color: #fff;
+  font-family: cresta, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+}
+
+div.survey {
+  color: #fff;
+  padding: 25px 0;
+}

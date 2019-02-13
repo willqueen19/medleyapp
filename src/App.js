@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Header from './components/generic/Header';
 import Landing from './components/generic/LandingPage'
-import Survey from './components/generic/SurveyPage'
+import Survey from './components/generic/SurveyMensWomens'
+import ThreeSurvey from './components/generic/test-3-SurveyPage'
 import Recommend from './components/generic/RecommendationPage';
 import Order from './components/generic/OrderPage'
 import GenderSelection from "./components/generic/GenderSelection";
@@ -31,6 +32,7 @@ class App extends Component {
             <div className="app-body">
               <Route path="/" exact component={ Landing } />
               <Route path="/survey/" component={ Survey } />
+              <Route path="/survey3/" component={ ThreeSurvey } />
               <Route path="/gender/" component={ GenderSelection }/>
 
               <Route path="/occasion-women/" component={ WomensOccasion } />
