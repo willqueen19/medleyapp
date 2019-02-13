@@ -40,13 +40,13 @@ class App extends Component {
               <Route path="/women/type/" component={ WomensType } />
               <Route path="/women/color/" component={ WomensColors } />
 
-              <Route path="/occasion-men/" component={ MensOccasion} />
-              <Route path="/value-men/" component={ MensValues } />
-              <Route path="/style-men/" component={ MensStyles } />
-              <Route path="/casual-men/" component={ MensCasual } />
-              <Route path="/shirt-men/" component={ MensShirts } />
-              <Route path="/pants-men/" component={ MensPants } />
-              <Route path="/colors-men/" component={ MensColors} />
+              <Route path="/men/occasion/" component={ MensOccasion} />
+              <Route path="/men/value/" component={ MensValues } />
+              <Route path="/men/style/" component={ MensStyles } />
+              <Route path="/men/casual/" component={ MensCasual } />
+              <Route path="/men/shirt/" component={ MensShirts } />
+              <Route path="/men/pants/" component={ MensPants } />
+              <Route path="/men/colors/" component={ MensColors} />
 
               <Route path="/recommend/" component={ Recommend }/>
               <Route path="/order/" component={ Order } />
