@@ -10,7 +10,6 @@ import Survey from './components/generic/SurveyMensWomens'
 import ThreeSurvey from './components/generic/test-3-SurveyPage'
 import Recommend from './components/generic/RecommendationPage';
 import Order from './components/generic/OrderPage'
-import GenderSelection from "./components/generic/GenderSelection";
 import WomensOccasion from "./components/survey-womens/WomensOccasion";
 import MensOccasion from "./components/survey-mens/MensOccasion";
 import WomensValues from "./components/survey-womens/WomensValues";
@@ -34,13 +33,12 @@ class App extends Component {
               <Route path="/" exact component={ Landing } />
               <Route path="/survey/" component={ Survey } />
               <Route path="/survey3/" component={ ThreeSurvey } />
-              <Route path="/gender/" component={ GenderSelection }/>
 
-              <Route path="/occasion-women/" component={ WomensOccasion } />
-              <Route path="/values-women/" component={ WomensValues} />
-              <Route path="/style-women/" component={ WomensStyle } />
-              <Route path="/type-women/" component={ WomensType } />
-              <Route path="/colors-women/" component={ WomensColors } />
+              <Route path="/women/occasion/" component={ WomensOccasion } />
+              <Route path="/women/values/" component={ WomensValues } />
+              <Route path="/women/style/" component={ WomensStyle } />
+              <Route path="/women/type/" component={ WomensType } />
+              <Route path="/women/color/" component={ WomensColors } />
 
               <Route path="/occasion-men/" component={ MensOccasion} />
               <Route path="/value-men/" component={ MensValues } />

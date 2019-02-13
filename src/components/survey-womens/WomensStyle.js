@@ -22,9 +22,9 @@ class WomensStyle extends Component {
       <div className="survey survey3">
         <h1>Which of these best describes your style?</h1>
         <CardDeck>
-          <SurveyCard surveyImage={img1} surveyTitle={"Trendsetter"} surveySubtitle={"I like to take risks with my style"} surveyNext={'/type-women'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Trendy"} surveySubtitle={"I like to wear what is in style"} surveyNext={'/type-women'}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"Casual"} surveySubtitle={"I like comfortable, everyday wear"} surveyNext={'/type-women'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Trendsetter"} surveySubtitle={"I like to take risks with my style"} surveyNext={'/women/type'} />
+          <SurveyCard surveyImage={img2} surveyTitle={"Trendy"} surveySubtitle={"I like to wear what is in style"} surveyNext={'/women/type'}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"Casual"} surveySubtitle={"I like comfortable, everyday wear"} surveyNext={'/women/type'}/>
         </CardDeck>
       </div>
     )

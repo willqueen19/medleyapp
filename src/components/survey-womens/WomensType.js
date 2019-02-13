@@ -21,8 +21,8 @@ class WomensType extends Component {
       <div className="survey survey2">
         <h1>What do you prefer?</h1>
         <CardDeck>
-          <SurveyCard surveyImage={img1} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/colors-women'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/colors-women'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/women/color'} />
+          <SurveyCard surveyImage={img2} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/women/color'}/>
         </CardDeck>
       </div>
     )
