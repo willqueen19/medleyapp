@@ -19,15 +19,23 @@ class SurveyMensWomens extends Component {
     this.state = {
 
     };
+
+    this.selectGender = this.selectGender.bind(this);
   }
+
+  selectGender(event, gender) {
+      this.props.actions.selectGender(gender);
+      console.log(this.props.gender);
+  }
+
 
   render () {
     return (
       <div className="survey survey2">
-        <h1>Choose a Department</h1>
+        <h1 onClick={(e) => this.selectGender(e, 'mens')}>Choose a Department</h1>
         <CardDeck>
-          <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} />
-          <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'}/>
+          <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} onClick={(e) => this.selectGender(e, 'womens')}/>
+          <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'} onClick={(e) => this.selectGender(e, 'mens')}/>
         </CardDeck>
       </div>
     )
@@ -44,12 +52,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+        actions: bindActionCreators(Object.assign(surveyActions), dispatch)
     };
 }
 
-
-
 export default connect(mapStateToProps, mapDispatchToProps) (SurveyMensWomens);
-
-//export default SurveyMensWomens;
