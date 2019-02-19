@@ -8,6 +8,11 @@ import img1 from '../../assets/MOcc-1.jpeg';
 import img2 from '../../assets/MOcc-2.jpeg';
 import img3 from '../../assets/MOcc-3.jpeg';
 
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import _ from 'lodash';
+import * as surveyActions from '../../actions/surveyActions';
+
 class MensOccasion extends Component {
 
   constructor(props) {
@@ -31,4 +36,16 @@ class MensOccasion extends Component {
   }
 }
 
-export default MensOccasion;
+function mapStateToProps(state, ownProps) {
+  return {
+    collection: state.surveyReducer.collection
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (MensOccasion);

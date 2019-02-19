@@ -8,6 +8,11 @@ import img1 from '../../assets/WCol-1.jpeg';
 import img2 from '../../assets/WCol-2.jpeg';
 import img3 from '../../assets/WCol-3.jpeg';
 
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import _ from 'lodash';
+import * as surveyActions from '../../actions/surveyActions';
+
 class WomensColors extends Component {
 
   constructor(props) {
@@ -31,4 +36,16 @@ class WomensColors extends Component {
   }
 }
 
-export default WomensColors;
+function mapStateToProps(state, ownProps) {
+  return {
+    color: state.surveyReducer.color
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (WomensColors);

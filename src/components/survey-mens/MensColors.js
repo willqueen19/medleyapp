@@ -8,6 +8,11 @@ import img1 from '../../assets/MCol-1.jpeg';
 import img2 from '../../assets/MCol-2.jpeg';
 import img3 from '../../assets/MCol-3.jpeg';
 
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import _ from 'lodash';
+import * as surveyActions from '../../actions/surveyActions';
+
 class MensColors extends Component {
 
   constructor(props) {
@@ -31,4 +36,16 @@ class MensColors extends Component {
   }
 }
 
-export default MensColors;
+function mapStateToProps(state, ownProps) {
+  return {
+    color: state.surveyReducer.color
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (MensColors);

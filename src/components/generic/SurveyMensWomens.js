@@ -7,6 +7,11 @@ import SurveyCard from './TwoSurveyCard.js';
 import womensImg from '../../assets/MW-1.jpeg';
 import mensImg from '../../assets/MW-2.jpeg';
 
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import _ from 'lodash';
+import * as surveyActions from '../../actions/surveyActions';
+
 class SurveyMensWomens extends Component {
 
   constructor(props) {
@@ -29,4 +34,22 @@ class SurveyMensWomens extends Component {
   }
 }
 
-export default SurveyMensWomens;
+
+
+function mapStateToProps(state, ownProps) {
+    return {
+        gender: state.surveyReducer.gender
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+    };
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (SurveyMensWomens);
+
+//export default SurveyMensWomens;

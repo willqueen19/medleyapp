@@ -7,6 +7,11 @@ import SurveyCard from '../generic/ThreeSurveyCard.js';
 import img1 from '../../assets/WTyp-1.jpeg';
 import img2 from '../../assets/WTyp-2.jpeg';
 
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import _ from 'lodash';
+import * as surveyActions from '../../actions/surveyActions';
+
 class WomensType extends Component {
 
   constructor(props) {
@@ -29,4 +34,16 @@ class WomensType extends Component {
   }
 }
 
-export default WomensType;
+function mapStateToProps(state, ownProps) {
+    return {
+        womenType: state.surveyReducer.womenType
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (WomensType);
