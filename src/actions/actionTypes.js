@@ -12,13 +12,13 @@ export const SELECT_WOMEN_CLOTHING_TYPE = 'SELECT_WOMEN_CLOTHING_TYPE';
 export const GET_SURVEY_RESULTS = 'GET_SURVEY_RESULTS';
 export const GET_SHIRTS         = 'GET_SHIRTS';
 export const GET_PANTS          = 'GET_PANTS';
-export const GET_JACKETS        = 'GET_PANTS';
-export const SHOES              = 'GET_SHOES';
+export const GET_JACKETS        = 'GET_JACKETS';
+export const GET_SHOES          = 'GET_SHOES';
 
 //ORDER
 
 export const GET_ORDER_NUMBER  = 'GET_ORDER_NUMBER';
 export const SEND_ORDER        = 'SEND_ORDER';
-export const ADD_EMAIL_ADDRESS = 'ADD_EMAIL';
+export const ADD_EMAIL_ADDRESS = 'ADD_EMAIL_ADDRESS';
 
 //order boolean to be flipped
