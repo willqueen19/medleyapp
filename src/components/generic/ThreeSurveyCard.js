@@ -16,7 +16,7 @@ class ThreeSurveyCard extends Component {
   }
 
   cardClicked(nextQuestion) {
-    if (this.props.passedFunction != null) {
+    if (this.props.passedFunction) {
         this.props.passedFunction();
     }
 
