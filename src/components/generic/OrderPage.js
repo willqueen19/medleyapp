@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Jumbotron, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-import { Jumbotron, Container } from 'reactstrap';
 
-class Order extends Component {
+
+class OrderPage extends Component {
 
   constructor(props) {
     super(props);
@@ -14,21 +15,21 @@ class Order extends Component {
     };
   }
 
-  render () {
-    return (
-        <div>
-          <div>
-            <Jumbotron fluid>
-              <Container fluid>
-                <h1 className="display-3">Your order has been submitted!</h1>
-                <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                <button><Link to={"/"}>Go back to beginning</Link></button>
-              </Container>
-            </Jumbotron>
-          </div>
-        </div>
-    )
+  render() {
+
+    return(
+      <div className="order">
+          <h1 className="display-3">Order Submitted!</h1>
+          <p className="lead">We are delivering your outfit to the fitting room.</p>
+          <h3>Order #5109</h3>
+          <Label for="firstName" className="mr-sm-2">Supply your name for the associate!</Label>
+          <Form inline>
+              <Input type="text" name="name" id="firstName" placeholder="First Name" />
+              <Button>Submit</Button>
+          </Form>
+      </div>
+)
   }
 }
 
-export default Order;
+export default OrderPage;

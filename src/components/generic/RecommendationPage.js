@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {Button, Card, CardBody, CardDeck, CardImg, CardSubtitle, CardText, CardTitle} from "reactstrap";
+import { Button, CardDeck } from "reactstrap";
+import RecCard from './RecommendationCard.js';
+import placeholdImg from '../../assets/MW-1.jpeg';
+
 
 class Recommend extends Component {
 
@@ -15,45 +18,17 @@ class Recommend extends Component {
 
   render () {
     return(
-      <div>
-        <CardDeck>
-          <Card>
-            <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-              <Button>Button</Button>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>This card has supporting text below as a natural lead-in to additional content.</CardText>
-              <Button>Button</Button>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CardText>
-              <Button>Button</Button>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CardText>
-              <Button>Button</Button>
-            </CardBody>
-          </Card>
+      <div className="recommendations">
+        <h1>Here's what we found for you</h1>
+        <CardDeck className="carddeck carddeckRec">
+          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
         </CardDeck>
+        <Button className="tryOn">
+          <Link to="/order/">Try on these items</Link>
+        </Button>
       </div>
     )
   }
