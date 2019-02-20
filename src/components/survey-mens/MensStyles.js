@@ -26,10 +26,10 @@ class MensStyles extends Component {
     return (
       <div className="survey survey3">
         <h1>Which of these best describes your style?</h1>
-        <CardDeck>
-          <SurveyCard surveyImage={img1} surveyTitle={"Trendsetter"} surveySubtitle={"I like to take risks with my style"} surveyNext={'/recommend'} />
+        <CardDeck className="carddeck carddeck3">
+          <SurveyCard surveyImage={img1} surveyTitle={"Trendsetter"} surveySubtitle={"I like to take risks"} surveyNext={'/recommend'} />
           <SurveyCard surveyImage={img2} surveyTitle={"Trendy"} surveySubtitle={"I like to wear what is in style"} surveyNext={'/recommend'}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"Casual"} surveySubtitle={"I like comfortable, everyday wear"} surveyNext={'/men/casual'}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"Casual"} surveySubtitle={"I like comfortable clothes"} surveyNext={'/men/casual'}/>
         </CardDeck>
       </div>
     )

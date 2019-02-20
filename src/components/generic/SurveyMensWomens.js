@@ -33,7 +33,7 @@ class SurveyMensWomens extends Component {
     return (
       <div className="survey survey2">
         <h1 onClick={(e) => this.selectGender(e, 'mens')}>Choose a Department</h1>
-        <CardDeck>
+        <CardDeck className="carddeck carddeck2">
           <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} onClick={(e) => this.selectGender(e, 'womens')}/>
           <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'} onClick={(e) => this.selectGender(e, 'mens')}/>
         </CardDeck>

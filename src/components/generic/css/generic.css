@@ -36,8 +36,8 @@ div.landing button a:hover {
   text-decoration: none;
 }
 
-/* All Cards & Surveys */
-div.card {
+/* Cards & Surveys */
+div.card-deck .card {
   background-color: #f88788;
   color: #fff;
   font-family: cresta, sans-serif;
@@ -45,7 +45,32 @@ div.card {
   font-weight: 200;
 }
 
+div.card-deck .card .card-title {
+  margin: 0px;
+  font-weight: bold;
+}
+
+div.carddeck2 {
+  margin: 25px 250px 0px 250px;
+}
+
+div.carddeck2 .card2 {
+    margin: 0px 75px;
+}
+
+div.carddeck3 {
+  margin: 25px 100px 0px 100px;
+}
+
+div.carddeck3 .card3 {
+    margin: 0px 50px;
+}
+
 div.survey {
   color: #fff;
   padding: 25px 0;
+}
+
+.survey img {
+
 }

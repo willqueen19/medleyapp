@@ -26,7 +26,7 @@ class WomensColors extends Component {
     return (
       <div className="survey survey3">
         <h1>What do you prefer?</h1>
-        <CardDeck>
+        <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"Bright Colors"} surveyNext={'/recommend'} />
           <SurveyCard surveyImage={img2} surveyTitle={"Dark Colors"} surveyNext={'/recommend'}/>
           <SurveyCard surveyImage={img3} surveyTitle={"Patterns"}surveyNext={'/recommend'}/>

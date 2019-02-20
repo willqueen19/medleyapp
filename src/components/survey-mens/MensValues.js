@@ -26,7 +26,7 @@ class MensValues extends Component {
     return (
       <div className="survey survey3">
         <h1>Which best describes you?</h1>
-        <CardDeck>
+        <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/recommend'} />
           <SurveyCard surveyImage={img2} surveyTitle={"I prefer to be sporty"} surveyNext={'/recommend'}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/men/style'}/>

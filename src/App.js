@@ -8,7 +8,6 @@ import store from "./store/index";
 import Header from './components/generic/Header';
 import Landing from './components/generic/LandingPage'
 import Survey from './components/generic/SurveyMensWomens'
-import ThreeSurvey from './components/generic/test-3-SurveyPage'
 import Recommend from './components/generic/RecommendationPage';
 import Order from './components/generic/OrderPage'
 import WomensOccasion from "./components/survey-womens/WomensOccasion";
@@ -56,7 +55,6 @@ class App extends Component {
                 <div className="app-body">
                   <Route path="/" exact component={ Landing } />
                   <Route path="/survey/" component={ Survey } />
-                  <Route path="/survey3/" component={ ThreeSurvey } />
                   <Route path="/women/occasion/" component={ WomensOccasion } />
                   <Route path="/women/values/" component={ WomensValues } />
                   <Route path="/women/style/" component={ WomensStyle } />
