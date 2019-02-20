@@ -22,9 +22,9 @@ class Landing extends Component {
           <h1 className="display-3">Medley</h1>
           <p className="lead">Personalized Outfit Recommendations</p>
           <p className="lead">
-            <Button>
-              <Link to="/survey/">Style me: Create my outfit</Link>
-            </Button>
+              <Link to="/survey/">
+                  <Button>Style me: Create my outfit</Button>
+              </Link>
           </p>
       </div>
 )
