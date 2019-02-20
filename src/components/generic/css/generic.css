@@ -15,6 +15,10 @@ html, body, div#root, div.App {
   background-color: #303030;
 }
 
+.app-body {
+  background-color: #303030;
+}
+
 /* Landing page */
 div.landing {
   color: #f88788;

@@ -12,6 +12,9 @@ import { bindActionCreators} from 'redux';
 import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
 
+const mens = 'mens';
+const womens = 'womens';
+
 class SurveyMensWomens extends Component {
 
   constructor(props) {
@@ -20,12 +23,16 @@ class SurveyMensWomens extends Component {
 
     };
 
-    this.selectGender = this.selectGender.bind(this);
+    this.selectMens = this.selectMens.bind(this);
+    this.selectWomens = this.selectWomens.bind(this);
   }
 
-  selectGender(event, gender) {
-      this.props.actions.selectGender(gender);
-      console.log(this.props.gender);
+  selectMens() {
+      this.props.actions.selectGender(mens);
+  }
+
+  selectWomens() {
+      this.props.actions.selectGender(womens);
   }
 
 
@@ -34,8 +41,8 @@ class SurveyMensWomens extends Component {
       <div className="survey survey2">
         <h1 onClick={(e) => this.selectGender(e, 'mens')}>Choose a Department</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} onClick={(e) => this.selectGender(e, 'womens')}/>
-          <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'} onClick={(e) => this.selectGender(e, 'mens')}/>
+          <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} passedFunction={this.selectWomens}/>
+          <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'} passedFunction={this.selectMens}/>
         </CardDeck>
       </div>
     )

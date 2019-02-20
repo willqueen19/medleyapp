@@ -18,8 +18,6 @@ class MensOccasion extends Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props.gender);
-
     this.state = {
 
     };
