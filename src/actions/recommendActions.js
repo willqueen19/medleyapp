@@ -28,10 +28,10 @@ export function getJackets(jackets) {
         return dispatch({type: 'GET_JACKETS', payload: jackets})
     }
 }
-// export const GET_SHOES              = 'GET_SHOES';
-export function getShoes(shoes) {
+// export const SHOES              = 'SHOES';
+export function shoes(shoes) {
     return function(dispatch) {
         console.log('shoes selected from actions', shoes);
-        return dispatch({type: 'GET_SHOES', payload: shoes})
+        return dispatch({type: 'SHOES', payload: shoes})
     }
 }

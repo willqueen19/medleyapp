@@ -13,7 +13,7 @@ export const GET_SURVEY_RESULTS = 'GET_SURVEY_RESULTS';
 export const GET_SHIRTS         = 'GET_SHIRTS';
 export const GET_PANTS          = 'GET_PANTS';
 export const GET_JACKETS        = 'GET_JACKETS';
-export const GET_SHOES          = 'GET_SHOES';
+export const SHOES              = 'SHOES';
 
 //ORDER
 
