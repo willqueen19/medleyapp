@@ -9,16 +9,28 @@ import img2 from '../../assets/WTyp-2.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class WomensType extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
 
     };
+
+    this.selectOnePiece = this.selectOnePiece.bind(this);
+    this.selectTwoPiece = this.selectTwoPiece.bind(this);
+  }
+
+  selectOnePiece() {
+      this.props.actions.selectWomenClothingType(surveyConstants.one_piece);
+  }
+
+  selectTwoPiece() {
+      this.props.actions.selectWomenClothingType(surveyConstants.two_piece);
   }
 
   render () {
@@ -26,8 +38,8 @@ class WomensType extends Component {
       <div className="survey survey2">
         <h1>What do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={img1} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/women/color'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/women/color'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
         </CardDeck>
       </div>
     )

@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class WomensColors extends Component {
 
@@ -20,6 +21,22 @@ class WomensColors extends Component {
     this.state = {
 
     };
+
+    this.selectBright = this.selectBright.bind(this);
+    this.selectDark = this.selectDark.bind(this);
+    this.selectPattern = this.selectPattern.bind(this);
+  }
+
+  selectBright() {
+    this.props.actions.selectColor(surveyConstants.bright_colors);
+  }
+
+  selectDark() {
+    this.props.actions.selectColor(surveyConstants.dark_colors);
+  }
+
+  selectPattern() {
+    this.props.actions.selectColor(surveyConstants.patterns);
   }
 
   render () {
@@ -27,9 +44,9 @@ class WomensColors extends Component {
       <div className="survey survey3">
         <h1>What do you prefer?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"Bright Colors"} surveyNext={'/recommend'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Dark Colors"} surveyNext={'/recommend'}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"Patterns"}surveyNext={'/recommend'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Bright Colors"} surveyNext={'/recommend'} passedFunction={this.selectBright()}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"Dark Colors"} surveyNext={'/recommend'} passedFunction={this.selectDark}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"Patterns"}surveyNext={'/recommend'} passedFunction={this.selectPattern()}/>
         </CardDeck>
       </div>
     )

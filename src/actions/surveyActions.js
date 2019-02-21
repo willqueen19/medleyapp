@@ -4,14 +4,14 @@ import * as types from './actionTypes';
 export function selectGender(gender) {
     return function(dispatch) {
         console.log('gender selected from actions', gender);
-        return dispatch({type: 'SELECT_GENDER', payload: gender})
+        return dispatch({type: 'SELECT_GENDER', payload: gender});
     }
 }
 // export const SELECT_MENS_COLLECTION     = 'SELECT_MENS_COLLECTION';
 export function selectMensCollection(mCollection) {
     return function(dispatch) {
         console.log('mens collection selected from actions', mCollection);
-        return dispatch({type: 'SELECT_MENS_COLLECTION', payload: mCollection})
+        return dispatch({type: 'SELECT_MENS_COLLECTION', payload: mCollection});
     }
 }
 // export const SELECT_WOMENS_COLLECTION   = 'SELECT_WOMENS_COLLECTION';

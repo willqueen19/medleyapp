@@ -5,18 +5,29 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from "reactstrap";
 import RecCard from './RecommendationCard.js';
 import placeholdImg from '../../assets/MW-1.jpeg';
+import {bindActionCreators} from "redux";
+import * as surveyActions from '../../actions/surveyActions';
+import * as recommendationActions from "../../actions/recommendActions";
+import {connect} from "react-redux";
 
 
 class Recommend extends Component {
 
   constructor(props) {
     super(props);
+
+    console.log('props at recommend page: ', props);
+
     this.state = {
 
     };
   }
 
-  render () {
+  componentWillMount() {
+      // TODO: This is where the API calls will be added to get item arrays
+  }
+
+    render () {
     return(
       <div className="recommendations">
         <h1>Here's what we found for you</h1>
@@ -34,4 +45,28 @@ class Recommend extends Component {
   }
 }
 
-export default Recommend;
+function mapStateToProps(state, ownProps) {
+    return {
+        gender: state.surveyReducer.gender,
+        mensCollection: state.surveyReducer.mensCollection,
+        womensCollection: state.surveyReducer.womensCollection,
+        color: state.surveyReducer.color,
+        shirtType: state.surveyReducer.shirtType,
+        pantsType: state.surveyReducer.pantsType,
+        womenClothingType: state.surveyReducer.womenClothingType,
+
+        shirts: state.recommendReducer.shirts,
+        pants: state.recommendReducer.pants,
+        jackets: state.recommendReducer.jackets,
+        shoes: state.recommendReducer.shoes
+
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(Object.assign(recommendationActions), dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Recommend);

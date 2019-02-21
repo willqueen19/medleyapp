@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Card, Button, CardImg, CardTitle, CardText,
   CardSubtitle, CardBody } from 'reactstrap';
+import {bindActionCreators} from "redux";
+import * as surveyActions from "../../actions/surveyActions";
+import * as recommendationActions from '../../actions/recommendActions';
+import {connect} from "react-redux";
 
 class RecommendationCard extends Component {
 
@@ -32,3 +36,4 @@ class RecommendationCard extends Component {
 }
 
 export default RecommendationCard;
+

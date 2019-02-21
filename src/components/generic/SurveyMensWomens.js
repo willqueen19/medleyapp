@@ -9,16 +9,14 @@ import mensImg from '../../assets/MW-2.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
-
-const mens = 'mens';
-const womens = 'womens';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class SurveyMensWomens extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
 
     };
@@ -28,11 +26,11 @@ class SurveyMensWomens extends Component {
   }
 
   selectMens() {
-      this.props.actions.selectGender(mens);
+      this.props.actions.selectGender(surveyConstants.mens);
   }
 
   selectWomens() {
-      this.props.actions.selectGender(womens);
+      this.props.actions.selectGender(surveyConstants.womens);
   }
 
 

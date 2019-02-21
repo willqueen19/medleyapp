@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class MensCasual extends Component {
 
@@ -19,6 +20,17 @@ class MensCasual extends Component {
     this.state = {
 
     };
+
+    this.selectOutdoorsy = this.selectOutdoorsy.bind(this);
+    this.selectHomewear = this.selectHomewear.bind(this);
+  }
+
+  selectOutdoorsy() {
+      this.props.actions.selectMensCollection(surveyConstants.logg);
+  }
+
+  selectHomewear() {
+      this.props.actions.selectMensCollection(surveyConstants.basics);
   }
 
   render () {
@@ -26,8 +38,8 @@ class MensCasual extends Component {
       <div className="survey survey2">
         <h1>What side of casual clothing are you looking for?</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/men/shirt'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/men/shirt'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/men/shirt'} passedFunction={this.selectOutdoorsy}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/men/shirt'} passedFunction={this.selectHomewear}/>
         </CardDeck>
       </div>
     )

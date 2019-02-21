@@ -9,16 +9,28 @@ import img2 from '../../assets/MShirt-2.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class MensShirts extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
 
     };
+
+    this.selectLongSleeve = this.selectLongSleeve.bind(this);
+    this.selectShortSleeve = this.selectShortSleeve.bind(this);
+  }
+
+  selectLongSleeve() {
+      this.props.actions.selectShirtType(surveyConstants.long_sleeve);
+  }
+
+  selectShortSleeve() {
+      this.props.actions.selectShirtType(surveyConstants.short_sleeve);
   }
 
   render () {
@@ -26,8 +38,8 @@ class MensShirts extends Component {
       <div className="survey survey2">
         <h1>What style of shirt do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={img1} surveyTitle={"Long sleeve"} surveyNext={'/men/pants'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Short sleeve"} surveyNext={'/men/pants'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Long sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectLongSleeve}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"Short sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectShortSleeve}/>
         </CardDeck>
       </div>
     )

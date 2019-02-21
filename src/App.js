@@ -13,7 +13,7 @@ import Order from './components/generic/OrderPage'
 import WomensOccasion from "./components/survey-womens/WomensOccasion";
 import MensOccasion from "./components/survey-mens/MensOccasion";
 import WomensValues from "./components/survey-womens/WomensValues";
-import WomensStyle from "./components/survey-womens/WomensStyle";
+import WomensStyle from "./components/survey-womens/WomensStyles";
 import WomensType from "./components/survey-womens/WomensType";
 import WomensColors from "./components/survey-womens/WomensColors";
 import MensValues from "./components/survey-mens/MensValues";
@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(store.getState())
+
   }
 
   componentWillUnmount() {

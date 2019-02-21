@@ -10,8 +10,8 @@ import img3 from '../../assets/MOcc-3.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class MensOccasion extends Component {
 
@@ -21,6 +21,17 @@ class MensOccasion extends Component {
     this.state = {
 
     };
+
+    this.selectParty = this.selectParty.bind(this);
+    this.selectWork = this.selectWork.bind(this);
+  }
+
+  selectParty() {
+    this.props.actions.selectMensCollection(surveyConstants.premium_quality);
+  }
+
+  selectWork() {
+    this.props.actions.selectMensCollection(surveyConstants.modern_classic);
   }
 
   render () {
@@ -28,8 +39,8 @@ class MensOccasion extends Component {
       <div className="survey survey3">
         <h1>What's the occasion?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/men/shirt'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/men/shirt'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/men/shirt'} passedFunction={this.selectParty}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/men/shirt'} passedFunction={this.selectWork}/>
           <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/men/value'}/>
         </CardDeck>
       </div>
@@ -46,7 +57,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+    actions: bindActionCreators(Object.assign(surveyActions), dispatch)
   };
 }
 

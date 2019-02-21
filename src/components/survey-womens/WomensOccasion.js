@@ -10,16 +10,28 @@ import img3 from '../../assets/WOcc-3.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class WomensOccasion extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
 
     };
+
+    this.selectParty = this.selectParty.bind(this);
+    this.selectWork = this.selectWork.bind(this);
+  }
+
+  selectParty() {
+    this.props.actions.selectWomensCollection(surveyConstants.party);
+  }
+
+  selectWork() {
+    this.props.actions.selectWomensCollection(surveyConstants.modern_classic);
   }
 
   render () {
@@ -27,8 +39,8 @@ class WomensOccasion extends Component {
       <div className="survey survey3">
         <h1>What's the occasion?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/women/type'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/women/type'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/women/type'} passedFunction={this.selectParty}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/women/type'} passedFunction={this.selectWork}/>
           <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/women/values'}/>
         </CardDeck>
       </div>

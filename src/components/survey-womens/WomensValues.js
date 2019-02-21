@@ -10,16 +10,28 @@ import img3 from '../../assets/WVal-3.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
-import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants';
 
 class WomensValues extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
 
     };
+
+    this.selectSustainable = this.selectSustainable.bind(this);
+    this.selectLuxury = this.selectLuxury.bind(this);
+  }
+
+  selectSustainable() {
+    this.props.actions.selectWomensCollections(surveyConstants.conscious);
+  }
+
+  selectLuxury() {
+    this.props.actions.selectWomensCollections(surveyConstants.premium_quality);
   }
 
   render () {
@@ -27,8 +39,8 @@ class WomensValues extends Component {
       <div className="survey survey3">
         <h1>Which best describes you?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/recommend'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"I prefer to splurge for luxury quality"} surveyNext={'/recommend'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/recommend'} passedFunction={this.selectSustainable} />
+          <SurveyCard surveyImage={img2} surveyTitle={"I prefer to splurge for luxury quality"} surveyNext={'/recommend'} passedFunction={this.selectLuxury}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/women/style'}/>
         </CardDeck>
       </div>

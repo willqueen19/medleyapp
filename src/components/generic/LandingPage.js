@@ -19,11 +19,11 @@ class Landing extends Component {
 
     return(
       <div className="landing">
-          <h1 className="display-3">Medley</h1>
-          <p className="lead">Personalized Outfit Recommendations</p>
+          <h1 className="display-3" style={{'fontSize': '160px'}}>Medley</h1>
+          <p className="lead" style={{'fontSize': '40px'}}>Personalized Outfit Recommendations</p>
           <p className="lead">
               <Link to={'/survey/'}>
-                 <Button>Style me: Create my outfit</Button>
+                 <Button size="lg">Style me: Create my outfit</Button>
               </Link>
           </p>
       </div>

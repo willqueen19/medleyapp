@@ -12,14 +12,27 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
+import * as surveyConstants from '../../constants/survey-constants'
 
 class MensStyles extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
 
     };
+
+    this.selectTrendsetter = this.selectTrendsetter.bind(this);
+    this.selectTrendy = this.selectTrendy.bind(this);
+  }
+
+  selectTrendsetter() {
+    this.props.actions.selectMensCollection(surveyConstants.trend);
+  }
+
+  selectTrendy() {
+    this.props.actions.selectMensCollection(surveyConstants.divided);
   }
 
   render () {
@@ -27,8 +40,8 @@ class MensStyles extends Component {
       <div className="survey survey3">
         <h1>Which of these best describes your style?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"Trendsetter"} surveySubtitle={"I like to take risks"} surveyNext={'/recommend'} />
-          <SurveyCard surveyImage={img2} surveyTitle={"Trendy"} surveySubtitle={"I like to wear what is in style"} surveyNext={'/recommend'}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"Trendsetter"} surveySubtitle={"I like to take risks"} surveyNext={'/recommend'} passedFunction={this.selectTrendsetter}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"Trendy"} surveySubtitle={"I like to wear what is in style"} surveyNext={'/recommend'} passedFunction={this.selectTrendy}/>
           <SurveyCard surveyImage={img3} surveyTitle={"Casual"} surveySubtitle={"I like comfortable clothes"} surveyNext={'/men/casual'}/>
         </CardDeck>
       </div>

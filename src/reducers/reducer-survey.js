@@ -3,7 +3,8 @@ import _ from 'lodash';
 
 var initialState = {
     gender: null,
-    collection: null,
+    mensCollection: null,
+    womensCollection: null,
     color: null,
     shirtType: null,
     pantsType: null,
@@ -13,9 +14,19 @@ var initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case types.SELECT_GENDER:
-            return Object.assign({}, state, {gender: action.payload})
+            return Object.assign({}, state, {gender: action.payload});
         case types.SELECT_MENS_COLLECTION:
-            return Object.assign({}, state, {collection: action.payload})
+            return Object.assign({}, state, {mensCollection: action.payload});
+        case types.SELECT_WOMENS_COLLECTION:
+            return Object.assign({}, state, {womensCollection: action.payload});
+        case types.SELECT_COLOR:
+            return Object.assign({}, state, {color: action.payload});
+        case types.SELECT_SHIRT_TYPE:
+            return Object.assign({}, state, {shirtType: action.payload});
+        case types.SELECT_PANTS_TYPE:
+            return Object.assign({}, state, {pantsType: action.payload});
+        case types.SELECT_WOMEN_CLOTHING_TYPE:
+            return Object.assign({}, state, {womenClothingType: action.payload});
         default:
             return state;
     }
