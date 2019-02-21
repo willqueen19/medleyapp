@@ -1,7 +1,5 @@
 import * as types from './actionTypes';
 
-// TODO: need to add get actions for this to clean up survey page
-
 // export const SELECT_GENDER              = 'SELECT_GENDER';
 export function selectGender(gender) {
     return function(dispatch) {

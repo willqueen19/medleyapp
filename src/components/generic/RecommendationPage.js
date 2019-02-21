@@ -25,7 +25,7 @@ class Recommend extends Component {
     }
 
     componentWillMount() {
-        var categories = {};
+        let categories = {};
 
         if (this.props.gender === surveyConstants.mens) {
             categories = {
@@ -47,11 +47,11 @@ class Recommend extends Component {
         }
 
         this.props.actions.getSurveyResults(categories);
-
     }
 
-
     render () {
+        console.log('these are your categories: ', this.props.categories);
+
         return(
           <div className="recommendations">
             <h1>Here's what we found for </h1>
