@@ -2,7 +2,7 @@ import * as types from '../actions/actionTypes';
 import _ from 'lodash';
 
 var initialState = {
-    survey: [],
+    categories: [],
     shirts: [],
     pants: [],
     jackets: [],
@@ -11,6 +11,8 @@ var initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case types.GET_SURVEY_RESULTS:
+            return Object.assign({}, state, {categories: action.payload})
 
         default:
             return state;

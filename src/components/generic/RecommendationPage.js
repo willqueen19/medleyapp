@@ -9,40 +9,64 @@ import {bindActionCreators} from "redux";
 import * as surveyActions from '../../actions/surveyActions';
 import * as recommendationActions from "../../actions/recommendActions";
 import {connect} from "react-redux";
+import * as surveyConstants from '../../constants/survey-constants';
 
 
 class Recommend extends Component {
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    console.log('props at recommend page: ', props);
+        //console.log('props at recommend page: ', props);
 
-    this.state = {
+        this.state = {
 
-    };
-  }
+        };
+    }
 
-  componentWillMount() {
-      // TODO: This is where the API calls will be added to get item arrays
-  }
+    componentWillMount() {
+        var categories = {};
+
+        if (this.props.gender === surveyConstants.mens) {
+            categories = {
+                gender: this.props.gender,
+                mensCollection: this.props.mensCollection,
+                shirtType: this.props.shirtType,
+                pantsType: this.props.pantsType,
+                color: this.props.color
+            }
+        }
+
+        if (this.props.gender === surveyConstants.womens) {
+            categories = {
+                gender: this.props.gender,
+                womensCollection: this.props.womensCollection,
+                womenClothingType: this.props.womenClothingType,
+                color: this.props.color
+            }
+        }
+
+        this.props.actions.getSurveyResults(categories);
+
+    }
+
 
     render () {
-    return(
-      <div className="recommendations">
-        <h1>Here's what we found for you</h1>
-        <CardDeck className="carddeck carddeckRec">
-          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
-          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
-          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
-          <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
-        </CardDeck>
-        <Link to="/order/">
-            <Button className="tryOn">Try on these items</Button>
-        </Link>
-      </div>
-    )
-  }
+        return(
+          <div className="recommendations">
+            <h1>Here's what we found for </h1>
+            <CardDeck className="carddeck carddeckRec">
+              <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+              <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+              <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+              <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
+            </CardDeck>
+            <Link to="/order/">
+                <Button className="tryOn">Try on these items</Button>
+            </Link>
+          </div>
+        )
+    }
 }
 
 function mapStateToProps(state, ownProps) {
@@ -55,6 +79,7 @@ function mapStateToProps(state, ownProps) {
         pantsType: state.surveyReducer.pantsType,
         womenClothingType: state.surveyReducer.womenClothingType,
 
+        categories: state.recommendReducer.categories,
         shirts: state.recommendReducer.shirts,
         pants: state.recommendReducer.pants,
         jackets: state.recommendReducer.jackets,
