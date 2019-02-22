@@ -64,6 +64,13 @@ class Recommend extends Component {
             <Link to="/order/">
                 <Button className="tryOn">Try on these items</Button>
             </Link>
+              <p>{this.props.categories.gender}</p>
+              <p>{this.props.categories.mensCollection}</p>
+              <p>{this.props.categories.womensCollection}</p>
+              <p>{this.props.categories.shirtType}</p>
+              <p>{this.props.categories.pantsType}</p>
+              <p>{this.props.categories.womenClothingType}</p>
+              <p>{this.props.categories.color}</p>
           </div>
         )
     }

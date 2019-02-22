@@ -41,8 +41,8 @@ class MensValues extends Component {
       <div className="survey survey3">
         <h1>Which best describes you?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/recommend'} passedFunction={this.selectSustainable}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"I prefer to be sporty"} surveyNext={'/recommend'} passedFunction={this.selectSporty}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/men/shirt'} passedFunction={this.selectSustainable}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"I prefer to be sporty"} surveyNext={'/men/shirt'} passedFunction={this.selectSporty}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/men/style'}/>
         </CardDeck>
       </div>
