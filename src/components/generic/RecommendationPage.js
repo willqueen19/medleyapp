@@ -28,10 +28,14 @@ class Recommend extends Component {
 
     componentWillMount() {
 
+        // TODO: call function for every type of clothing, then only grab categories that have results
+
         this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
         this.props.actions.getPants(this.props.gender, this.props.mensCollection);
         this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
         this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
+
+
 
     }
 
