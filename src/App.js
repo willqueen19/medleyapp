@@ -35,16 +35,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
-
-  }
-
-  componentDidMount() {
-
-  }
-
-  componentWillUnmount() {
-  }
+  
 
   render() {
     return (

@@ -27,6 +27,14 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {pantsType: action.payload});
         case types.SELECT_WOMEN_CLOTHING_TYPE:
             return Object.assign({}, state, {womenClothingType: action.payload});
+        case types.RESET_SURVEY:
+            return Object.assign({}, state, {gender: null,
+                                                            mensCollection: null,
+                                                            womensCollection: null,
+                                                            color: null,
+                                                            shirtType: null,
+                                                            pantsType: null,
+                                                            womenClothingType: null});
         default:
             return state;
     }

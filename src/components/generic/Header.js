@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './css/generic.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import {Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
 import logo from '../../assets/hm-logo.png';
 
@@ -12,16 +12,23 @@ class Header extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
+            redirect: null,
             isOpen: false
         };
     }
     toggle() {
         this.setState({
-            isOpen: !this.state.isOpen
+            redirect: '/'
         });
     }
 
     render () {
+
+        if (this.state.redirect != null) {
+            return <Redirect push to={this.state.redirect}/>
+        }
+
+
         return (
             <div>
                 <Navbar expand="md">

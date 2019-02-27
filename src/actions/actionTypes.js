@@ -1,4 +1,5 @@
 //SURVEY
+export const RESET_SURVEY               = 'RESET_SURVEY';
 export const SELECT_GENDER              = 'SELECT_GENDER';
 export const SELECT_MENS_COLLECTION     = 'SELECT_MENS_COLLECTION';
 export const SELECT_WOMENS_COLLECTION   = 'SELECT_WOMENS_COLLECTION';
@@ -16,6 +17,7 @@ export const GET_SWEATERS       = 'GET_SWEATERS';
 export const GET_JACKETS        = 'GET_JACKETS';
 export const GET_SHOES          = 'GET_SHOES';
 export const GET_DRESSES        = 'GET_DRESSES';
+export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM';
 
 //ORDER
 

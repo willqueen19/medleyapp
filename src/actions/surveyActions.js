@@ -1,5 +1,12 @@
 import * as types from './actionTypes';
 
+// export const RESET_SURVEY               = 'RESET_SURVEY';
+export function resetSurvey() {
+    return function(dispatch) {
+        return dispatch({type: 'RESET_SURVEY'});
+    }
+}
+
 // export const SELECT_GENDER              = 'SELECT_GENDER';
 export function selectGender(gender) {
     return function(dispatch) {

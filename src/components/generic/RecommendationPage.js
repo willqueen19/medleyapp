@@ -5,8 +5,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from "reactstrap";
 import RecCard from './RecommendationCard.js';
 import placeholdImg from '../../assets/MW-1.jpeg';
+import placeholdLogo from '../../assets/placeHoldLogo.svg'
+import hmLogo from '../../assets/hm-logo.png'
 import {bindActionCreators} from "redux";
-import * as surveyActions from '../../actions/surveyActions';
 import * as recommendationActions from "../../actions/recommendActions";
 import {connect} from "react-redux";
 import * as surveyConstants from '../../constants/survey-constants';
@@ -18,13 +19,7 @@ class Recommend extends Component {
         super(props);
 
         this.state = {
-            gender: this.props.gender,
-            mensCollection: this.props.mensCollection,
-            womensCollection: this.props.womensCollection,
-            shirtType: this.props.shirtType,
-            pantsType: this.props.pantsType,
-            womensClothingType: this.props.womensClothingType,
-            color: this.props.color,
+
         };
 
         this.getClothes = this.getClothes.bind(this);
@@ -33,7 +28,7 @@ class Recommend extends Component {
 
     componentWillMount() {
 
-        this.props.actions.getShirts(this.state.gender, this.state.mensCollection);
+        this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
         this.props.actions.getPants(this.props.gender, this.props.mensCollection);
         this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
         this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
@@ -42,17 +37,10 @@ class Recommend extends Component {
 
     getClothes() {
 
-        console.log('state in getclothes', this.state);
-
         this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
         this.props.actions.getPants(this.props.gender, this.props.mensCollection);
         this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
         this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
-
-        //this.props.actions.getShirts(this.state.gender, this.state.mensCollection);
-        //this.props.actions.getPants(this.props.gender, this.props.mensCollection);
-        //this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
-        //this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
 
         /*
         if (this.props.gender === surveyConstants.mens) {
@@ -73,7 +61,6 @@ class Recommend extends Component {
             } else if (this.props.womensClothingType === surveyConstants.one_piece) {
                 this.props.actions.getDresses(this.props.mensCollection);
             }
-
 
         }
         */
@@ -98,36 +85,36 @@ class Recommend extends Component {
 
         // TODO: ideally should only render card for categories with more than 0 items in them
         var shirtImage;
-        var pantImage;
-        var sweaterImage;
-        var jacketImage;
-        var shirtName = '';
-        var pantName = '';
-        var sweaterName = '';
-        var jacketName = '';
+        var shirtName = 'Shirt';
         var shirtPrice = '';
+        var pantImage;
+        var pantName = 'Pants';
         var pantPrice = '';
+        var sweaterImage;
+        var sweaterName = 'Sweater';
         var sweaterPrice = '';
+        var jacketImage;
+        var jacketName = 'Jacket';
         var jacketPrice = '';
 
         if (shirt != null && pant != null && sweater != null && jacket != null) {
             shirtImage = shirt.images[0].url;
-            pantImage = pant.images[0].url;
-            sweaterImage = sweater.images[0].url;
-            jacketImage = jacket.images[0].url;
             shirtName = shirt.name;
-            pantName = pant.name;
-            sweaterName = sweater.name;
-            jacketName = jacket.name;
             shirtPrice = shirt.price.formattedValue;
+            pantImage = pant.images[0].url;
+            pantName = pant.name;
             pantPrice = pant.price.formattedValue;
+            sweaterImage = sweater.images[0].url;
+            sweaterName = sweater.name;
             sweaterPrice = sweater.price.formattedValue;
+            jacketImage = jacket.images[0].url;
+            jacketName = jacket.name;
             jacketPrice = jacket.price.formattedValue;
         } else {
-            shirtImage = placeholdImg;
-            pantImage = placeholdImg;
-            sweaterImage = placeholdImg;
-            jacketImage = placeholdImg
+            shirtImage = placeholdLogo;
+            pantImage = placeholdLogo;
+            sweaterImage = placeholdLogo;
+            jacketImage = placeholdLogo
         }
 
         return(
@@ -157,7 +144,6 @@ function mapStateToProps(state, ownProps) {
         pantsType: state.surveyReducer.pantsType,
         womenClothingType: state.surveyReducer.womenClothingType,
 
-        array: state.recommendReducer.array,
         shirts: state.recommendReducer.shirts,
         pants: state.recommendReducer.pants,
         sweaters: state.recommendReducer.sweaters,
