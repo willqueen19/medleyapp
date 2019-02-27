@@ -5,10 +5,9 @@ import * as unirest from 'unirest';
 
 // TODO: add color, shirtType, pantType to all query functions
 
-// TODO: Premium Quality and Conscious are qualities, not concepts, this needs to be reflected in an if statment in each api call
+// TODO: Premium Quality and Conscious are qualities, not concepts, this needs to be reflected in an if statement in each api call
 
 // TODO: Abstract item request down to single action, passing in itemType and include an 'if' statement for dispatching to correct array in reducer
-
 
 // export const GET_SURVEY_RESULTS = 'GET_SURVEY_RESULTS';
 export function getSurveyResults(surveyResults) {
