@@ -8,7 +8,7 @@ import womensImg from '../../assets/MW-1.jpeg';
 import mensImg from '../../assets/MW-2.jpeg';
 
 import { connect } from 'react-redux';
-import { bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import * as surveyActions from '../../actions/surveyActions';
 import * as surveyConstants from '../../constants/survey-constants';
 
