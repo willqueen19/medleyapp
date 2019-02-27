@@ -9,6 +9,14 @@ nav img {
   float: right;
 }
 
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: #f88788;
+}
+
 /* Main body */
 html, body, div#root, div.App {
   height: 100%;
@@ -18,7 +26,6 @@ html, body, div#root, div.App {
 .app-body {
   background-color: #303030;
 }
-
 /* Landing page */
 div.landing {
   color: #f88788;
@@ -26,6 +33,10 @@ div.landing {
   font-style: normal;
   font-weight: 200;
   padding-top: 10%;
+}
+
+div.landing img {
+  width: 500px;
 }
 
 div.landing button {
@@ -133,4 +144,3 @@ div.order button a:hover {
 div.order .form-inline {
   display: inherit;
 }
-

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button } from 'reactstrap';
-
+import logo from '../../assets/medley-logo.png';
 
 
 class Landing extends Component {
@@ -19,7 +19,7 @@ class Landing extends Component {
 
     return(
       <div className="landing">
-          <h1 className="display-3" style={{'fontSize': '160px'}}>Medley</h1>
+          <img className="ml-auto" src={logo} alt="Logo" />
           <p className="lead" style={{'fontSize': '40px'}}>Personalized Outfit Recommendations</p>
           <p className="lead">
               <Link to={'/survey/'}>
