@@ -28,6 +28,10 @@ div.landing {
   padding-top: 10%;
 }
 
+div.landing img {
+  width: 500px;
+}
+
 div.landing button {
   background-color: #f88788;
 }
@@ -133,4 +137,3 @@ div.order button a:hover {
 div.order .form-inline {
   display: inherit;
 }
-
