@@ -1,21 +1,21 @@
-export const mens = 'mens';
-export const womens = 'womens';
+export const mens = 'men';
+export const womens = 'ladies';
 
 //collections present for both genders
-export const modern_classic  = 'modern_classic';
-export const conscious       = 'conscious';
-export const premium_quality = 'premium_quality';
-export const trend           = 'trend';
-export const divided         = 'divided';
+export const modern_classic  = 'MODERN+CLASSIC';
+export const conscious       = '1_conscious';
+export const premium_quality = '2_premium_quality';
+export const trend           = 'TREND';
+export const divided         = 'DIVIDED';
 
 //mens collections
-export const hm_men          = 'hm_men';
-export const logg            = 'logg';
-export const basics          = 'basics';
+export const hm_men          = 'H&M MAN';
+export const logg            = 'L.O.G.G.';
+export const basics          = 'BASICS';
 
 //womens collections
-export const party           = 'party';
-export const casual          = 'casual';
+export const party           = 'PARTY';
+export const casual          = 'CASUAL';
 
 //outfit types
 export const shorts          = 'shorts';
