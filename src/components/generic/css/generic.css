@@ -9,6 +9,14 @@ nav img {
   float: right;
 }
 
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: #f88788;
+}
+
 /* Main body */
 html, body, div#root, div.App {
   height: 100%;
@@ -18,7 +26,6 @@ html, body, div#root, div.App {
 .app-body {
   background-color: #303030;
 }
-
 /* Landing page */
 div.landing {
   color: #f88788;
