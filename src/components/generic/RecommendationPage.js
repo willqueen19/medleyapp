@@ -17,8 +17,6 @@ class Recommend extends Component {
     constructor(props) {
         super(props);
 
-        console.log('props at recommend page: ', props);
-
         this.state = {
             gender: this.props.gender,
             mensCollection: this.props.mensCollection,
@@ -27,13 +25,6 @@ class Recommend extends Component {
             pantsType: this.props.pantsType,
             womensClothingType: this.props.womensClothingType,
             color: this.props.color,
-            // TODO: these don't need to be stored in the state
-            shirts: [],
-            pants: [],
-            shoes: [],
-            sweaters: [],
-            jackets: [],
-            dress: []
         };
 
         this.getClothes = this.getClothes.bind(this);
@@ -46,9 +37,6 @@ class Recommend extends Component {
         this.props.actions.getPants(this.props.gender, this.props.mensCollection);
         this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
         this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
-
-        //console.log('state gender', this.props.gender);
-        //console.log('state mensCollection', this.props.mensCollection);
 
     }
 
@@ -108,8 +96,6 @@ class Recommend extends Component {
         var sweater =  sweaters[this.getRandomInt(sweaters.length)];
         var jacket =  jackets[this.getRandomInt(jackets.length)];
 
-        console.log('THIS IS THE SHIRT', shirt);
-
         // TODO: ideally should only render card for categories with more than 0 items in them
         var shirtImage;
         var pantImage;
@@ -143,11 +129,6 @@ class Recommend extends Component {
             sweaterImage = placeholdImg;
             jacketImage = placeholdImg
         }
-
-        console.log('shirts', shirts);
-        console.log('pants', pants);
-        console.log('sweaters', sweaters);
-        console.log('jackets', jackets);
 
         return(
           <div className="recommendations">

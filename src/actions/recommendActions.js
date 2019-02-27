@@ -27,7 +27,6 @@ export function getSurveyResults(surveyResults) {
         unirest.get("https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=men&productTypes=shirt&country=us&lang=en&currentpage=0&pagesize=1000")
             .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
             .end(function (result) {
-                //console.log('array size: ', result.body.results.length);
                 return dispatch({type: 'GET_SAMPLE_ARRAY', payload: result.body.results});
             });
     }
@@ -44,7 +43,6 @@ export function getShirts(gender, collection) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
             .end(function (result) {
-                console.log('array size: ', result.body.results);
                 return dispatch({type: 'GET_SHIRTS', payload: result.body.results});
             });
     }
@@ -56,7 +54,6 @@ export function getPants(gender, collection) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
             .end(function (result) {
-                console.log('array size: ', result.body.results);
                 return dispatch({type: 'GET_PANTS', payload: result.body.results});
             });
     }
@@ -68,7 +65,6 @@ export function getSweaters(gender, collection) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
             .end(function (result) {
-                console.log('array size: ', result.body.results);
                 return dispatch({type: 'GET_SWEATERS', payload: result.body.results});
             });
     }
@@ -82,7 +78,6 @@ export function getJackets(gender, collection) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
             .end(function (result) {
-                console.log('array size: ', result.body.results);
                 return dispatch({type: 'GET_JACKETS', payload: result.body.results});
             });
     }
@@ -94,7 +89,6 @@ export function getDresses(collection) {
         unirest.get("https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=men&productTypes=shirt&country=us&lang=en&currentpage=0&pagesize=1000")
             .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
             .end(function (result) {
-                //console.log('array size: ', result.body.results.length);
                 return dispatch({type: 'GET_DRESSES', payload: result.body.results});
             });
 
