@@ -4,6 +4,7 @@ import './css/generic.css';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import {Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
 import logo from '../../assets/hm-logo.png';
+import medleyLogo from '../../assets/medley-logo.png';
 
 class Header extends Component {
 
@@ -32,7 +33,7 @@ class Header extends Component {
         return (
             <div>
                 <Navbar expand="md">
-                    {<NavbarBrand href="/">Medley</NavbarBrand>}
+                    {<NavbarBrand href="/"><img src={medleyLogo}/></NavbarBrand>}
                     <NavbarToggler onClick={this.toggle} />
                     <img className="ml-auto" src={logo} alt="Logo" />
                 </Navbar>

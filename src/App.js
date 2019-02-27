@@ -35,6 +35,8 @@ class App extends Component {
     }
   }
 
+  // TODO: need to specify survey page for each specific collection
+
   render() {
     return (
         <div className="App">
