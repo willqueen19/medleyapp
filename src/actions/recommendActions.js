@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import * as surveyConstants from '../constants/survey-constants';
 import * as unirest from 'unirest';
 
 // TODO: need to add get actions for this to clean up survey page
@@ -22,8 +23,68 @@ export function getSurveyResults(surveyResults) {
 
 // TODO: Need to figure out consistent way to deal with changing number of variables
 // export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM
-export function getClothingItem(gender, collection) {
+export function getClothingItem(item, gender, collection, color) {
+    var beginString = 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=' + gender;
+    var constants = '&country=us&lang=en&currentpage=0&pagesize=1000';
 
+    var collectionString;
+    if (collection == surveyConstants.conscious || collection == surveyConstants.premium_quality) {
+        collectionString = '&qualities=' + collection;
+    } else if (collection == surveyConstants.party) {
+        collectionString = '&contexts=' + collection;
+    } else {
+        collectionString = '&concepts=' + collection;
+    }
+
+    var itemString;
+    if (item == 'shirt') {
+        console.log('shirt');
+        itemString = '&productTypes=blouse' +
+            '&productTypes=shirt' +
+            '&productTypes=t-shirt' +
+            '&productTypes=top' +
+            '&productTypes=jumper';
+    } else if (item == 'pants') {
+        console.log('pants');
+        itemString = '&productTypes=pants' +
+            '&productTypes=skirt' +
+            '&productTypes=shorts' +
+            '&productTypes=leggings';
+    } else if (item == 'one-piece') {
+        console.log('one-piece');
+        itemString = '&productTypes=jumpsuit' +
+            '&productTypes=dress';
+    } else if (item == 'outerwear') {
+        console.log('outerwear');
+        itemString = '&productTypes=vest' +
+            '&productTypes=jacket' +
+            '&productTypes=coat' +
+            '&productTypes=cardigan' +
+            '&productTypes=blazer';
+    } else if (item == 'shoes') {
+        console.log('shoes');
+        itemString = '&productTypes=shoes';
+
+    } else if (item == 'accessory') {
+        console.log('accessory');
+        itemString = '&productTypes=hat' +
+            '&productTypes=scarf';
+    }
+
+    var requestString = beginString + collectionString + itemString + constants;
+    console.log('requestString', requestString);
+
+    return function (dispatch) {
+        unirest.get(requestString)
+            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
+            .end(function (result) {
+                console.log('item type: ', item);
+                console.log('payload', result.body.results);
+                return dispatch({type: 'GET_SHIRTS', payload: result.body.results});
+            });
+
+
+    }
 }
 
 // export const GET_SHIRTS         = 'GET_SHIRTS';

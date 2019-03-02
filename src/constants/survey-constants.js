@@ -27,3 +27,5 @@ export const two_piece       = 'two_piece';
 export const bright_colors   = 'bright_colors';
 export const dark_colors     = 'dark_colors';
 export const patterns        = 'patterns';
+
+export const shirt          = 'shirt';

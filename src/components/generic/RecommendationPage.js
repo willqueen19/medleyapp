@@ -30,10 +30,10 @@ class Recommend extends Component {
 
         // TODO: call function for every type of clothing, then only grab categories that have results
 
-        this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
-        this.props.actions.getPants(this.props.gender, this.props.mensCollection);
-        this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
-        this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
+        this.props.actions.getClothingItem('shirt', this.props.gender, this.props.mensCollection);
+        this.props.actions.getClothingItem('pants', this.props.gender, this.props.mensCollection);
+        this.props.actions.getClothingItem('outerwear', this.props.gender, this.props.mensCollection);
+        this.props.actions.getClothingItem('accessory', this.props.gender, this.props.mensCollection);
 
 
 
@@ -76,6 +76,9 @@ class Recommend extends Component {
     }
 
     render () {
+
+        // TODO: Add if statement checking for collection, this would allow us to select the only present
+        // TODO: the categories that were avail for each collection
 
         var shirts = this.props.shirts;
         var pants = this.props.pants;
