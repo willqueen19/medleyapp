@@ -19,10 +19,10 @@ class OrderPage extends Component {
 
     return(
       <div className="order">
-          <h1 className="display-3">Order Submitted!</h1>
-          <p className="lead">We are delivering your outfit to the fitting room.</p>
-          <h3>Order #5109</h3>
-          <Label for="firstName" className="mr-sm-2">Supply your name for the associate!</Label>
+          <h1 className="display-3">All set!</h1>
+          <p className="lead">Your clothes will be at the dressing room,
+            ready for you to try on in a few minutes.</p>
+          <Label for="firstName" className="mr-sm-2"></Label>
           <Form inline>
               <Input type="text" name="name" id="firstName" placeholder="First Name" />
               <Button>Submit</Button>

@@ -19,11 +19,11 @@ class Landing extends Component {
 
     return(
       <div className="landing">
-          <h1 className="display-3">Medley</h1>
-          <p className="lead">Personalized Outfit Recommendations</p>
+          <h1 className="display-3">H&M</h1>
+          <p className="lead">Powered by Medley</p>
           <p className="lead">
               <Link to="/survey/">
-                  <Button>Style me: Create my outfit</Button>
+                  <Button>Build an Outfit</Button>
               </Link>
           </p>
       </div>

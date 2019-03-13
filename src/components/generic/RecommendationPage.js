@@ -27,7 +27,7 @@ class Recommend extends Component {
           <RecCard resultsImage={placeholdImg} resultsName={"Results Name"} resultsPrice={"$19.99"} />
         </CardDeck>
         <Link to="/order/">
-            <Button className="tryOn">Try on these items</Button>
+            <Button className="tryOn">Next</Button>
         </Link>
       </div>
     )

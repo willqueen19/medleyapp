@@ -1,6 +1,6 @@
 /* Header styling */
 nav {
-  background-color: black;
+  background-color: #1a1a1a;
   color: white;
 }
 
@@ -12,12 +12,13 @@ nav img {
 /* Main body */
 html, body, div#root, div.App {
   height: 100%;
-  background-color: #303030;
+  background-color: #404040;
 }
 
 /* Landing page */
 div.landing {
-  color: #f88788;
+  color: white;
+  background-color: black;
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -25,7 +26,8 @@ div.landing {
 }
 
 div.landing button {
-  background-color: #f88788;
+  background-color: #404040;
+  border-width: 0px;
 }
 
 div.landing button a {
@@ -38,8 +40,10 @@ div.landing button a:hover {
 
 /* All Cards */
 div.card-deck .card {
-  background-color: #f88788;
-  color: #fff;
+  background-color: #cccccc;
+  border-width: 0px;
+  border-radius: 0px;
+  color: #000000;
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -52,19 +56,19 @@ div.card-deck .card .card-title {
 
 /* Survey Cards */
 div.carddeck2 {
-  margin: 25px 250px 0px 250px;
+  margin: 25px 350px 0px 350px;
 }
 
 div.carddeck2 .card2 {
-    margin: 0px 75px;
+    margin: 0px 10px;
 }
 
 div.carddeck3 {
-  margin: 25px 100px 0px 100px;
+  margin: 25px 205px 0px 205px;
 }
 
 div.carddeck3 .card3 {
-    margin: 0px 50px;
+    margin: 0px 10px;
 }
 
 div.survey {
@@ -78,7 +82,7 @@ div.carddeckRec {
 }
 
 div.carddeckRec .cardRec {
-      margin: 0px 25px;
+      margin: 0px 10px;
 }
 
 div.recommendations {
@@ -87,7 +91,11 @@ div.recommendations {
 }
 
 div.recommendations button {
-  background-color: #f88788;
+  background-color: black;
+  border-width: 0px;
+  border-radius: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
   float: right;
   margin: 25px 125px 0px 0px;
 }
@@ -102,7 +110,7 @@ div.recommendations button a:hover {
 
 /* Order Page */
 div.order {
-  color: #f88788;
+  color: white;
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
