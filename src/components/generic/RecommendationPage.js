@@ -116,54 +116,7 @@ class Recommend extends Component {
 
         console.log('all arrays', allClothes);
         console.log('populated arrays', nonEmptyClothes);
-
-
-
-        /*
-        var shirt = shirts[this.getRandomInt(shirts.length)];
-        var pant =  pants[this.getRandomInt(pants.length)];
-        var sweater =  sweaters[this.getRandomInt(sweaters.length)];
-        var jacket =  jackets[this.getRandomInt(jackets.length)];\
-        */
-
-        // TODO: ideally should only render card for categories with more than 0 items in them
-        var shirtImage;
-        var shirtName = 'Shirt';
-        var shirtPrice = '';
-        var pantImage;
-        var pantName = 'Pants';
-        var pantPrice = '';
-        var sweaterImage;
-        var sweaterName = 'Sweater';
-        var sweaterPrice = '';
-        var jacketImage;
-        var jacketName = 'Jacket';
-        var jacketPrice = '';
-
-        /*
-
-        if (shirt != null && pant != null && sweater != null && jacket != null) {
-            shirtImage = shirt.images[0].url;
-            shirtName = shirt.name;
-            shirtPrice = shirt.price.formattedValue;
-            pantImage = pant.images[0].url;
-            pantName = pant.name;
-            pantPrice = pant.price.formattedValue;
-            sweaterImage = sweater.images[0].url;
-            sweaterName = sweater.name;
-            sweaterPrice = sweater.price.formattedValue;
-            jacketImage = jacket.images[0].url;
-            jacketName = jacket.name;
-            jacketPrice = jacket.price.formattedValue;
-        }
-
-        */
-
-        shirtImage = placeholdLogo;
-        pantImage = placeholdLogo;
-        sweaterImage = placeholdLogo;
-        jacketImage = placeholdLogo;
-
+        
         return(
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
