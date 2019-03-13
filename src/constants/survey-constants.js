@@ -20,12 +20,14 @@ export const casual          = 'CASUAL';
 //outfit types
 export const shorts          = 'shorts';
 export const pants           = 'pants';
-export const short_sleeve    = 'short_sleeve';
+export const outerwear       = 'outerwear';
+export const short_sleeve    = 'short-sleeve';
 export const long_sleeve     = 'long_sleeve';
-export const one_piece       = 'one_piece';
-export const two_piece       = 'two_piece';
-export const bright_colors   = 'bright_colors';
-export const dark_colors     = 'dark_colors';
+export const one_piece       = 'one-piece';
+export const two_piece       = 'two-piece';
+export const bright_colors   = 'bright-colors';
+export const dark_colors     = 'dark-colors';
 export const patterns        = 'patterns';
-
-export const shirt          = 'shirt';
+export const shirt           = 'shirt';
+export const shoes           = 'shoes';
+export const accessory       = 'accessory';

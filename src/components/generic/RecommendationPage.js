@@ -11,6 +11,7 @@ import {bindActionCreators} from "redux";
 import * as recommendationActions from "../../actions/recommendActions";
 import {connect} from "react-redux";
 import * as surveyConstants from '../../constants/survey-constants';
+import {shirt} from "../../constants/survey-constants";
 
 
 class Recommend extends Component {
@@ -19,57 +20,50 @@ class Recommend extends Component {
         super(props);
 
         this.state = {
-
+            loaded: false
         };
 
-        this.getClothes = this.getClothes.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
-    componentWillMount() {
+    async componentWillMount() {
 
         // TODO: call function for every type of clothing, then only grab categories that have results
-
-        this.props.actions.getClothingItem('shirt', this.props.gender, this.props.mensCollection);
-        this.props.actions.getClothingItem('pants', this.props.gender, this.props.mensCollection);
-        this.props.actions.getClothingItem('outerwear', this.props.gender, this.props.mensCollection);
-        this.props.actions.getClothingItem('accessory', this.props.gender, this.props.mensCollection);
-
-
-
-    }
-
-    getClothes() {
-
-        this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
-        this.props.actions.getPants(this.props.gender, this.props.mensCollection);
-        this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
-        this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
-
-        /*
+        var gender = this.props.gender;
+        var collection;
         if (this.props.gender === surveyConstants.mens) {
-
-            this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
-            this.props.actions.getPants(this.props.gender, this.props.mensCollection);
-            this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
-            this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
-
+            collection = this.props.mensCollection;
         } else if (this.props.gender === surveyConstants.womens) {
-
-            this.props.actions.getSweaters(this.props.gender, this.props.mensCollection);
-            this.props.actions.getJackets(this.props.gender, this.props.mensCollection);
-
-            if (this.props.womensClothingType === surveyConstants.two_piece) {
-                this.props.actions.getShirts(this.props.gender, this.props.mensCollection);
-                this.props.actions.getPants(this.props.gender, this.props.mensCollection);
-            } else if (this.props.womensClothingType === surveyConstants.one_piece) {
-                this.props.actions.getDresses(this.props.mensCollection);
-            }
-
+            collection = this.props.womensCollection;
         }
-        */
+
+        await this.props.actions.getClothingItem(surveyConstants.shirt, gender, collection);
+        await this.props.actions.getClothingItem(surveyConstants.pants, gender, collection);
+        await this.props.actions.getClothingItem(surveyConstants.one_piece, gender, collection);
+        await this.props.actions.getClothingItem(surveyConstants.outerwear, gender, collection);
+        await this.props.actions.getClothingItem(surveyConstants.shoes, gender, collection);
+        await this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
+        this.setState({
+            loaded: true
+        });
 
     }
+
+    /*
+
+    componentDidMount() {
+
+        this.setState({
+            shirts: this.props.shirts,
+            pants: this.props.pants,
+            onePieces: this.props.onePieces,
+            outerwear: this.props.outerwear,
+            shoes: this.props.shoes,
+            accessories: this.props.accessories
+        });
+    }
+
+    */
 
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
@@ -80,15 +74,37 @@ class Recommend extends Component {
         // TODO: Add if statement checking for collection, this would allow us to select the only present
         // TODO: the categories that were avail for each collection
 
-        var shirts = this.props.shirts;
-        var pants = this.props.pants;
-        var sweaters = this.props.sweaters;
-        var jackets = this.props.jackets;
+        let shirts      = this.props.shirts;
+        let pants       = this.props.pants;
+        let onePieces   = this.props.onePieces;
+        let outerWear   = this.props.outerwear;
+        let shoes       = this.props.shoes;
+        let accessories = this.props.accessories;
+        let allClothes = [shirts, pants, onePieces, outerWear, shoes, accessories];
+        var nonEmptyClothes = [];
+        var i;
 
+        console.log('is app loaded', this.state.loaded);
+
+        for (i = 0; i < allClothes.length; i ++) {
+            if (allClothes[i].length !== 0) {
+                nonEmptyClothes.push(allClothes[i]);
+            }
+        };
+
+        //once
+
+        console.log('all arrays', allClothes);
+        console.log('populated arrays', nonEmptyClothes);
+
+
+
+        /*
         var shirt = shirts[this.getRandomInt(shirts.length)];
         var pant =  pants[this.getRandomInt(pants.length)];
         var sweater =  sweaters[this.getRandomInt(sweaters.length)];
-        var jacket =  jackets[this.getRandomInt(jackets.length)];
+        var jacket =  jackets[this.getRandomInt(jackets.length)];\
+        */
 
         // TODO: ideally should only render card for categories with more than 0 items in them
         var shirtImage;
@@ -104,6 +120,8 @@ class Recommend extends Component {
         var jacketName = 'Jacket';
         var jacketPrice = '';
 
+        /*
+
         if (shirt != null && pant != null && sweater != null && jacket != null) {
             shirtImage = shirt.images[0].url;
             shirtName = shirt.name;
@@ -117,12 +135,14 @@ class Recommend extends Component {
             jacketImage = jacket.images[0].url;
             jacketName = jacket.name;
             jacketPrice = jacket.price.formattedValue;
-        } else {
-            shirtImage = placeholdLogo;
-            pantImage = placeholdLogo;
-            sweaterImage = placeholdLogo;
-            jacketImage = placeholdLogo
         }
+
+        */
+
+        shirtImage = placeholdLogo;
+        pantImage = placeholdLogo;
+        sweaterImage = placeholdLogo;
+        jacketImage = placeholdLogo;
 
         return(
           <div className="recommendations">
@@ -153,9 +173,10 @@ function mapStateToProps(state, ownProps) {
 
         shirts: state.recommendReducer.shirts,
         pants: state.recommendReducer.pants,
-        sweaters: state.recommendReducer.sweaters,
-        jackets: state.recommendReducer.jackets,
-        shoes: state.recommendReducer.shoes
+        onePieces: state.recommendReducer.onePieces,
+        outerwear: state.recommendReducer.outerwear,
+        shoes: state.recommendReducer.shoes,
+        accessories: state.recommendReducer.accessories
     }
 }
 

@@ -10,15 +10,15 @@ export const SELECT_WOMEN_CLOTHING_TYPE = 'SELECT_WOMEN_CLOTHING_TYPE';
 
 //RECOMMENDATION
 
+export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM';
+
 export const GET_SURVEY_RESULTS = 'GET_SURVEY_RESULTS';
 export const GET_SHIRTS         = 'GET_SHIRTS';
 export const GET_PANTS          = 'GET_PANTS';
-export const GET_SWEATERS       = 'GET_SWEATERS';
-export const GET_JACKETS        = 'GET_JACKETS';
+export const GET_ONE_PIECES     = 'GET_ONE_PIECES';
+export const GET_OUTERWEAR      = 'GET_OUTERWEAR';
 export const GET_SHOES          = 'GET_SHOES';
-export const GET_DRESSES        = 'GET_DRESSES';
-export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM';
-
+export const GET_ACCESSORIES    = 'GET_ACCESSORIES';
 //ORDER
 
 export const GET_ORDER_NUMBER  = 'GET_ORDER_NUMBER';

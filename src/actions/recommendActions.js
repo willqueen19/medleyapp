@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 import * as surveyConstants from '../constants/survey-constants';
 import * as unirest from 'unirest';
 
@@ -10,20 +11,11 @@ import * as unirest from 'unirest';
 
 // TODO: Abstract item request down to single action, passing in itemType and include an 'if' statement for dispatching to correct array in reducer
 
-// export const GET_SURVEY_RESULTS = 'GET_SURVEY_RESULTS';
-export function getSurveyResults(surveyResults) {
-    return function(dispatch) {
-        unirest.get("https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=men&productTypes=shirt&country=us&lang=en&currentpage=0&pagesize=1000")
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
-            .end(function (result) {
-                return dispatch({type: 'GET_SAMPLE_ARRAY', payload: result.body.results});
-            });
-    }
-}
-
 // TODO: Need to figure out consistent way to deal with changing number of variables
 // export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM
-export function getClothingItem(item, gender, collection, color) {
+export function getClothingItem(item, gender, collection) {
+    console.log('this is the collection', collection);
+    console.log(actionTypes.GET_CLOTHING_ITEM);
     var beginString = 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=' + gender;
     var constants = '&country=us&lang=en&currentpage=0&pagesize=1000';
 
@@ -37,120 +29,79 @@ export function getClothingItem(item, gender, collection, color) {
     }
 
     var itemString;
-    if (item == 'shirt') {
+    var actionType;
+    if (item === surveyConstants.shirt) {
         console.log('shirt');
         itemString = '&productTypes=blouse' +
             '&productTypes=shirt' +
             '&productTypes=t-shirt' +
             '&productTypes=top' +
             '&productTypes=jumper';
-    } else if (item == 'pants') {
+        actionType = actionTypes.GET_SHIRTS;
+    } else if (item === surveyConstants.pants) {
         console.log('pants');
         itemString = '&productTypes=pants' +
             '&productTypes=skirt' +
             '&productTypes=shorts' +
             '&productTypes=leggings';
-    } else if (item == 'one-piece') {
+        actionType = actionTypes.GET_PANTS;
+    } else if (item === surveyConstants.one_piece) {
         console.log('one-piece');
         itemString = '&productTypes=jumpsuit' +
             '&productTypes=dress';
-    } else if (item == 'outerwear') {
+        actionType = actionTypes.GET_ONE_PIECES;
+    } else if (item === surveyConstants.outerwear) {
         console.log('outerwear');
         itemString = '&productTypes=vest' +
             '&productTypes=jacket' +
             '&productTypes=coat' +
             '&productTypes=cardigan' +
             '&productTypes=blazer';
-    } else if (item == 'shoes') {
+        actionType = actionTypes.GET_OUTERWEAR;
+    } else if (item === surveyConstants.shoes) {
         console.log('shoes');
         itemString = '&productTypes=shoes';
-
-    } else if (item == 'accessory') {
+        actionType = actionTypes.GET_SHOES;
+    } else if (item === surveyConstants.accessory) {
         console.log('accessory');
         itemString = '&productTypes=hat' +
             '&productTypes=scarf';
+        actionType = actionTypes.GET_ACCESSORIES;
     }
 
     var requestString = beginString + collectionString + itemString + constants;
-    console.log('requestString', requestString);
 
     return function (dispatch) {
         unirest.get(requestString)
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
+            .header("X-RapidAPI-Key", "bbafb18096msh2f3baf47756622fp1b2754jsnba6562e650c7")
             .end(function (result) {
-                console.log('item type: ', item);
-                console.log('payload', result.body.results);
-                return dispatch({type: 'GET_SHIRTS', payload: result.body.results});
+                return dispatch({type: actionType, itemType: item, payload: result.body.results});
             });
 
 
     }
 }
 
-// export const GET_SHIRTS         = 'GET_SHIRTS';
 export function getShirts(gender, collection) {
-    var requestString = "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories="+gender+"&concepts="+collection+"&productTypes=shirt&country=us&lang=en&currentpage=0&pagesize=1000";
-    //console.log('shirts query string', requestString);
-    return function(dispatch) {
-        unirest.get(requestString)
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
-            .end(function (result) {
-                return dispatch({type: 'GET_SHIRTS', payload: result.body.results});
-            });
-    }
+    //this.getClothingItem(surveyConstants.shirt, gender, collection);
 }
-// export const GET_PANTS          = 'GET_PANTS';
+
 export function getPants(gender, collection) {
-    var requestString = "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories="+gender+"&concepts="+collection+"&productTypes=pants&country=us&lang=en&currentpage=0&pagesize=1000";
-    return function(dispatch) {
-        unirest.get(requestString)
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
-            .end(function (result) {
-                return dispatch({type: 'GET_PANTS', payload: result.body.results});
-            });
-    }
+    //this.getClothingItem(surveyConstants.pants, gender, collection);
 }
 
-export function getSweaters(gender, collection) {
-    var requestString = "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories="+gender+"&concepts="+collection+"&productTypes=jumper&country=us&lang=en&currentpage=0&pagesize=1000";
-    return function(dispatch) {
-        unirest.get(requestString)
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
-            .end(function (result) {
-                return dispatch({type: 'GET_SWEATERS', payload: result.body.results});
-            });
-    }
+export function getOnePieces(gender, collection) {
+    //this.getClothingItem(surveyConstants.one_piece, gender, collection);
 }
 
-
-// export const GET_JACKETS        = 'GET_JACKETS';
-export function getJackets(gender, collection) {
-    var requestString = "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories="+gender+"&concepts="+collection+"&productTypes=blazer&country=us&lang=en&currentpage=0&pagesize=1000";
-    return function(dispatch) {
-        unirest.get(requestString)
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
-            .end(function (result) {
-                return dispatch({type: 'GET_JACKETS', payload: result.body.results});
-            });
-    }
+export function getOuterwear(gender, collection) {
+    //this.getClothingItem(surveyConstants.outerwear, gender, collection);
 }
 
-// export const GET_DRESSES        = 'GET_DRESSES';
-export function getDresses(collection) {
-    return function(dispatch) {
-        unirest.get("https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=men&productTypes=shirt&country=us&lang=en&currentpage=0&pagesize=1000")
-            .header("X-RapidAPI-Key", "H1EjxmtnnJmshcrwhMvaXLNguCFYp11De1rjsn8q5dMzFa5IFV")
-            .end(function (result) {
-                return dispatch({type: 'GET_DRESSES', payload: result.body.results});
-            });
-
-    }
+export function getShoes(gender, collection) {
+    //this.getClothingItem(surveyConstants.shoes, gender, collection);
 }
 
-// export const SHOES              = 'SHOES';
-export function shoes(shoes) {
-    return function(dispatch) {
-        //console.log('shoes selected from actions', shoes);
-        //return dispatch({type: 'SHOES', payload: shoes})
-    }
+export function getAccessories(gender, collection) {
+    //this.getClothingItem(surveyConstants.accessory, gender, collection);
 }

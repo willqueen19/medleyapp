@@ -1,35 +1,50 @@
 import * as types from '../actions/actionTypes';
+import * as surveyConstants from '../constants/survey-constants';
 import _ from 'lodash';
 
 var initialState = {
-    array: [],
     categories: [],
     shirts: [],
     pants: [],
-    sweaters: [],
-    jackets: [],
+    onePieces: [],
+    outerwear: [],
     shoes: [],
-    dresses: []
+    accessories: []
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case types.GET_SURVEY_RESULTS:
-            return Object.assign({}, state, {categories: action.payload});
-        case types.GET_SAMPLE_ARRAY:
-            return Object.assign({}, state, {array: action.payload});
         case types.GET_SHIRTS:
-            return Object.assign({}, state, {shirts: action.payload});
+            return Object.assign({}, state,{shirts: action.payload});
         case types.GET_PANTS:
-            return Object.assign({}, state, {pants: action.payload});
-        case types.GET_SWEATERS:
-            return Object.assign({}, state, {sweaters: action.payload});
-        case types.GET_JACKETS:
-            return Object.assign({}, state, {jackets: action.payload});
-        case types.GET_DRESSES:
-            return Object.assign({}, state, {dresses: action.payload});
+            return Object.assign({}, state,{pants: action.payload});
+        case types.GET_ONE_PIECES:
+            return Object.assign({}, state,{onePieces: action.payload});
+        case types.GET_OUTERWEAR:
+            return Object.assign({}, state,{outerwear: action.payload});
         case types.GET_SHOES:
-            return Object.assign({}, state, {shoes: action.payload});
+            return Object.assign({}, state,{shoes: action.payload});
+        case types.GET_ACCESSORIES:
+            return Object.assign({}, state,{accessories: action.payload});
+        /*
+        case types.GET_CLOTHING_ITEM:
+            switch (action.item) {
+                case surveyConstants.shirt:
+                    return Object.assign({}, state, {shirts: action.payload});
+                case surveyConstants.pants:
+                    return Object.assign({}, state, {pants: action.payload});
+                case surveyConstants.one_piece:
+                    return Object.assign({}, state, {onePieces: action.payload});
+                case surveyConstants.outerwear:
+                    return Object.assign({}, state, {outerwear: action.payload});
+                case surveyConstants.shoes:
+                    return Object.assign({}, state, {shoes: action.payload});
+                case surveyConstants.accessory:
+                    return Object.assign({}, state, {accessories: action.payload});
+                default:
+                    return state;
+            }
+        */
         default:
             return state;
     }
