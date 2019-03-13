@@ -9,6 +9,7 @@ nav img {
   float: right;
 }
 
+
 /* Main body */
 html, body, div#root, div.App {
   height: 100%;
@@ -25,7 +26,12 @@ div.landing {
 }
 
 div.landing button {
-  background-color: #f88788;
+  background-color: #404040;
+  border-radius: 25px;
+  width: 265px;
+  height: 70px;
+  font-size: 24px;
+  border-color: #404040;
 }
 
 div.landing button a {
