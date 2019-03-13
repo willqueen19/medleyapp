@@ -20,7 +20,8 @@ class Recommend extends Component {
         super(props);
 
         this.state = {
-            loaded: false
+            loaded: false,
+            items: []
         };
 
         this.getRandomInt = this.getRandomInt.bind(this);
@@ -44,7 +45,8 @@ class Recommend extends Component {
         await this.props.actions.getClothingItem(surveyConstants.shoes, gender, collection);
         await this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
         this.setState({
-            loaded: true
+            loaded: true,
+            //items: [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]
         });
 
     }
@@ -84,13 +86,17 @@ class Recommend extends Component {
         var nonEmptyClothes = [];
         var i;
 
-        console.log('is app loaded', this.state.loaded);
+        console.log('is app loaded', this.state.items);
 
         for (i = 0; i < allClothes.length; i ++) {
             if (allClothes[i].length !== 0) {
                 nonEmptyClothes.push(allClothes[i]);
             }
         };
+
+
+        var c;
+        for (c = 0; c < nonEmptyClothes; i++) {}
 
         //once
 
