@@ -21,9 +21,11 @@ class Recommend extends Component {
 
         this.state = {
             loaded: false,
+            cardsRendered: false,
             items: []
         };
 
+        this.setCardRenderState = this.setCardRenderState.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
@@ -67,6 +69,12 @@ class Recommend extends Component {
 
     */
 
+    setCardRenderState() {
+        this.setState({
+            cardsRendered: true
+        });
+    }
+
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
@@ -96,7 +104,13 @@ class Recommend extends Component {
 
 
         var c;
-        for (c = 0; c < nonEmptyClothes; i++) {}
+        var cards = [];
+
+        for (c = 0; c < nonEmptyClothes.length; c++) {
+            var item = nonEmptyClothes[c][this.getRandomInt(nonEmptyClothes.length)];
+            var card = <RecCard key={c} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
+            cards.push(card);
+        }
 
         //once
 
@@ -154,10 +168,7 @@ class Recommend extends Component {
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
             <CardDeck className="carddeck carddeckRec">
-              <RecCard resultsImage={shirtImage} resultsName={shirtName} resultsPrice={shirtPrice} />
-              <RecCard resultsImage={pantImage} resultsName={pantName} resultsPrice={pantPrice} />
-              <RecCard resultsImage={sweaterImage} resultsName={sweaterName} resultsPrice={sweaterPrice} />
-              <RecCard resultsImage={jacketImage} resultsName={jacketName} resultsPrice={jacketPrice} />
+                {cards}
             </CardDeck>
             <Link to="/order/">
                 <Button className="tryOn">Try on these items</Button>
