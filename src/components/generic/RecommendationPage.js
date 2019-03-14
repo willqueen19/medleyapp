@@ -37,6 +37,7 @@ class Recommend extends Component {
         this.setCardRenderState = this.setCardRenderState.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
         this.getItemFromItems = this.getItemFromItems.bind(this);
+        this.getNewCard = this.getNewCard.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
@@ -148,22 +149,24 @@ class Recommend extends Component {
             }
         }
 
-        console.log(itemsForCollection.length);
-        console.log(totalPopArrays);
-
-
+        // TODO: Not entirely sure the following lines of code do anything
+        //console.log(itemsForCollection.length);
+        //console.log(totalPopArrays);
         if (numPopArrays === totalPopArrays) {
             return itemsForCollection;
-            console.log('all items loaded');
         } else {
             return [];
-            console.log('all items not loaded');
         }
 
     }
 
     getItemFromItems(ItemList, color, fit) {
 
+    }
+
+    getNewCard(key, item) {
+        var card = <RecCard key={key} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
+        return card;
     }
 
     getRandomInt(max) {
@@ -177,44 +180,20 @@ class Recommend extends Component {
         // TODO: Verify all have been loaded by checking total number of populated arrays in final
         // TODO: Getting new item will be done by calling the function on the item type, therefore each card can have its own behavior
 
-        var gender = this.props.gender;
-        var collection;
-        if (this.props.gender === surveyConstants.mens) {
-            collection = this.props.mensCollection;
-        } else if (this.props.gender === surveyConstants.womens) {
-            collection = this.props.womensCollection;
-        }
-
-        console.log('this is the state:', this.state);
-
-        let shirts      = this.props.shirts;
-        let pants       = this.props.pants;
-        let onePieces   = this.props.onePieces;
-        let outerwear   = this.props.outerwear;
-        let shoes       = this.props.shoes;
-        let accessories = this.props.accessories;
-        console.log('all items', [shirts, pants, onePieces, outerwear, shoes, accessories]);
-        var itemsForCollection = this.getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories);
+        //console.log('all items', [shirts, pants, onePieces, outerwear, shoes, accessories]);
+        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces,
+                                                            this.props.outerwear, this.props.shoes, this.props.accessories);
 
         var nonEmptyClothes = [];
         var i;
-        var totalCards = 0;
-
-
         for (i = 0; i < itemsForCollection.length; i ++) {
             if (itemsForCollection[i].length !== 0) {
                 nonEmptyClothes.push(itemsForCollection[i]);
             }
         };
 
-        console.log('items for collection', itemsForCollection);
-
-
-        // TODO: do a quick counter of populated arrays for render
-
         var c;
         var cards = [];
-
         if (nonEmptyClothes.length !== 0) {
             for (c = 0; c < nonEmptyClothes.length; c++) {
                 var item;
@@ -224,9 +203,7 @@ class Recommend extends Component {
                     item = nonEmptyClothes[c][this.getRandomInt(nonEmptyClothes.length)];
                 }
 
-                console.log('item name', item);
-                var card = <RecCard key={c} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
-                cards.push(card);
+                cards.push(this.getNewCard(c, item));
             }
         }
 
