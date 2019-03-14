@@ -12,6 +12,10 @@ import * as recommendationActions from "../../actions/recommendActions";
 import {connect} from "react-redux";
 import * as surveyConstants from '../../constants/survey-constants';
 import {shirt} from "../../constants/survey-constants";
+import Spinner from "reactstrap/es/Spinner";
+import {trend} from "../../constants/survey-constants";
+
+import _ from 'lodash';
 
 
 class Recommend extends Component {
@@ -22,10 +26,17 @@ class Recommend extends Component {
         this.state = {
             loaded: false,
             cardsRendered: false,
-            items: []
+            items: [],
+            gender: null,
+            collection: null,
+            womensClothingType: null,
+            shirtType: null,
+            pantsType: null
         };
 
         this.setCardRenderState = this.setCardRenderState.bind(this);
+        this.getItemsForCollection = this.getItemsForCollection.bind(this);
+        this.getItemFromItems = this.getItemFromItems.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
@@ -34,21 +45,28 @@ class Recommend extends Component {
         // TODO: call function for every type of clothing, then only grab categories that have results
         var gender = this.props.gender;
         var collection;
-        if (this.props.gender === surveyConstants.mens) {
+        if (gender === surveyConstants.mens) {
             collection = this.props.mensCollection;
-        } else if (this.props.gender === surveyConstants.womens) {
+        } else if (gender === surveyConstants.womens) {
             collection = this.props.womensCollection;
         }
 
-        await this.props.actions.getClothingItem(surveyConstants.shirt, gender, collection);
-        await this.props.actions.getClothingItem(surveyConstants.pants, gender, collection);
-        await this.props.actions.getClothingItem(surveyConstants.one_piece, gender, collection);
-        await this.props.actions.getClothingItem(surveyConstants.outerwear, gender, collection);
-        await this.props.actions.getClothingItem(surveyConstants.shoes, gender, collection);
-        await this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
+        this.props.actions.getClothingItem(surveyConstants.shirt, gender, collection);
+        this.props.actions.getClothingItem(surveyConstants.pants, gender, collection);
+        this.props.actions.getClothingItem(surveyConstants.one_piece, gender, collection);
+        this.props.actions.getClothingItem(surveyConstants.outerwear, gender, collection);
+        this.props.actions.getClothingItem(surveyConstants.shoes, gender, collection);
+        this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
         this.setState({
-            loaded: true,
+            //loaded: true,
             //items: [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]
+            gender: gender,
+            collection: collection,
+            womensClothingType: this.props.womensClothingType,
+            shirtType: this.props.shirtType,
+            pantsType: this.props.pantsType
+
+
         });
 
     }
@@ -69,10 +87,83 @@ class Recommend extends Component {
 
     */
 
+    verifyDataLoaded(matrix) {
+
+    }
+
     setCardRenderState() {
         this.setState({
             cardsRendered: true
         });
+    }
+
+    // Returns all item catergories that have items (this is just organizing the payloads from the database)
+    getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
+        var gender = this.state.gender;
+        var collection = this.state.collection;
+        var itemsForCollection = [];
+        var totalPopArrays = 0;
+        if (gender === surveyConstants.mens) {
+            if (collection === surveyConstants.premium_quality) {
+                // TODO: Not working
+            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.hm_men].includes(collection)) {
+                itemsForCollection = [shirts, pants, outerwear];
+                totalPopArrays = 3;
+            } else if (collection === surveyConstants.trend) {
+                itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
+                totalPopArrays = 5;
+            } else if (collection === surveyConstants.divided) {
+                itemsForCollection = [shirts, pants, outerwear, accessories];
+                totalPopArrays = 4;
+            } else if (collection === surveyConstants.logg) {
+                itemsForCollection = [shirts, pants];
+                totalPopArrays = 2;
+            } else if (collection === surveyConstants.basics) {
+                // TODO: Not working
+            }
+        } else if (this.state.gender === surveyConstants.womens) {
+            if (collection === surveyConstants.party) {
+                itemsForCollection = [shirts, pants, outerwear, shoes];
+                totalPopArrays = 4;
+            } else if (collection === surveyConstants.modern_classic) {
+                itemsForCollection = [shirts, pants, onePieces, outerwear];
+                totalPopArrays = 4;
+            } else if (collection === surveyConstants.conscious) {
+                // TODO: query needs to be fixed, only 6 total items being returned
+            } else if (collection === surveyConstants.premium_quality) {
+                // TODO: Not working
+            } else if ([surveyConstants.trend, surveyConstants.divided].includes(collection)) {
+                itemsForCollection = [shirts, pants, onePieces, outerwear, shoes, accessories];
+                totalPopArrays = 6;
+            } else if (collection === surveyConstants.casual) {
+                // TODO: Not working
+            }
+        }
+
+        var numPopArrays = 0;
+        var n;
+        for (n = 0; n < itemsForCollection.length; n++) {
+            if (itemsForCollection[n].length > 0) {
+                numPopArrays += 1;
+            }
+        }
+
+        console.log(itemsForCollection.length);
+        console.log(totalPopArrays);
+
+
+        if (numPopArrays === totalPopArrays) {
+            return itemsForCollection;
+            console.log('all items loaded');
+        } else {
+            return [];
+            console.log('all items not loaded');
+        }
+
+    }
+
+    getItemFromItems(ItemList, color, fit) {
+
     }
 
     getRandomInt(max) {
@@ -81,48 +172,71 @@ class Recommend extends Component {
 
     render () {
 
-        // TODO: Add if statement checking for collection, this would allow us to select the only present
+        // TODO: Add if statement checking for collection, this would allow us to select the only render cards if all are loaded
         // TODO: the categories that were avail for each collection
+        // TODO: Verify all have been loaded by checking total number of populated arrays in final
+        // TODO: Getting new item will be done by calling the function on the item type, therefore each card can have its own behavior
+
+        var gender = this.props.gender;
+        var collection;
+        if (this.props.gender === surveyConstants.mens) {
+            collection = this.props.mensCollection;
+        } else if (this.props.gender === surveyConstants.womens) {
+            collection = this.props.womensCollection;
+        }
+
+        console.log('this is the state:', this.state);
 
         let shirts      = this.props.shirts;
         let pants       = this.props.pants;
         let onePieces   = this.props.onePieces;
-        let outerWear   = this.props.outerwear;
+        let outerwear   = this.props.outerwear;
         let shoes       = this.props.shoes;
         let accessories = this.props.accessories;
-        let allClothes = [shirts, pants, onePieces, outerWear, shoes, accessories];
+        console.log('all items', [shirts, pants, onePieces, outerwear, shoes, accessories]);
+        var itemsForCollection = this.getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories);
+
         var nonEmptyClothes = [];
         var i;
+        var totalCards = 0;
 
-        console.log('is app loaded', this.state.items);
 
-        for (i = 0; i < allClothes.length; i ++) {
-            if (allClothes[i].length !== 0) {
-                nonEmptyClothes.push(allClothes[i]);
+        for (i = 0; i < itemsForCollection.length; i ++) {
+            if (itemsForCollection[i].length !== 0) {
+                nonEmptyClothes.push(itemsForCollection[i]);
             }
         };
 
+        console.log('items for collection', itemsForCollection);
+
+
+        // TODO: do a quick counter of populated arrays for render
 
         var c;
         var cards = [];
 
-        for (c = 0; c < nonEmptyClothes.length; c++) {
-            var item = nonEmptyClothes[c][this.getRandomInt(nonEmptyClothes.length)];
-            var card = <RecCard key={c} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
-            cards.push(card);
+        if (nonEmptyClothes.length !== 0) {
+            for (c = 0; c < nonEmptyClothes.length; c++) {
+                var item;
+                if (nonEmptyClothes[c].length === 1) {
+                    item = nonEmptyClothes[c][0];
+                } else {
+                    item = nonEmptyClothes[c][this.getRandomInt(nonEmptyClothes.length)];
+                }
+
+                console.log('item name', item);
+                var card = <RecCard key={c} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
+                cards.push(card);
+            }
         }
 
-        //once
+        var spinner = <Spinner/>
+        var cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
 
-        console.log('all arrays', allClothes);
-        console.log('populated arrays', nonEmptyClothes);
-        
         return(
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
-            <CardDeck className="carddeck carddeckRec">
-                {cards}
-            </CardDeck>
+              {cards.length === 0 ? spinner : cardDeck}
             <Link to="/order/">
                 <Button className="tryOn">Try on these items</Button>
             </Link>

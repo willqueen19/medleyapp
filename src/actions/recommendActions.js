@@ -14,8 +14,7 @@ import * as unirest from 'unirest';
 // TODO: Need to figure out consistent way to deal with changing number of variables
 // export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM
 export function getClothingItem(item, gender, collection) {
-    console.log('this is the collection', collection);
-    console.log(actionTypes.GET_CLOTHING_ITEM);
+    //console.log(actionTypes.GET_CLOTHING_ITEM);
     var beginString = 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=' + gender;
     var constants = '&country=us&lang=en&currentpage=0&pagesize=1000';
 
@@ -31,7 +30,7 @@ export function getClothingItem(item, gender, collection) {
     var itemString;
     var actionType;
     if (item === surveyConstants.shirt) {
-        console.log('shirt');
+        //console.log('shirt');
         itemString = '&productTypes=blouse' +
             '&productTypes=shirt' +
             '&productTypes=t-shirt' +
@@ -39,19 +38,19 @@ export function getClothingItem(item, gender, collection) {
             '&productTypes=jumper';
         actionType = actionTypes.GET_SHIRTS;
     } else if (item === surveyConstants.pants) {
-        console.log('pants');
+        //console.log('pants');
         itemString = '&productTypes=pants' +
             '&productTypes=skirt' +
             '&productTypes=shorts' +
             '&productTypes=leggings';
         actionType = actionTypes.GET_PANTS;
     } else if (item === surveyConstants.one_piece) {
-        console.log('one-piece');
+        //console.log('one-piece');
         itemString = '&productTypes=jumpsuit' +
             '&productTypes=dress';
         actionType = actionTypes.GET_ONE_PIECES;
     } else if (item === surveyConstants.outerwear) {
-        console.log('outerwear');
+        //console.log('outerwear');
         itemString = '&productTypes=vest' +
             '&productTypes=jacket' +
             '&productTypes=coat' +
@@ -59,11 +58,11 @@ export function getClothingItem(item, gender, collection) {
             '&productTypes=blazer';
         actionType = actionTypes.GET_OUTERWEAR;
     } else if (item === surveyConstants.shoes) {
-        console.log('shoes');
+        //console.log('shoes');
         itemString = '&productTypes=shoes';
         actionType = actionTypes.GET_SHOES;
     } else if (item === surveyConstants.accessory) {
-        console.log('accessory');
+        //console.log('accessory');
         itemString = '&productTypes=hat' +
             '&productTypes=scarf';
         actionType = actionTypes.GET_ACCESSORIES;
@@ -82,26 +81,3 @@ export function getClothingItem(item, gender, collection) {
     }
 }
 
-export function getShirts(gender, collection) {
-    //this.getClothingItem(surveyConstants.shirt, gender, collection);
-}
-
-export function getPants(gender, collection) {
-    //this.getClothingItem(surveyConstants.pants, gender, collection);
-}
-
-export function getOnePieces(gender, collection) {
-    //this.getClothingItem(surveyConstants.one_piece, gender, collection);
-}
-
-export function getOuterwear(gender, collection) {
-    //this.getClothingItem(surveyConstants.outerwear, gender, collection);
-}
-
-export function getShoes(gender, collection) {
-    //this.getClothingItem(surveyConstants.shoes, gender, collection);
-}
-
-export function getAccessories(gender, collection) {
-    //this.getClothingItem(surveyConstants.accessory, gender, collection);
-}
