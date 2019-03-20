@@ -16,7 +16,7 @@ import * as unirest from 'unirest';
 export function getClothingItem(item, gender, collection) {
     //console.log(actionTypes.GET_CLOTHING_ITEM);
     var beginString = 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=' + gender;
-    var constants = '&country=us&lang=en&currentpage=0&pagesize=1000';
+    var constants = '&country=us&lang=en&currentpage=0&pagesize=10000';
 
     var collectionString;
     if (collection == surveyConstants.conscious || collection == surveyConstants.premium_quality) {

@@ -180,9 +180,9 @@ class Recommend extends Component {
         // TODO: Verify all have been loaded by checking total number of populated arrays in final
         // TODO: Getting new item will be done by calling the function on the item type, therefore each card can have its own behavior
 
-        //console.log('all items', [shirts, pants, onePieces, outerwear, shoes, accessories]);
-        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces,
-                                                            this.props.outerwear, this.props.shoes, this.props.accessories);
+        console.log('all items', [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]);
+        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
+        console.log('items for collection', itemsForCollection);
 
         var nonEmptyClothes = [];
         var i;
