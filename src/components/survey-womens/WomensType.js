@@ -4,14 +4,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from '../generic/TwoSurveyCard.js';
-import img1 from '../../assets/WTyp-1.jpeg';
-import img2 from '../../assets/WTyp-2.jpeg';
-
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as surveyActions from '../../actions/surveyActions';
 import * as surveyConstants from '../../constants/survey-constants';
-import * as surveyActionConstants from '../../actions/actionTypes';
+import * as imageConstants from '../../constants/womens-type-const.js';
 
 class WomensType extends Component {
 
@@ -24,6 +21,7 @@ class WomensType extends Component {
 
     this.selectOnePiece = this.selectOnePiece.bind(this);
     this.selectTwoPiece = this.selectTwoPiece.bind(this);
+    this.selectImgs = this.selectImgs.bind(this);
   }
 
   selectOnePiece() {
@@ -34,36 +32,63 @@ class WomensType extends Component {
       this.props.actions.selectWomenClothingType(surveyConstants.two_piece);
   }
 
-
-  // selectImg1() {
-  //   return img1;
-  // }
+  selectImgs() {
+    var img1;
+    var img2;
+      if (this.props.womensCollection === surveyConstants.party) {
+        img1 = imageConstants.party1;
+        img2 = imageConstants.party2;
+      }
+      else if (this.props.womensCollection === surveyConstants.modern_classic) {
+        img1 = imageConstants.mod1;
+        img2 = imageConstants.mod2;
+      }
+      else if (this.props.womensCollection === surveyConstants.conscious) {
+        img1 = imageConstants.con1;
+        img2 = imageConstants.con2;
+      }
+      else if (this.props.womensCollection === surveyConstants.premium_quality) {
+        img1 = imageConstants.prem1;
+        img2 = imageConstants.prem2;
+      }
+      else if (this.props.womensCollection === surveyConstants.trend) {
+        img1 = imageConstants.trend1;
+        img2 = imageConstants.trend2;
+      }
+      else if (this.props.womensCollection === surveyConstants.divided) {
+        img1 = imageConstants.div1;
+        img2 = imageConstants.div2;
+      }
+      else if (this.props.womensCollection === surveyConstants.casual) {
+        img1 = imageConstants.cas1;
+        img2 = imageConstants.cas2;
+      }
+      else {
+        img1 = imageConstants.placehold1;
+        img2 = imageConstants.placehold2;
+      }
+      return [img1, img2];
+  }
 
   render () {
+    //returns array of two
+    var imgs = this.selectImgs();
+
     return (
       <div className="survey survey2">
         <h1>What do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={selectImg1()} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
+        <SurveyCard surveyImage={imgs[0]} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
+        <SurveyCard surveyImage={imgs[1]} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
         </CardDeck>
       </div>
     )
   }
 }
 
-function selectImg1() {
-    console.log(surveyActionConstants.SELECT_WOMENS_COLLECTION.payload);
-    if(surveyActionConstants.SELECT_WOMENS_COLLECTION === 'PARTY') {
-      return img1;
-    }
-    else {
-      return img2;
-    }
-}
-
 function mapStateToProps(state, ownProps) {
     return {
+        womensCollection: state.surveyReducer.womensCollection,
         womenType: state.surveyReducer.womenType
     };
 }
