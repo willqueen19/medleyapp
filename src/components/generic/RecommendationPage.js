@@ -27,6 +27,7 @@ class Recommend extends Component {
             loaded: false,
             cardsRendered: false,
             items: [],
+            itemIndexes: [],
             gender: null,
             collection: null,
             womensClothingType: null,
@@ -35,13 +36,16 @@ class Recommend extends Component {
         };
 
         this.setCardRenderState = this.setCardRenderState.bind(this);
+        this.setItemsState = this.setItemsState.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
-        this.getItemFromItems = this.getItemFromItems.bind(this);
-        this.getNewCard = this.getNewCard.bind(this);
+        this.setItemsAndIndexes = this.setItemsAndIndexes.bind(this);
+        this.changeSingleIndex = this.changeSingleIndex.bind(this);
+        this.getCards = this.getCards.bind(this);
+        this.getCard = this.getCard.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
-    async componentWillMount() {
+    componentWillMount() {
 
         // TODO: call function for every type of clothing, then only grab categories that have results
         var gender = this.props.gender;
@@ -58,6 +62,7 @@ class Recommend extends Component {
         this.props.actions.getClothingItem(surveyConstants.outerwear, gender, collection);
         this.props.actions.getClothingItem(surveyConstants.shoes, gender, collection);
         this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
+
         this.setState({
             //loaded: true,
             //items: [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]
@@ -66,27 +71,18 @@ class Recommend extends Component {
             womensClothingType: this.props.womensClothingType,
             shirtType: this.props.shirtType,
             pantsType: this.props.pantsType
-
-
         });
 
-    }
 
-    /*
+
+    }
 
     componentDidMount() {
+        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
+        console.log('items for collection in Component did mount', itemsForCollection);
 
-        this.setState({
-            shirts: this.props.shirts,
-            pants: this.props.pants,
-            onePieces: this.props.onePieces,
-            outerwear: this.props.outerwear,
-            shoes: this.props.shoes,
-            accessories: this.props.accessories
-        });
+        //this.setItemsState(itemsForCollection);
     }
-
-    */
 
     verifyDataLoaded(matrix) {
 
@@ -96,7 +92,14 @@ class Recommend extends Component {
         this.setState({
             cardsRendered: true
         });
+    };
+
+    setItemsState(items) {
+        this.setState( {
+            items: items
+        })
     }
+
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
     getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
@@ -122,7 +125,7 @@ class Recommend extends Component {
             } else if (collection === surveyConstants.basics) {
                 // TODO: Not working
             }
-        } else if (this.state.gender === surveyConstants.womens) {
+        } else if (gender === surveyConstants.womens) {
             if (collection === surveyConstants.party) {
                 itemsForCollection = [shirts, pants, outerwear, shoes];
                 totalPopArrays = 4;
@@ -150,21 +153,76 @@ class Recommend extends Component {
         }
 
         // TODO: Not entirely sure the following lines of code do anything
-        //console.log(itemsForCollection.length);
-        //console.log(totalPopArrays);
         if (numPopArrays === totalPopArrays) {
-            return itemsForCollection;
+            return [itemsForCollection, true];
         } else {
-            return [];
+            return [[], false];
         }
 
-    }
-
-    getItemFromItems(ItemList, color, fit) {
 
     }
 
-    getNewCard(key, item) {
+    //getItemsForTastes(c)
+
+    setItemsAndIndexes(items) {
+        var indexes = [];
+        var i;
+        if (items instanceof Array && items.length > 0 && this.state.itemIndexes.length === 0) {
+            for (i = 0; i < items.length; i++) {
+                var index;
+                if (items[i].length === 1) {
+                    index = 0;
+                } else {
+                    index = this.getRandomInt(items[i].length);
+                }
+                indexes.push(index);
+            }
+            this.setState({
+                items: items,
+                itemIndexes: indexes,
+            });
+        }
+    }
+
+    changeSingleIndex(key) {
+        console.log('change single index is being triggered');
+        var i;
+        var newIdexes = this.state.itemIndexes;
+        for (i = 0; i < this.state.items.length; i++) {
+            if (i === key) {
+                newIdexes[i] = this.getRandomInt(this.state.items[i].length);
+            }
+        }
+        this.setState({
+            itemIndexes: newIdexes
+        });
+    }
+
+    getCards() {
+        var items = this.state.items;
+        var itemIndexes = this.state.itemIndexes;
+        var cards = [];
+        if (items.length > 0 && itemIndexes.length > 0 && items.length === itemIndexes.length) {
+            var i;
+            for (i = 0; i < items.length; i++) {
+                const index = i;
+                var itemsForType = items[i];
+                var indexForType = itemIndexes[i];
+                var item = itemsForType[indexForType];
+                var card = <RecCard key={index}
+                                    resultsImage={item.images[0].url}
+                                    resultsName={item.name}
+                                    resultsPrice={item.price.formattedValue}
+                                    onClick={() => this.changeSingleIndex(index)}/>;
+                cards.push(card);
+            }
+            return <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>;
+        } else {
+            return <Spinner/>
+        }
+    }
+
+    getCard(key, item) {
         var card = <RecCard key={key} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
         return card;
     }
@@ -174,46 +232,23 @@ class Recommend extends Component {
     }
 
     render () {
-
-        // TODO: Add if statement checking for collection, this would allow us to select the only render cards if all are loaded
-        // TODO: the categories that were avail for each collection
-        // TODO: Verify all have been loaded by checking total number of populated arrays in final
         // TODO: Getting new item will be done by calling the function on the item type, therefore each card can have its own behavior
+        //console.log('all items', [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]);
+        var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
+        var itemsForCollection = itemsResult[0];
+        var itemsAreLoaded = itemsResult[1];
+        //console.log('this is your collection', itemsForCollection);
 
-        console.log('all items', [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]);
-        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
-        console.log('items for collection', itemsForCollection);
-
-        var nonEmptyClothes = [];
-        var i;
-        for (i = 0; i < itemsForCollection.length; i ++) {
-            if (itemsForCollection[i].length !== 0) {
-                nonEmptyClothes.push(itemsForCollection[i]);
-            }
-        };
-
-        var c;
-        var cards = [];
-        if (nonEmptyClothes.length !== 0) {
-            for (c = 0; c < nonEmptyClothes.length; c++) {
-                var item;
-                if (nonEmptyClothes[c].length === 1) {
-                    item = nonEmptyClothes[c][0];
-                } else {
-                    item = nonEmptyClothes[c][this.getRandomInt(nonEmptyClothes.length)];
-                }
-
-                cards.push(this.getNewCard(c, item));
-            }
+        if (itemsAreLoaded === true) {
+            this.setItemsAndIndexes(itemsForCollection);
         }
 
-        var spinner = <Spinner/>
-        var cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
+        var cards = this.getCards();
 
         return(
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
-              {cards.length === 0 ? spinner : cardDeck}
+              {cards}
             <Link to="/order/">
                 <Button className="tryOn">Try on these items</Button>
             </Link>
