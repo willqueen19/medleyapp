@@ -24,8 +24,6 @@ class Recommend extends Component {
         super(props);
 
         this.state = {
-            loaded: false,
-            cardsRendered: false,
             items: [],
             itemIndexes: [],
             gender: null,
@@ -35,13 +33,10 @@ class Recommend extends Component {
             pantsType: null
         };
 
-        this.setCardRenderState = this.setCardRenderState.bind(this);
-        this.setItemsState = this.setItemsState.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
         this.setItemsAndIndexes = this.setItemsAndIndexes.bind(this);
         this.changeSingleIndex = this.changeSingleIndex.bind(this);
         this.getCards = this.getCards.bind(this);
-        this.getCard = this.getCard.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
@@ -64,42 +59,13 @@ class Recommend extends Component {
         this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
 
         this.setState({
-            //loaded: true,
-            //items: [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]
             gender: gender,
             collection: collection,
             womensClothingType: this.props.womensClothingType,
             shirtType: this.props.shirtType,
             pantsType: this.props.pantsType
         });
-
-
-
     }
-
-    componentDidMount() {
-        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
-        console.log('items for collection in Component did mount', itemsForCollection);
-
-        //this.setItemsState(itemsForCollection);
-    }
-
-    verifyDataLoaded(matrix) {
-
-    }
-
-    setCardRenderState() {
-        this.setState({
-            cardsRendered: true
-        });
-    };
-
-    setItemsState(items) {
-        this.setState( {
-            items: items
-        })
-    }
-
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
     getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
@@ -184,7 +150,7 @@ class Recommend extends Component {
         }
     }
 
-    changeSingleIndex(key) {
+    changeSingleIndex(event, key) {
         console.log('change single index is being triggered');
         var i;
         var newIdexes = this.state.itemIndexes;
@@ -213,7 +179,7 @@ class Recommend extends Component {
                                     resultsImage={item.images[0].url}
                                     resultsName={item.name}
                                     resultsPrice={item.price.formattedValue}
-                                    onClick={() => this.changeSingleIndex(index)}/>;
+                                    onClick={(e) => this.changeSingleIndex(e, index)}/>;
                 cards.push(card);
             }
             return <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>;
@@ -222,10 +188,6 @@ class Recommend extends Component {
         }
     }
 
-    getCard(key, item) {
-        var card = <RecCard key={key} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
-        return card;
-    }
 
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));

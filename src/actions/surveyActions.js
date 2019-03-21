@@ -14,6 +14,7 @@ export function selectGender(gender) {
         return dispatch({type: 'SELECT_GENDER', payload: gender});
     }
 }
+
 // export const SELECT_MENS_COLLECTION     = 'SELECT_MENS_COLLECTION';
 export function selectMensCollection(mCollection) {
     return function(dispatch) {
@@ -21,6 +22,7 @@ export function selectMensCollection(mCollection) {
         return dispatch({type: 'SELECT_MENS_COLLECTION', payload: mCollection});
     }
 }
+
 // export const SELECT_WOMENS_COLLECTION   = 'SELECT_WOMENS_COLLECTION';
 export function selectWomensCollection(wCollection) {
     return function(dispatch) {
@@ -28,6 +30,7 @@ export function selectWomensCollection(wCollection) {
         return dispatch({type: 'SELECT_WOMENS_COLLECTION', payload: wCollection})
     }
 }
+
 // export const SELECT_COLOR               = 'SELECT_COLOR';
 export function selectColor(color) {
     return function(dispatch) {
@@ -35,6 +38,7 @@ export function selectColor(color) {
         return dispatch({type: 'SELECT_COLOR', payload: color})
     }
 }
+
 // export const SELECT_SHIRT_TYPE          = 'SELECT_SHIRT_TYPE';
 export function selectShirtType(shirt) {
     return function(dispatch) {
@@ -42,6 +46,7 @@ export function selectShirtType(shirt) {
         return dispatch({type: 'SELECT_SHIRT_TYPE', payload: shirt})
     }
 }
+
 // export const SELECT_PANTS_TYPE          = 'SELECT_PANTS_TYPE';
 export function selectPantsType(pants) {
     return function(dispatch) {
@@ -49,6 +54,7 @@ export function selectPantsType(pants) {
         return dispatch({type: 'SELECT_PANTS_TYPE', payload: pants})
     }
 }
+
 // export const SELECT_WOMEN_CLOTHING_TYPE = 'SELECT_WOMEN_CLOTHING_TYPE';
 export function selectWomenClothingType(wType) {
     return function(dispatch) {
