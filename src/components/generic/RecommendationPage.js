@@ -34,9 +34,6 @@ class Recommend extends Component {
         };
 
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
-        this.setItemsAndIndexes = this.setItemsAndIndexes.bind(this);
-        this.changeSingleIndex = this.changeSingleIndex.bind(this);
-        this.getCards = this.getCards.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
@@ -128,89 +125,29 @@ class Recommend extends Component {
 
     }
 
-    //getItemsForTastes(c)
-
-    setItemsAndIndexes(items) {
-        var indexes = [];
-        var i;
-        if (items instanceof Array && items.length > 0 && this.state.itemIndexes.length === 0) {
-            for (i = 0; i < items.length; i++) {
-                var index;
-                if (items[i].length === 1) {
-                    index = 0;
-                } else {
-                    index = this.getRandomInt(items[i].length);
-                }
-                indexes.push(index);
-            }
-            this.setState({
-                items: items,
-                itemIndexes: indexes,
-            });
-        }
-    }
-
-    changeSingleIndex(event, key) {
-        console.log('change single index is being triggered');
-        var i;
-        var newIdexes = this.state.itemIndexes;
-        for (i = 0; i < this.state.items.length; i++) {
-            if (i === key) {
-                newIdexes[i] = this.getRandomInt(this.state.items[i].length);
-            }
-        }
-        this.setState({
-            itemIndexes: newIdexes
-        });
-    }
-
-    getCards() {
-        var items = this.state.items;
-        var itemIndexes = this.state.itemIndexes;
-        var cards = [];
-        if (items.length > 0 && itemIndexes.length > 0 && items.length === itemIndexes.length) {
-            var i;
-            for (i = 0; i < items.length; i++) {
-                const index = i;
-                var itemsForType = items[i];
-                var indexForType = itemIndexes[i];
-                var item = itemsForType[indexForType];
-                var card = <RecCard key={index}
-                                    resultsImage={item.images[0].url}
-                                    resultsName={item.name}
-                                    resultsPrice={item.price.formattedValue}
-                                    onClick={(e) => this.changeSingleIndex(e, index)}/>;
-                cards.push(card);
-            }
-            return <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>;
-        } else {
-            return <Spinner/>
-        }
-    }
-
-
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
     render () {
-        // TODO: Getting new item will be done by calling the function on the item type, therefore each card can have its own behavior
-        //console.log('all items', [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]);
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
-        var itemsForCollection = itemsResult[0];
-        var itemsAreLoaded = itemsResult[1];
-        //console.log('this is your collection', itemsForCollection);
+        var cardDeck;
 
-        if (itemsAreLoaded === true) {
-            this.setItemsAndIndexes(itemsForCollection);
+        if (itemsResult[1] === true) {
+            var cards = [];
+            var i;
+            for (i = 0; i < itemsResult[0].length; i++) {
+                cards.push(<RecCard keyValue={i} items={itemsResult[0][i]}/>)
+            }
+            cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
+        } else {
+            cardDeck = <Spinner/>;
         }
-
-        var cards = this.getCards();
 
         return(
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
-              {cards}
+              {cardDeck}
             <Link to="/order/">
                 <Button className="tryOn">Try on these items</Button>
             </Link>
