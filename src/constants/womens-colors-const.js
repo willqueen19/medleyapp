@@ -1,85 +1,85 @@
 //party - one piece
-import ipartyone1 from '../../assets/WColPartyOne-1.jpeg';
-import ipartyone2 from '../../assets/WColPartyOne-2.jpeg';
-import ipartyone3 from '../../assets/WColPartyOne-3.jpeg';
+import ipartyone1 from '../assets/WColPartyOne-1.jpeg';
+import ipartyone2 from '../assets/WColPartyOne-2.jpeg';
+import ipartyone3 from '../assets/WColPartyOne-3.jpeg';
 
 //party - two piece
-import ipartytwo1 from '../../assets/WColPartyTwo-1.jpeg';
-import ipartytwo2 from '../../assets/WColPartyTwo-2.jpeg';
-import ipartytwo3 from '../../assets/WColPartyTwo-3.jpeg';
+import ipartytwo1 from '../assets/WColPartyTwo-1.jpeg';
+import ipartytwo2 from '../assets/WColPartyTwo-2.jpeg';
+import ipartytwo3 from '../assets/WColPartyTwo-3.jpeg';
 
 //modern classic
-import imodone1 from '../../assets/WColModOne-1.jpeg';
-import imodone2 from '../../assets/WColModOne-2.jpeg';
-import imodone3 from '../../assets/WColModOne-3.jpeg';
+import imodone1 from '../assets/WColModOne-1.jpeg';
+import imodone2 from '../assets/WColModOne-2.jpeg';
+import imodone3 from '../assets/WColModOne-3.jpeg';
 
 //modern classic
-import imodtwo1 from '../../assets/WColModTwo-1.jpeg';
-import imodtwo2 from '../../assets/WColModTwo-2.jpeg';
-import imodtwo3 from '../../assets/WColModTwo-3.jpeg';
+import imodtwo1 from '../assets/WColModTwo-1.jpeg';
+import imodtwo2 from '../assets/WColModTwo-2.jpeg';
+import imodtwo3 from '../assets/WColModTwo-3.jpeg';
 
 //conscious
-import iconone1 from '../../assets/WColConOne-1.jpeg';
-import iconone2 from '../../assets/WColConOne-2.jpeg';
-import iconone3 from '../../assets/WColConOne-3.jpeg';
+import iconone1 from '../assets/WColConOne-1.jpeg';
+import iconone2 from '../assets/WColConOne-2.jpeg';
+import iconone3 from '../assets/WColConOne-3.jpeg';
 
 //conscious
-import icontwo1 from '../../assets/WColConTwo-1.jpeg';
-import icontwo2 from '../../assets/WColConTwo-2.jpeg';
-import icontwo3 from '../../assets/WColConTwo-3.jpeg';
+import icontwo1 from '../assets/WColConTwo-1.jpeg';
+import icontwo2 from '../assets/WColConTwo-2.jpeg';
+import icontwo3 from '../assets/WColConTwo-3.jpeg';
 
 //premium quality
-import ipremone1 from '../../assets/WColPremOne-1.jpeg';
-import ipremone2 from '../../assets/WColPremOne-2.jpeg';
-import ipremone3 from '../../assets/WColPremOne-3.jpeg';
+import ipremone1 from '../assets/WColPremOne-1.jpeg';
+import ipremone2 from '../assets/WColPremOne-2.jpeg';
+import ipremone3 from '../assets/WColPremOne-3.jpeg';
 
 //premium quality
-import ipremtwo1 from '../../assets/WColPremTwo-1.jpeg';
-import ipremtwo2 from '../../assets/WColPremTwo-2.jpeg';
-import ipremtwo3 from '../../assets/WColPremTwo-3.jpeg';
+import ipremtwo1 from '../assets/WColPremTwo-1.jpeg';
+import ipremtwo2 from '../assets/WColPremTwo-2.jpeg';
+import ipremtwo3 from '../assets/WColPremTwo-3.jpeg';
 
 //trend
-import itrendone1 from '../../assets/WColTrendOne-1.jpeg';
-import itrendone2 from '../../assets/WColTrendOne-2.jpeg';
-import itrendone3 from '../../assets/WColTrendOne-3.jpeg';
+import itrendone1 from '../assets/WColTrendOne-1.jpeg';
+import itrendone2 from '../assets/WColTrendOne-2.jpeg';
+import itrendone3 from '../assets/WColTrendOne-3.jpeg';
 
 //trend
-import itrendtwo1 from '../../assets/WColTrendTwo-1.jpeg';
-import itrendtwo2 from '../../assets/WColTrendTwo-2.jpeg';
-import itrendtwo3 from '../../assets/WColTrendTwo-3.jpeg';
+import itrendtwo1 from '../assets/WColTrendTwo-1.jpeg';
+import itrendtwo2 from '../assets/WColTrendTwo-2.jpeg';
+import itrendtwo3 from '../assets/WColTrendTwo-3.jpeg';
 
 //divided
-import idivone1 from '../../assets/WColDivOne-1.jpeg';
-import idivone2 from '../../assets/WColDivOne-2.jpeg';
-import idivone3 from '../../assets/WColDivOne-3.jpeg';
+import idivone1 from '../assets/WColDivOne-1.jpeg';
+import idivone2 from '../assets/WColDivOne-2.jpeg';
+import idivone3 from '../assets/WColDivOne-3.jpeg';
 
 //divided
-import idivtwo1 from '../../assets/WColDivTwo-1.jpeg';
-import idivtwo2 from '../../assets/WColDivTwo-2.jpeg';
-import idivtwo3 from '../../assets/WColDivTwo-3.jpeg';
+import idivtwo1 from '../assets/WColDivTwo-1.jpeg';
+import idivtwo2 from '../assets/WColDivTwo-2.jpeg';
+import idivtwo3 from '../assets/WColDivTwo-3.jpeg';
 
 //casual
-import icasone1 from '../../assets/WColCasOne-1.jpeg';
-import icasone2 from '../../assets/WColCasOne-2.jpeg';
-import icasone3 from '../../assets/WColCasOne-3.jpeg';
+import icasone1 from '../assets/WColCasOne-1.jpeg';
+import icasone2 from '../assets/WColCasOne-2.jpeg';
+import icasone3 from '../assets/WColCasOne-3.jpeg';
 
 //casual
-import icastwo1 from '../../assets/WColCasTwo-1.jpeg';
-import icastwo2 from '../../assets/WColCasTwo-2.jpeg';
-import icastwo3 from '../../assets/WColCasTwo-3.jpeg';
+import icastwo1 from '../assets/WColCasTwo-1.jpeg';
+import icastwo2 from '../assets/WColCasTwo-2.jpeg';
+import icastwo3 from '../assets/WColCasTwo-3.jpeg';
 
 //placeholder
-import iplacehold1 from '../../assets/WCol-1.jpeg';
-import iplacehold2 from '../../assets/WCol-2.jpeg';
-import iplacehold3 from '../../assets/WCol-3.jpeg';
+import iplacehold1 from '../assets/WCol-1.jpeg';
+import iplacehold2 from '../assets/WCol-2.jpeg';
+import iplacehold3 from '../assets/WCol-3.jpeg';
 
 
 export const partyone1 = ipartyone1;
 export const partyone2 = ipartyone2;
-export const partyone3 = partyone3;
+export const partyone3 = ipartyone3;
 
 export const partytwo1 = ipartytwo1;
-export const partytwo2 = ideapartytwo2;
+export const partytwo2 = ipartytwo2;
 export const partytwo3 = ipartytwo3;
 
 export const modone1 = imodone1;

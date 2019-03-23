@@ -79,9 +79,9 @@ class WomensColors extends Component {
       }
       else if (this.props.womensCollection === surveyConstants.premium_quality) {
         if (this.props.womenClothingType === surveyConstants.one_piece) {
-          img1 = premone1;
-          img2 = premone2;
-          img3 = premone3;
+          img1 = imageConstants.premone1;
+          img2 = imageConstants.premone2;
+          img3 = imageConstants.premone3;
         }
         else if (this.props.womenClothingType == surveyConstants.two_piece) {
           img1 = imageConstants.premtwo1;
