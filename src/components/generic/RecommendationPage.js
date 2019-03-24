@@ -137,18 +137,20 @@ class Recommend extends Component {
             var cards = [];
             var i;
             for (i = 0; i < itemsResult[0].length; i++) {
-                cards.push(<RecCard keyValue={i} items={itemsResult[0][i]}/>)
+                cards.push(<RecCard itemKey={i} items={itemsResult[0][i]}/>)
             }
             cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
         } else {
             cardDeck = <Spinner/>;
         }
 
+        console.log('CURRENT OUTFIT', this.props.currentOutfit);
+
         return(
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
               {cardDeck}
-            <Link to="/order/">
+            <Link to="/sizing/">
                 <Button className="tryOn">Try on these items</Button>
             </Link>
           </div>
@@ -171,7 +173,8 @@ function mapStateToProps(state, ownProps) {
         onePieces: state.recommendReducer.onePieces,
         outerwear: state.recommendReducer.outerwear,
         shoes: state.recommendReducer.shoes,
-        accessories: state.recommendReducer.accessories
+        accessories: state.recommendReducer.accessories,
+        currentOutfit: state.recommendReducer.currentOutfit
     }
 }
 

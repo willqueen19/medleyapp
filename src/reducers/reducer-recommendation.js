@@ -9,7 +9,8 @@ var initialState = {
     onePieces: [],
     outerwear: [],
     shoes: [],
-    accessories: []
+    accessories: [],
+    currentOutfit: []
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +27,10 @@ export default function (state = initialState, action) {
             return Object.assign({}, state,{shoes: action.payload});
         case types.GET_ACCESSORIES:
             return Object.assign({}, state,{accessories: action.payload});
+        case types.SET_CURRENT_OUTFIT:
+            var newCurrentOutfit = state.currentOutfit;
+            newCurrentOutfit[action.itemKey] = action.item;
+            return Object.assign({}, state, {currentOutfit: newCurrentOutfit});
         default:
             return state;
     }

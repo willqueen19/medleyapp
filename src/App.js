@@ -9,6 +9,7 @@ import Header from './components/generic/Header';
 import Landing from './components/generic/LandingPage'
 import Survey from './components/generic/SurveyMensWomens'
 import Recommend from './components/generic/RecommendationPage';
+import Sizing from './components/generic/SizingPage'
 import Order from './components/generic/OrderPage'
 import WomensOccasion from "./components/survey-womens/WomensOccasion";
 import MensOccasion from "./components/survey-mens/MensOccasion";
@@ -59,6 +60,7 @@ class App extends Component {
                   <Route path="/men/pants/" component={ MensPants } />
                   <Route path="/men/colors/" component={ MensColors} />
                   <Route path="/recommend/" component={ Recommend }/>
+                  <Route path="/sizing/" component={ Sizing }/>
                   <Route path="/order/" component={ Order } />
                 </div>
               </Router>

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Card, Button, CardImg, CardTitle, CardText,
-  CardSubtitle, CardBody } from 'reactstrap';
+    CardSubtitle, CardBody } from 'reactstrap';
 import {bindActionCreators} from "redux";
 import * as surveyActions from "../../actions/surveyActions";
 import * as recommendationActions from '../../actions/recommendActions';
@@ -37,7 +37,7 @@ class RecommendationCard extends Component {
             item: item
         });
 
-        this.props.actions.setCurrentOutfit(item, this.props.itemKey);
+        this.props.actions.setItemSize(this.props.itemKey);
     }
 
     getRandomInt(max) {
@@ -60,24 +60,24 @@ class RecommendationCard extends Component {
     };
 
 
-  render () {
+    render () {
 
-      var keyValue = this.props.keyValue;
-      var item = this.state.item;
-      var itemImage = item.images[0].url;
-      var itemName = item.name;
-      var itemPrice = item.price.formattedValue;
+        var keyValue = this.props.keyValue;
+        var item = this.state.item;
+        var itemImage = item.images[0].url;
+        var itemName = item.name;
+        var itemPrice = item.price.formattedValue;
 
-      return (
-          <Card key={keyValue} className="cardRec" onClick={this.getNewItem}>
-              <CardImg top width="100%" src={itemImage} alt="Card image cap" />
-              <CardBody>
-                  <CardTitle>{itemName}</CardTitle>
-                  <CardText>{itemPrice}</CardText>
-              </CardBody>
-          </Card>
-    )
-  }
+        return (
+            <Card key={keyValue} className="cardRec" onClick={this.getNewItem}>
+                <CardImg top width="100%" src={itemImage} alt="Card image cap" />
+                <CardBody>
+                    <CardTitle>{itemName}</CardTitle>
+                    <CardText>{itemPrice}</CardText>
+                </CardBody>
+            </Card>
+        )
+    }
 }
 
 function mapStateToProps(state, ownProps) {
@@ -93,4 +93,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (RecommendationCard);
-
