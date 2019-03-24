@@ -8,29 +8,71 @@ import {bindActionCreators} from "redux";
 import * as surveyActions from "../../actions/surveyActions";
 import * as recommendationActions from '../../actions/recommendActions';
 import {connect} from "react-redux";
+import {nonInputTypeOnVarMessage} from "graphql/validation/rules/VariablesAreInputTypes";
 
 class RecommendationCard extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: [],
+            item: null
 
+        };
+
+        this.getNewItem = this.getNewItem.bind(this);
+        this.getRandomInt = this.getRandomInt.bind(this);
+    }
+
+    componentWillMount() {
+        var items = this.props.items;
+        var item;
+        if (items.length === 1) {
+            item = items[0];
+        } else {
+            item = items[this.getRandomInt(items.length)]
+        }
+
+        this.setState({
+            items: items,
+            item: item
+        })
+    }
+
+    getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    getNewItem() {
+        var items = this.state.items;
+        var item;
+        if (items.length === 1) {
+            item = items[0];
+        } else {
+            item = items[this.getRandomInt(items.length)];
+        }
+
+        this.setState({
+            item: item
+        })
     };
-  }
 
-  nextQuestion(props) {
-    window.open(props,'_self');
-  }
 
   render () {
-    return (
-        <Card className="cardRec" onClick={()=>this.nextQuestion(this.props.surveyNext)}>
-          <CardImg top width="100%" src={this.props.resultsImage} alt="Card image cap" />
-          <CardBody>
-            <CardTitle>{this.props.resultsName}</CardTitle>
-            <CardText>{this.props.resultsPrice}</CardText>
-          </CardBody>
-        </Card>
+
+      var item = this.state.item;
+      var itemImage = item.images[0].url;
+      var itemName = item.name;
+      var itemPrice = item.price.formattedValue;
+
+      return (
+          <Card key={this.props.keyValue} className="cardRec" onClick={this.getNewItem}>
+              <CardImg top width="100%" src={itemImage} alt="Card image cap" />
+              <CardBody>
+                  <CardTitle>{itemName}</CardTitle>
+                  <CardText>{itemPrice}</CardText>
+              </CardBody>
+          </Card>
     )
   }
 }

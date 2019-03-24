@@ -24,9 +24,8 @@ class Recommend extends Component {
         super(props);
 
         this.state = {
-            loaded: false,
-            cardsRendered: false,
             items: [],
+            itemIndexes: [],
             gender: null,
             collection: null,
             womensClothingType: null,
@@ -34,14 +33,11 @@ class Recommend extends Component {
             pantsType: null
         };
 
-        this.setCardRenderState = this.setCardRenderState.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
-        this.getItemFromItems = this.getItemFromItems.bind(this);
-        this.getNewCard = this.getNewCard.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
 
-    async componentWillMount() {
+    componentWillMount() {
 
         // TODO: call function for every type of clothing, then only grab categories that have results
         var gender = this.props.gender;
@@ -58,43 +54,13 @@ class Recommend extends Component {
         this.props.actions.getClothingItem(surveyConstants.outerwear, gender, collection);
         this.props.actions.getClothingItem(surveyConstants.shoes, gender, collection);
         this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
+
         this.setState({
-            //loaded: true,
-            //items: [this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories]
             gender: gender,
             collection: collection,
             womensClothingType: this.props.womensClothingType,
             shirtType: this.props.shirtType,
             pantsType: this.props.pantsType
-
-
-        });
-
-    }
-
-    /*
-
-    componentDidMount() {
-
-        this.setState({
-            shirts: this.props.shirts,
-            pants: this.props.pants,
-            onePieces: this.props.onePieces,
-            outerwear: this.props.outerwear,
-            shoes: this.props.shoes,
-            accessories: this.props.accessories
-        });
-    }
-
-    */
-
-    verifyDataLoaded(matrix) {
-
-    }
-
-    setCardRenderState() {
-        this.setState({
-            cardsRendered: true
         });
     }
 
@@ -122,7 +88,7 @@ class Recommend extends Component {
             } else if (collection === surveyConstants.basics) {
                 // TODO: Not working
             }
-        } else if (this.state.gender === surveyConstants.womens) {
+        } else if (gender === surveyConstants.womens) {
             if (collection === surveyConstants.party) {
                 itemsForCollection = [shirts, pants, outerwear, shoes];
                 totalPopArrays = 4;
@@ -150,23 +116,13 @@ class Recommend extends Component {
         }
 
         // TODO: Not entirely sure the following lines of code do anything
-        //console.log(itemsForCollection.length);
-        //console.log(totalPopArrays);
         if (numPopArrays === totalPopArrays) {
-            return itemsForCollection;
+            return [itemsForCollection, true];
         } else {
-            return [];
+            return [[], false];
         }
 
-    }
 
-    getItemFromItems(ItemList, color, fit) {
-
-    }
-
-    getNewCard(key, item) {
-        var card = <RecCard key={key} resultsImage={item.images[0].url} resultsName={item.name} resultsPrice={item.price.formattedValue} />
-        return card;
     }
 
     getRandomInt(max) {
@@ -174,46 +130,24 @@ class Recommend extends Component {
     }
 
     render () {
+        var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
+        var cardDeck;
 
-        // TODO: Add if statement checking for collection, this would allow us to select the only render cards if all are loaded
-        // TODO: the categories that were avail for each collection
-        // TODO: Verify all have been loaded by checking total number of populated arrays in final
-        // TODO: Getting new item will be done by calling the function on the item type, therefore each card can have its own behavior
-
-        //console.log('all items', [shirts, pants, onePieces, outerwear, shoes, accessories]);
-        var itemsForCollection = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces,
-                                                            this.props.outerwear, this.props.shoes, this.props.accessories);
-
-        var nonEmptyClothes = [];
-        var i;
-        for (i = 0; i < itemsForCollection.length; i ++) {
-            if (itemsForCollection[i].length !== 0) {
-                nonEmptyClothes.push(itemsForCollection[i]);
+        if (itemsResult[1] === true) {
+            var cards = [];
+            var i;
+            for (i = 0; i < itemsResult[0].length; i++) {
+                cards.push(<RecCard keyValue={i} items={itemsResult[0][i]}/>)
             }
-        };
-
-        var c;
-        var cards = [];
-        if (nonEmptyClothes.length !== 0) {
-            for (c = 0; c < nonEmptyClothes.length; c++) {
-                var item;
-                if (nonEmptyClothes[c].length === 1) {
-                    item = nonEmptyClothes[c][0];
-                } else {
-                    item = nonEmptyClothes[c][this.getRandomInt(nonEmptyClothes.length)];
-                }
-
-                cards.push(this.getNewCard(c, item));
-            }
+            cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
+        } else {
+            cardDeck = <Spinner/>;
         }
-
-        var spinner = <Spinner/>
-        var cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
 
         return(
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
-              {cards.length === 0 ? spinner : cardDeck}
+              {cardDeck}
             <Link to="/order/">
                 <Button className="tryOn">Try on these items</Button>
             </Link>
