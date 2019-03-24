@@ -66,13 +66,17 @@ class RecommendationCard extends Component {
       var itemPrice = item.price.formattedValue;
 
       return (
-          <Card key={this.props.keyValue} className="cardRec" onClick={this.getNewItem}>
-              <CardImg top width="100%" src={itemImage} alt="Card image cap" />
-              <CardBody>
-                  <CardTitle>{itemName}</CardTitle>
-                  <CardText>{itemPrice}</CardText>
-              </CardBody>
-          </Card>
+
+          <div>
+              <Card key={this.props.keyValue} className="cardRec" onClick={this.getNewItem}>
+                  <CardImg top width="100%" src={itemImage} alt="Card image cap" />
+                  <CardBody>
+                      <CardTitle>{itemName}</CardTitle>
+                      <CardText>{itemPrice}</CardText>
+                  </CardBody>
+              </Card>
+          </div>
+
     )
   }
 }
