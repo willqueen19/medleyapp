@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as surveyActions from '../../actions/surveyActions';
 import * as surveyConstants from '../../constants/survey-constants';
+import * as imageConstants from '../../constants/mens-shirt-const.js';
 
 class MensShirts extends Component {
 
@@ -23,6 +24,7 @@ class MensShirts extends Component {
 
     this.selectLongSleeve = this.selectLongSleeve.bind(this);
     this.selectShortSleeve = this.selectShortSleeve.bind(this);
+    this.selectImgs = this.selectImgs.bind(this);
   }
 
   selectLongSleeve() {
@@ -33,13 +35,44 @@ class MensShirts extends Component {
       this.props.actions.selectShirtType(surveyConstants.short_sleeve);
   }
 
+  selectImgs() {
+    var img1;
+    var img2;
+      if (this.props.mensCollection === surveyConstants.premium_quality) {
+        img1 = imageConstants.prem1;
+        img2 = imageConstants.prem2;
+      }
+      else if (this.props.mensCollection === surveyConstants.conscious) {
+        img1 = imageConstants.con1;
+        img2 = imageConstants.con2;
+      }
+      else if (this.props.mensCollection === surveyConstants.hm_men) {
+        img1 = imageConstants.hm1;
+        img2 = imageConstants.hm2;
+      }
+      else if (this.props.mensCollection === surveyConstants.logg) {
+        img1 = imageConstants.logg1;
+        img2 = imageConstants.logg2;
+      }
+      else if (this.props.mensCollection === surveyConstants.basics) {
+        img1 = imageConstants.bas1;
+        img2 = imageConstants.bas2;
+      }
+      else {
+        img1 = imageConstants.placehold1;
+        img2 = imageConstants.placehold2;
+      }
+      return [img1, img2];
+  }
+
   render () {
+    var imgs = this.selectImgs();
     return (
       <div className="survey survey2">
         <h1>What style of shirt do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={img1} surveyTitle={"Long sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectLongSleeve}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"Short sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectShortSleeve}/>
+          <SurveyCard surveyImage={imgs[0]} surveyTitle={"Long sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectLongSleeve}/>
+          <SurveyCard surveyImage={imgs[1]} surveyTitle={"Short sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectShortSleeve}/>
         </CardDeck>
       </div>
     )
@@ -48,6 +81,7 @@ class MensShirts extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
+        mensCollection: state.surveyReducer.mensCollection,
         shirtType: state.surveyReducer.shirtType
     }
 }
