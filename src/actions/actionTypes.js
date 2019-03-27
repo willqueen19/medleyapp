@@ -24,7 +24,3 @@ export const GET_ACCESSORIES    = 'GET_ACCESSORIES';
 export const GET_ORDER_NUMBER  = 'GET_ORDER_NUMBER';
 export const SEND_ORDER        = 'SEND_ORDER';
 export const ADD_EMAIL_ADDRESS = 'ADD_EMAIL_ADDRESS';
-
-//order boolean to be flipped
-
-export const GET_SAMPLE_ARRAY = 'GET_SAMPLE_ARRAY';

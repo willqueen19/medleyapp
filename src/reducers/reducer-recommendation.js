@@ -15,8 +15,10 @@ var initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case types.GET_SHIRTS:
+            console.log('SHIRTS', action.payload);
             return Object.assign({}, state,{shirts: action.payload});
         case types.GET_PANTS:
+            console.log('PANTS', action.payload);
             return Object.assign({}, state,{pants: action.payload});
         case types.GET_ONE_PIECES:
             return Object.assign({}, state,{onePieces: action.payload});

@@ -73,7 +73,13 @@ class Recommend extends Component {
         if (gender === surveyConstants.mens) {
             if (collection === surveyConstants.premium_quality) {
                 // TODO: Not working
-            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.hm_men].includes(collection)) {
+            } else if (collection === surveyConstants.modern_classic) {
+                itemsForCollection = [shirts, pants, outerwear];
+                totalPopArrays = 3;
+            } else if (collection === surveyConstants.conscious) {
+                itemsForCollection = [shirts, pants, outerwear];
+                totalPopArrays = 3;
+            } else if (collection === surveyConstants.hm_men) {
                 itemsForCollection = [shirts, pants, outerwear];
                 totalPopArrays = 3;
             } else if (collection === surveyConstants.trend) {
@@ -86,7 +92,9 @@ class Recommend extends Component {
                 itemsForCollection = [shirts, pants];
                 totalPopArrays = 2;
             } else if (collection === surveyConstants.basics) {
-                // TODO: Not working
+                // fixed but needs resizing due to image pixelation
+                itemsForCollection = [shirts, pants];
+                totalPopArrays = 2;
             }
         } else if (gender === surveyConstants.womens) {
             if (collection === surveyConstants.party) {
@@ -96,14 +104,20 @@ class Recommend extends Component {
                 itemsForCollection = [shirts, pants, onePieces, outerwear];
                 totalPopArrays = 4;
             } else if (collection === surveyConstants.conscious) {
-                // TODO: query needs to be fixed, only 6 total items being returned
+                // hat not included because its terrible
+                itemsForCollection = [shirts, pants, onePieces, outerwear, shoes];
+                totalPopArrays = 5;
             } else if (collection === surveyConstants.premium_quality) {
                 // TODO: Not working
-            } else if ([surveyConstants.trend, surveyConstants.divided].includes(collection)) {
+            } else if (collection === surveyConstants.trend) {
                 itemsForCollection = [shirts, pants, onePieces, outerwear, shoes, accessories];
                 totalPopArrays = 6;
-            } else if (collection === surveyConstants.casual) {
-                // TODO: Not working
+            } else if (collection === surveyConstants.divided) {
+                itemsForCollection = [shirts, pants, onePieces, outerwear, shoes, accessories];
+                totalPopArrays = 6;
+            } else if (collection === surveyConstants.logg) {
+                itemsForCollection = [shirts, pants, onePieces , outerwear];
+                totalPopArrays = 4;
             }
         }
 
@@ -131,6 +145,8 @@ class Recommend extends Component {
 
     render () {
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
+        console.log('COLLECTION ', this.state.collection);
+        console.log('ALL ITEMS', itemsResult[0]);
         var cardDeck;
 
         if (itemsResult[1] === true) {
