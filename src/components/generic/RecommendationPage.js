@@ -87,7 +87,7 @@ class Recommend extends Component {
             } else if (collection === surveyConstants.trend) {
                 itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
             } else if (collection === surveyConstants.divided) {
-                itemsForCollection = [shirts, pants, outerwear, accessories];
+                itemsForCollection = [shirts, pants, outerwear];
             } else if (collection === surveyConstants.logg) {
                 itemsForCollection = [shirts, pants];
             } else if (collection === surveyConstants.basics) {
@@ -205,7 +205,12 @@ class Recommend extends Component {
             for (i = 0; i < itemsResult[0].length; i++) {
                 cards.push(<RecCard keyValue={i} items={itemsResult[0][i]}/>)
             }
-            cardDeck = <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
+            cardDeck = <div>
+                <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
+                <Link to="/order/">
+                    <Button className="tryOn">Try on these items</Button>
+                </Link>
+            </div>
         } else {
             cardDeck = <Spinner/>;
         }
@@ -214,9 +219,6 @@ class Recommend extends Component {
           <div className="recommendations">
             <h1>Here's what we found for you</h1>
               {cardDeck}
-            <Link to="/order/">
-                <Button className="tryOn">Try on these items</Button>
-            </Link>
           </div>
         )
     }
