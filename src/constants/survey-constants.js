@@ -25,6 +25,8 @@ export const short_sleeve    = 'short-sleeve';
 export const long_sleeve     = 'long_sleeve';
 export const one_piece       = 'one-piece';
 export const two_piece       = 'two-piece';
+
+//style choices
 export const bright_colors   = 'bright-colors';
 export const dark_colors     = 'dark-colors';
 export const patterns        = 'patterns';

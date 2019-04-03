@@ -12,6 +12,7 @@ import { bindActionCreators} from 'redux';
 import _ from 'lodash';
 import * as surveyActions from '../../actions/surveyActions';
 import * as surveyConstants from '../../constants/survey-constants';
+import * as imageConstants from '../../constants/mens-pant-const.js';
 
 class MensPants extends Component {
 
@@ -24,6 +25,7 @@ class MensPants extends Component {
 
     this.selectPants = this.selectPants.bind(this);
     this.selectShorts = this.selectShorts.bind(this);
+    this.selectImgs = this.selectImgs.bind(this);
   }
 
   selectPants() {
@@ -34,13 +36,57 @@ class MensPants extends Component {
       this.props.actions.selectPantsType(surveyConstants.shorts);
   }
 
+  selectImgs() {
+    var img1;
+    var img2;
+      if (this.props.mensCollection === surveyConstants.hm_men) {
+        if (this.props.shirtType === surveyConstants.long_sleeve)
+        {
+          img1 = imageConstants.hml1;
+          img2 = imageConstants.hml2;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve) {
+          img1 = imageConstants.hms1;
+          img2 = imageConstants.hms2;
+        }
+      }
+      else if (this.props.mensCollection === surveyConstants.logg) {
+        if (this.props.shirtType === surveyConstants.long_sleeve)
+        {
+          img1 = imageConstants.loggl1;
+          img2 = imageConstants.loggl2;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve) {
+          img1 = imageConstants.loggs1;
+          img2 = imageConstants.loggs2;
+        }
+      }
+      else if (this.props.mensCollection === surveyConstants.basics) {
+        if (this.props.shirtType === surveyConstants.long_sleeve)
+        {
+          img1 = imageConstants.basl1;
+          img2 = imageConstants.basl2;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve) {
+          img1 = imageConstants.bass1;
+          img2 = imageConstants.bass2;
+        }
+      }
+      else {
+        img1 = imageConstants.placehold1;
+        img2 = imageConstants.placehold2;
+      }
+      return [img1, img2];
+  }
+
   render () {
+    var imgs = this.selectImgs();
     return (
       <div className="survey survey2">
         <h1>What style of pants do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
-          <SurveyCard surveyImage={img1} surveyTitle={"Shorts"} surveyNext={'/men/colors'} passedFunction={this.selectShorts}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"Pants"} surveyNext={'/men/colors'} passedFunction={this.selectPants}/>
+          <SurveyCard surveyImage={imgs[0]} surveyTitle={"Shorts"} surveyNext={'/men/colors'} passedFunction={this.selectShorts}/>
+          <SurveyCard surveyImage={imgs[1]} surveyTitle={"Pants"} surveyNext={'/men/colors'} passedFunction={this.selectPants}/>
         </CardDeck>
       </div>
     )
@@ -49,6 +95,8 @@ class MensPants extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
+        mensCollection: state.surveyReducer.mensCollection,
+        shirtType: state.surveyReducer.shirtType,
         pantsType: state.surveyReducer.pantsType
     }
 }

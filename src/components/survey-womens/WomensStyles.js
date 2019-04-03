@@ -37,7 +37,9 @@ class WomensStyles extends Component {
   }
 
   selectCasual() {
-    this.props.actions.selectWomensCollection(surveyConstants.casual);
+    // TODO this was changed to l.o.g.g. to fit actual codes in database
+    // this.props.actions.selectWomensCollection(surveyConstants.casual);
+    this.props.actions.selectWomensCollection(surveyConstants.logg);
   }
 
   render () {
