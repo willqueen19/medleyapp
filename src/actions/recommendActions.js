@@ -73,3 +73,9 @@ export function getClothingItem(item, gender, collection) {
 
     }
 }
+
+export function setCurrentOutfit(item, itemKey) {
+    return function (dispatch) {
+        return dispatch({type: actionTypes.SET_CURRENT_OUTFIT, item: item, itemKey: itemKey});
+    }
+}
