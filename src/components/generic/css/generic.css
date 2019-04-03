@@ -144,3 +144,34 @@ div.order button a:hover {
 div.order .form-inline {
   display: inherit;
 }
+
+/* Sizing Page */
+div.sizingCards {
+margin: 0px 25px;
+}
+
+div.carddeckSize {
+  margin: 25px 50px 0px 50px;
+}
+
+div.carddeckSize .cardSize {
+  margin: 0;
+}
+
+div.sizingPage {
+  color: #fff;
+}
+
+div.sizingPage button {
+  background-color: #f88788;
+  float: right;
+  margin: 25px 125px 0px 0px;
+}
+
+div.sizingPage button a {
+  color: #fff;
+}
+
+div.sizingPage button a:hover {
+  text-decoration: none;
+}

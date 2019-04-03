@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 //import logo from './logo.svg';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from "reactstrap";
-import RecCard from './RecommendationCard.js';
+import SizingCard from './SizingCard.js';
 import {bindActionCreators} from "redux";
 import * as recommendationActions from "../../actions/recommendActions";
 import {connect} from "react-redux";
@@ -32,25 +33,47 @@ class Sizing extends Component {
 
     render () {
         var currentOutfit = this.props.currentOutfit;
+        // var cards = [];
+        // var i;
+        // if (currentOutfit && currentOutfit.length > 0) {
+        //     for (i = 0; i < currentOutfit.length; i++) {
+        //         var item = currentOutfit[i];
+        //         cards.push(<h2>{item.name}</h2>);
+        //     }
+        //     var allItems = <div>{cards}</div>
+        // }
+
+        // return(
+        //     <div className="sizing" style={{'color': 'white'}}>
+        //         <h1>Here are your items:</h1>
+        //         {allItems}
+        //         <Link to="/order/">
+        //             <Button className="tryOn">Try on these items</Button>
+        //         </Link>
+        //     </div>
+        //
+        // )
+
+        var cardDeck;
+
         var cards = [];
         var i;
-        if (currentOutfit && currentOutfit.length > 0) {
-            for (i = 0; i < currentOutfit.length; i++) {
-                var item = currentOutfit[i];
-                cards.push(<h2>{item.name}</h2>);
-            }
-            var allItems = <div>{cards}</div>
+        for (i = 0; i < currentOutfit.length; i++) {
+            cards.push(<SizingCard itemKey={i} item={currentOutfit[i]}/>);
         }
+        cardDeck = <CardDeck className='carddeck carddeckSize'>{cards}</CardDeck>
+
+        console.log('CURRENT OUTFIT', this.props.currentOutfit);
 
         return(
-            <div className="sizing" style={{'color': 'white'}}>
-                <h1>Here are your items:</h1>
-                {allItems}
-                <Link to="/order/">
-                    <Button className="tryOn">Try on these items</Button>
-                </Link>
-            </div>
-
+          <Container className="sizingPage">
+              <Row className="sizing">
+                  {cardDeck}
+              </Row>
+              <Link to="/order/">
+                  <Button className="tryOn">Try on these items</Button>
+              </Link>
+          </Container>
         )
     }
 }
