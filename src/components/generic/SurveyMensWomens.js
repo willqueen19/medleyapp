@@ -36,8 +36,6 @@ class SurveyMensWomens extends Component {
 
   render () {
 
-    console.log(this.props.gender);
-
     return (
       <div className="survey survey2">
         <h1 onClick={(e) => this.selectGender(e, 'mens')}>Choose a Department</h1>

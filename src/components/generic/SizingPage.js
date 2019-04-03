@@ -63,8 +63,6 @@ class Sizing extends Component {
         }
         cardDeck = <CardDeck className='carddeck carddeckSize'>{cards}</CardDeck>
 
-        console.log('CURRENT OUTFIT', this.props.currentOutfit);
-
         return(
           <Container className="sizingPage">
               <Row className="sizing">

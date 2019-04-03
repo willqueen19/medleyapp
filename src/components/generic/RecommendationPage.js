@@ -190,13 +190,7 @@ class Recommend extends Component {
     }
 
     render () {
-        console.log('womens clothing type' ,this.props.womenClothingType);
-
-
-
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
-        console.log('COLLECTION ', this.state.collection);
-        console.log('ALL ITEMS', itemsResult[0]);
         var cardDeck;
 
         if (itemsResult[1] === true) {
@@ -214,8 +208,6 @@ class Recommend extends Component {
         } else {
             cardDeck = <Spinner/>;
         }
-
-        console.log('CURRENT OUTFIT', this.props.currentOutfit);
 
         return(
           <div className="recommendations">

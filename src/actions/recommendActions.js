@@ -60,9 +60,6 @@ export function getClothingItem(item, gender, collection) {
     }
 
     var requestString = beginString + collectionString + itemString + queryConstants.productsConstants;
-
-    console.log('request string ', requestString);
-
     return function (dispatch) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", queryConstants.xRapidAPIKey)

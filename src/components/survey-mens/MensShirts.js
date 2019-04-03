@@ -25,8 +25,6 @@ class MensShirts extends Component {
     this.selectLongSleeve = this.selectLongSleeve.bind(this);
     this.selectShortSleeve = this.selectShortSleeve.bind(this);
     this.selectImgs = this.selectImgs.bind(this);
-
-    console.log('mens shirts comp has been triggered');
   }
 
   selectLongSleeve() {

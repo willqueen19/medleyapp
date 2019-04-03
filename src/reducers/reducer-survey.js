@@ -26,7 +26,6 @@ export default function (state = initialState, action) {
         case types.SELECT_PANTS_TYPE:
             return Object.assign({}, state, {pantsType: action.payload});
         case types.SELECT_WOMEN_CLOTHING_TYPE:
-            console.log('survey reducer women clothing type', action.payload);
             return Object.assign({}, state, {womenClothingType: action.payload});
         case types.RESET_SURVEY:
             return Object.assign({}, state, {gender: null,
