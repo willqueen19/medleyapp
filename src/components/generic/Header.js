@@ -4,7 +4,7 @@ import './css/generic.css';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import {Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
 import logo from '../../assets/hm-logo.png';
-import medleyLogo from '../../assets/medley-logo.png';
+import medleyLogo from '../../assets/Final Logo.png';
 
 class Header extends Component {
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
-import SurveyCard from '../generic/ThreeSurveyCard.js';
+import SurveyCard from '../generic/TwoSurveyCard.js';
 import img1 from '../../assets/MVal-1.jpeg';
 import img2 from '../../assets/MVal-2.jpeg';
 import img3 from '../../assets/MVal-3.jpeg';
@@ -25,6 +25,7 @@ class MensValues extends Component {
     this.selectSustainable = this.selectSustainable.bind(this);
     this.selectSporty = this.selectSporty.bind(this);
 
+    // <SurveyCard surveyImage={img2} surveyTitle={"I prefer to be sporty"} surveyNext={'/men/shirt'} passedFunction={this.selectSporty}/>
 
   }
 
@@ -40,9 +41,8 @@ class MensValues extends Component {
     return (
       <div className="survey survey3">
         <h1>Which best describes you?</h1>
-        <CardDeck className="carddeck carddeck3">
+        <CardDeck className="carddeck carddeck2">
           <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/men/shirt'} passedFunction={this.selectSustainable}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"I prefer to be sporty"} surveyNext={'/men/shirt'} passedFunction={this.selectSporty}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/men/style'}/>
         </CardDeck>
       </div>

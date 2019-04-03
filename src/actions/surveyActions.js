@@ -58,7 +58,7 @@ export function selectPantsType(pants) {
 // export const SELECT_WOMEN_CLOTHING_TYPE = 'SELECT_WOMEN_CLOTHING_TYPE';
 export function selectWomenClothingType(wType) {
     return function(dispatch) {
-        //console.log('women clothing type selected from actions', wType);
+        console.log('women clothing type selected from actions', wType);
         return dispatch({type: 'SELECT_WOMEN_CLOTHING_TYPE', payload: wType})
     }
 }

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button } from 'reactstrap';
-import logo from '../../assets/medley-logo.png';
+import logo from '../../assets/Final Logo.png';
 
 
 class Landing extends Component {

@@ -22,12 +22,16 @@ export default function (state = initialState, action) {
             console.log('PANTS', action.payload);
             return Object.assign({}, state,{pants: action.payload});
         case types.GET_ONE_PIECES:
+            console.log('ONE_PIECES', action.payload);
             return Object.assign({}, state,{onePieces: action.payload});
         case types.GET_OUTERWEAR:
+            console.log('OUTERWEAR', action.payload);
             return Object.assign({}, state,{outerwear: action.payload});
         case types.GET_SHOES:
+            console.log('SHOES', action.payload);
             return Object.assign({}, state,{shoes: action.payload});
         case types.GET_ACCESSORIES:
+            console.log('ACCESSORIES', action.payload);
             return Object.assign({}, state,{accessories: action.payload});
         case types.SET_CURRENT_OUTFIT:
             var newCurrentOutfit = state.currentOutfit;
