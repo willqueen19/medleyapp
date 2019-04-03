@@ -25,6 +25,8 @@ class MensShirts extends Component {
     this.selectLongSleeve = this.selectLongSleeve.bind(this);
     this.selectShortSleeve = this.selectShortSleeve.bind(this);
     this.selectImgs = this.selectImgs.bind(this);
+
+    console.log('mens shirts comp has been triggered');
   }
 
   selectLongSleeve() {
@@ -38,27 +40,23 @@ class MensShirts extends Component {
   selectImgs() {
     var img1;
     var img2;
+      // TODO modern classic, trend and divided need to be added
       if (this.props.mensCollection === surveyConstants.premium_quality) {
         img1 = imageConstants.prem1;
         img2 = imageConstants.prem2;
-      }
-      else if (this.props.mensCollection === surveyConstants.conscious) {
+      } else if (this.props.mensCollection === surveyConstants.conscious) {
         img1 = imageConstants.con1;
         img2 = imageConstants.con2;
-      }
-      else if (this.props.mensCollection === surveyConstants.hm_men) {
+      } else if (this.props.mensCollection === surveyConstants.hm_men) {
         img1 = imageConstants.hm1;
         img2 = imageConstants.hm2;
-      }
-      else if (this.props.mensCollection === surveyConstants.logg) {
+      } else if (this.props.mensCollection === surveyConstants.logg) {
         img1 = imageConstants.logg1;
         img2 = imageConstants.logg2;
-      }
-      else if (this.props.mensCollection === surveyConstants.basics) {
+      } else if (this.props.mensCollection === surveyConstants.basics) {
         img1 = imageConstants.bas1;
         img2 = imageConstants.bas2;
-      }
-      else {
+      } else {
         img1 = imageConstants.placehold1;
         img2 = imageConstants.placehold2;
       }

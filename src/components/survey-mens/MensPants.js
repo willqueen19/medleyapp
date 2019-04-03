@@ -39,6 +39,7 @@ class MensPants extends Component {
   selectImgs() {
     var img1;
     var img2;
+    // TODO modern classic, trend and divided need to be added (premium quality and conscious as well?)
       if (this.props.mensCollection === surveyConstants.hm_men) {
         if (this.props.shirtType === surveyConstants.long_sleeve)
         {

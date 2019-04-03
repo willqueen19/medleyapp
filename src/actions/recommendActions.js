@@ -19,27 +19,24 @@ export function getClothingItem(item, gender, collection) {
     } else if (collection === surveyConstants.conscious) {
         collectionString = queryConstants.qualities + collection;
     } else if (collection === surveyConstants.premium_quality) {
-        // TODO fix
-        collectionString = queryConstants.qualities + collection;
+        collectionString = queryConstants.qualities + surveyConstants.premium_quality;
     } else if (collection === surveyConstants.trend) {
         collectionString = queryConstants.concepts + collection;
     } else if (collection === surveyConstants.divided) {
         collectionString = queryConstants.concepts + collection;
+    } else if (collection === surveyConstants.logg) {
+        collectionString = queryConstants.concepts + collection;
     }
     //mens only collections
     if (collection === surveyConstants.hm_men) {
-        collectionString = queryConstants.concepts + collection;
-    } else if (collection === surveyConstants.logg) {
-        collectionString = queryConstants.concepts + collection;
+        // TODO fix
+        collectionString = queryConstants.concepts + 'h' + queryConstants.concepts + collection;
     } else if (collection === surveyConstants.basics) {
         collectionString = queryConstants.concepts + collection;
     }
     //womens only collections
     if (collection === surveyConstants.party) {
         collectionString = queryConstants.contexts + collection;
-    } else if (collection === surveyConstants.logg) {
-        // this has been switched to logg
-        collectionString = queryConstants.concepts + collection;
     }
 
     if (item === surveyConstants.shirt) {
@@ -70,7 +67,21 @@ export function getClothingItem(item, gender, collection) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", queryConstants.xRapidAPIKey)
             .end(function (result) {
-                console.log('result', result.body.results);
+                /*
+                //console.log('result', result.body.results);
+                var results = result.body.results;
+                // premium quality needs to be filtered, will move to own function after
+                if (collection === surveyConstants.premium_quality) {
+                    var i;
+                    var premQualItems = [];
+                    for (i = 0; i < results.length; i++) {
+                        if (results[i].markers.text === surveyConstants.premium_quality) {
+                            premQualItems.push(results[i]);
+                        }
+                    }
+                    results = premQualItems;
+                }
+                */
                 return dispatch({type: actionType, itemType: item, payload: result.body.results});
             });
 
