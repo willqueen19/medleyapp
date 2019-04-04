@@ -201,7 +201,7 @@ class Recommend extends Component {
             }
             cardDeck = <div>
                 <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
-                <Link to="/sizing/">
+                <Link to="/order/">
                     <Button className="tryOn">Try on these items</Button>
                 </Link>
             </div>
