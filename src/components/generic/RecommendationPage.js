@@ -35,6 +35,7 @@ class Recommend extends Component {
 
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
+        this.filterByColor = this.filterByColor.bind(this);
     }
 
     componentWillMount() {
@@ -62,6 +63,78 @@ class Recommend extends Component {
             shirtType: this.props.shirtType,
             pantsType: this.props.pantsType
         });
+    }
+
+
+    filterByColor(items) {
+        var filteredItems = [];
+        if (this.props.gender === surveyConstants.mens) {
+            if (this.props.color === surveyConstants.bright_colors) {
+                var x;
+                for (x = 0; x < items.length; x++) {
+                    var y;
+                    for (y = 0; y < items[x].length; x++) {
+                        if (surveyConstants.mensLight.includes(items[x][y].articles.color.text)) {
+                            filteredItems.push(items[x][y]);
+                        }
+                    }
+                }
+            } else if (this.props.color === surveyConstants.dark_colors) {
+                var x;
+                for (x = 0; x < items.length; x++) {
+                    var y;
+                    for (y = 0; y < items[x].length; x++) {
+                        if (surveyConstants.mensDark.includes(items[x][y].articles.color.text)) {
+                            filteredItems.push(items[x][y]);
+                        }
+                    }
+                }
+            } else if (this.props.color === surveyConstants.patterns) {
+                var x;
+                for (x = 0; x < items.length; x++) {
+                    var y;
+                    for (y = 0; y < items[x].length; x++) {
+                        if (surveyConstants.mensPatterned.includes(items[x][y].articles.color.text)) {
+                            filteredItems.push(items[x][y]);
+                        }
+                    }
+                }
+            }
+        } else if (this.props.gender === surveyConstants.womens) {
+            if (this.props.color === surveyConstants.bright_colors) {
+                var x;
+                for (x = 0; x < items.length; x++) {
+                    var y;
+                    for (y = 0; y < items[x].length; x++) {
+                        if (surveyConstants.womensLight.includes(items[x][y].articles.color.text)) {
+                            filteredItems.push(items[x][y]);
+                        }
+                    }
+                }
+            } else if (this.props.color === surveyConstants.dark_colors) {
+                var x;
+                for (x = 0; x < items.length; x++) {
+                    var y;
+                    for (y = 0; y < items[x].length; x++) {
+                        if (surveyConstants.womensDark.includes(items[x][y].articles.color.text)) {
+                            filteredItems.push(items[x][y]);
+                        }
+                    }
+                }
+            } else if (this.props.color === surveyConstants.patterns) {
+                var x;
+                for (x = 0; x < items.length; x++) {
+                    var y;
+                    for (y = 0; y < items[x].length; x++) {
+                        if (surveyConstants.womensPattered.includes(items[x][y].articles.color.text)) {
+                            filteredItems.push(items[x][y]);
+                        }
+                    }
+                }
+            }
+        }
+
+        return filteredItems;
     }
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
@@ -173,17 +246,15 @@ class Recommend extends Component {
             filteredItems[1] = filteredPants
         }
 
-        if (color = surveyConstants.dark_colors) {
+        var colorFiltered = this.filterByColor(filteredItems);
 
-        }
+
 
         //Color Filtering
 
 
-        return [filteredItems, itemsLoaded];
+        return [colorFiltered, itemsLoaded];
     }
-
-
 
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
