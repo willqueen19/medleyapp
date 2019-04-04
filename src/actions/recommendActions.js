@@ -64,7 +64,7 @@ export function getClothingItem(item, gender, collection) {
         unirest.get(requestString)
             .header("X-RapidAPI-Key", queryConstants.xRapidAPIKey)
             .end(function (result) {
-                return dispatch({type: actionType, itemType: item, payload: result.body.results});
+                return dispatch({type: actionType, payload: result.body.results});
             });
 
 
