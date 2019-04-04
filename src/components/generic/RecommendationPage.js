@@ -35,6 +35,7 @@ class Recommend extends Component {
         };
 
         this.getCorrectItems = this.getCorrectItems.bind(this);
+        this.itemsLoaded = this.itemsLoaded.bind(this);
         this.filterMensShirtsPants = this.filterMensShirtsPants.bind(this);
         this.filterComplexColors = this.filterComplexColors.bind(this);
         this.filterSimpleColors = this.filterSimpleColors.bind(this);
@@ -69,11 +70,103 @@ class Recommend extends Component {
         });
     }
 
-    getCorrectItems(items) {
+    getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories) {
+        var gender = this.state.gender;
+        var collection = this.state.collection;
+        var womensClothingType = this.props.womenClothingType;
+        var shirtType = this.props.shirtType;
+        var pantsType = this.props.pantsType;
+        var color = this.props.color;
+        var itemsForCollection = [];
+        if (gender === surveyConstants.mens) {
+
+            if ([surveyConstants.premium_quality, surveyConstants.trend].includes(collection)) {
+                itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
+            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
+                itemsForCollection = [shirts, pants, outerwear];
+            } else if ([surveyConstants.logg, surveyConstants.basics].includes(collection)) {
+                itemsForCollection = [shirts, pants];
+            }
+        } else if (gender === surveyConstants.womens) {
+            var mainItems = [];
+            if (womensClothingType === surveyConstants.one_piece) {
+                mainItems = [onePieces];
+            } else if (womensClothingType === surveyConstants.two_piece) {
+                mainItems = [shirts, pants];
+            }
+
+            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.divided].includes(collection)) {
+                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
+            } else if ([surveyConstants.modern_classic, surveyConstants.logg].includes(collection)) {
+                itemsForCollection = mainItems.concat([outerwear]);
+            } else if ([surveyConstants.party].includes(collection)) {
+                itemsForCollection = mainItems.concat([outerwear, shoes]);
+            } else if ([surveyConstants.conscious].includes(collection)) {
+                itemsForCollection = mainItems.concat([outerwear, accessories]);
+            }
+        }
+
+        return itemsForCollection;
+    }
+
+    itemsLoaded(items) {
+        var numPopArrays = 0;
+        var n;
+        for (n = 0; n < items.length; n++) {
+            if (items[n].length > 0) {
+                numPopArrays += 1;
+            }
+        }
+
+        if (numPopArrays === items.length) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
     filterMensShirtsPants(items) {
+        var shirtType = this.props.shirtType;
+        var pantsType = this.props.pantsType;
+        var filteredItems = items;
+        var shirtsTypeFilterArray;
+        var pantsTypeFilterArray;
+        if (shirtType === surveyConstants.short_sleeve) {
+            shirtsTypeFilterArray = surveyConstants.shortSleeveCats;
+        } else if (shirtType === surveyConstants.long_sleeve) {
+            shirtsTypeFilterArray = surveyConstants.longSleeveCats;
+        }
+
+        if (pantsType === surveyConstants.shorts) {
+            pantsTypeFilterArray = surveyConstants.shortsCats;
+        } else if (pantsType === surveyConstants.pants) {
+            pantsTypeFilterArray = surveyConstants.pantsCats;
+        }
+
+        var s;
+        var shirtsForFilter = filteredItems[0];
+        var filteredShirts = [];
+        for (s = 0; s < shirtsForFilter.length; s++) {
+            var shirt = shirtsForFilter[s];
+            if (shirt.mainCategoryCode && shirtsTypeFilterArray.includes(shirt.mainCategoryCode)) {
+                filteredShirts.push(shirt);
+            }
+        }
+        filteredItems[0] = filteredShirts;
+
+        var p;
+        var pantsForFilter = filteredItems[1];
+        var filteredPants = [];
+        for (p = 0; p < pantsForFilter.length; p++) {
+            var pant = pantsForFilter[p];
+            if (pantsTypeFilterArray.includes(pant.mainCategoryCode)) {
+                filteredPants.push(pant);
+            }
+        }
+        filteredItems[1] = filteredPants;
+
+        return filteredItems;
 
     }
 
@@ -108,7 +201,20 @@ class Recommend extends Component {
             }
         }
 
+
         var filteredItems = items;
+        // TODO Filter by filtering indexes in the following array
+        /*
+        var filterIndexes = [];
+
+        if (gender === surveyConstants.mens) {
+
+        } else if (gender === surveyConstants.womens) {
+
+        }
+        */
+
+
         var numToFilter;
         if (gender === surveyConstants.mens) {
             if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
@@ -125,6 +231,7 @@ class Recommend extends Component {
             }
 
         }
+
 
         var x;
         for (x = 0; x < numToFilter; x++) {
@@ -149,99 +256,16 @@ class Recommend extends Component {
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
     getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
         var gender = this.state.gender;
-        var collection = this.state.collection;
-        var womensClothingType = this.props.womenClothingType;
-        var shirtType = this.props.shirtType;
-        var pantsType = this.props.pantsType;
-        var color = this.props.color;
-        var itemsForCollection = [];
+        var itemsForCollection = this.getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories)
+        var itemsLoaded = this.itemsLoaded(itemsForCollection);
 
-        // SELECTING CORRECT ITEMS FOR COLLECTION
-        if (gender === surveyConstants.mens) {
-
-            if ([surveyConstants.premium_quality, surveyConstants.trend].includes(collection)) {
-                itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
-            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
-                itemsForCollection = [shirts, pants, outerwear];
-            } else if ([surveyConstants.logg, surveyConstants.basics].includes(collection)) {
-                itemsForCollection = [shirts, pants];
-            }
-        } else if (gender === surveyConstants.womens) {
-            var mainItems = [];
-            if (womensClothingType === surveyConstants.one_piece) {
-                mainItems = [onePieces];
-            } else if (womensClothingType === surveyConstants.two_piece) {
-                mainItems = [shirts, pants];
-            }
-
-            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.divided].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
-            } else if ([surveyConstants.modern_classic, surveyConstants.logg].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear]);
-            } else if ([surveyConstants.party].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear, shoes]);
-            } else if ([surveyConstants.conscious].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear, accessories]);
-            }
-        }
-
-        var numPopArrays = 0;
-        var n;
-        for (n = 0; n < itemsForCollection.length; n++) {
-            if (itemsForCollection[n].length > 0) {
-                numPopArrays += 1;
-            }
-        }
-
-        var totalPopArrays = itemsForCollection.length;
-        var itemsLoaded = false;
-        if (numPopArrays === totalPopArrays) {
-            itemsLoaded = true
-        }
-
-        //Mens clothing filtering
-        let filteredItems = itemsForCollection;
+        var filteredItems = itemsForCollection;
         if (itemsLoaded === true && gender === surveyConstants.mens) {
-            var shirtsTypeFilterArray;
-            var pantsTypeFilterArray;
-            if (shirtType === surveyConstants.short_sleeve) {
-                shirtsTypeFilterArray = surveyConstants.shortSleeveCats;
-            } else if (shirtType === surveyConstants.long_sleeve) {
-                shirtsTypeFilterArray = surveyConstants.longSleeveCats;
-            }
-
-            if (pantsType === surveyConstants.shorts) {
-                pantsTypeFilterArray = surveyConstants.shortsCats;
-            } else if (pantsType === surveyConstants.pants) {
-                pantsTypeFilterArray = surveyConstants.pantsCats;
-            }
-
-            var s;
-            var shirtsForFilter = filteredItems[0];
-            var filteredShirts = [];
-            for (s = 0; s < shirtsForFilter.length; s++) {
-                var shirt = shirtsForFilter[s];
-                if (shirt.mainCategoryCode && shirtsTypeFilterArray.includes(shirt.mainCategoryCode)) {
-                    filteredShirts.push(shirt);
-                }
-            }
-            filteredItems[0] = filteredShirts;
-
-            var p;
-            var pantsForFilter = filteredItems[1];
-            var filteredPants = [];
-            for (p = 0; p < pantsForFilter.length; p++) {
-                var pant = pantsForFilter[p];
-                if (pantsTypeFilterArray.includes(pant.mainCategoryCode)) {
-                    filteredPants.push(pant);
-                }
-            }
-            filteredItems[1] = filteredPants
+            filteredItems = this.filterMensShirtsPants(filteredItems);
         }
 
         var colorFiltered = filteredItems;
         if (itemsLoaded === true) {
-            console.log('items are loaded so color is being filtered');
             colorFiltered = this.filterSimpleColors(filteredItems);
         }
 
