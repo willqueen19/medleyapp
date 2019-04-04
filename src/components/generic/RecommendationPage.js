@@ -16,6 +16,7 @@ import Spinner from "reactstrap/es/Spinner";
 import {trend} from "../../constants/survey-constants";
 
 import _ from 'lodash';
+import {womensLight} from "../../constants/survey-constants";
 
 
 class Recommend extends Component {
@@ -33,6 +34,10 @@ class Recommend extends Component {
             pantsType: null
         };
 
+        this.getCorrectItems = this.getCorrectItems.bind(this);
+        this.filterMensShirtsPants = this.filterMensShirtsPants.bind(this);
+        this.filterComplexColors = this.filterComplexColors.bind(this);
+        this.filterSimpleColors = this.filterSimpleColors.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
         this.getRandomInt = this.getRandomInt.bind(this);
     }
@@ -64,6 +69,83 @@ class Recommend extends Component {
         });
     }
 
+    getCorrectItems(items) {
+
+    }
+
+    filterMensShirtsPants(items) {
+
+    }
+
+    filterComplexColors(items) {
+
+    }
+
+
+    filterSimpleColors(items) {
+        var gender = this.state.gender;
+        var collection = this.state.collection;
+        var color = this.props.color;
+        var womensClothingType = this.props.womenClothingType;
+        var colors;
+        if (color === surveyConstants.bright_colors) {
+            if (gender === surveyConstants.mens) {
+                colors = surveyConstants.mensLight;
+            } else if (gender === surveyConstants.womens) {
+                colors = surveyConstants.womensLight;
+            }
+        } else if (color === surveyConstants.dark_colors) {
+            if (gender === surveyConstants.mens) {
+                colors = surveyConstants.mensDark;
+            } else if (gender === surveyConstants.womens) {
+                colors = surveyConstants.womensDark;
+            }
+        } else if (color === surveyConstants.patterns) {
+            if (gender === surveyConstants.mens) {
+                colors = surveyConstants.mensPatterned;
+            } else if (gender === surveyConstants.womens) {
+                colors = surveyConstants.womensPattered;
+            }
+        }
+
+        var filteredItems = items;
+        var numToFilter;
+        if (gender === surveyConstants.mens) {
+            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
+                numToFilter = 3;
+            } else if ([surveyConstants.logg, surveyConstants.basics].includes(collection)) {
+                numToFilter = 2
+            }
+        } else if (gender === surveyConstants.womens) {
+            if (womensClothingType === surveyConstants.one_piece) {
+                numToFilter = 2;
+
+            } else if (womensClothingType === surveyConstants.two_piece) {
+                numToFilter = 3;
+            }
+
+        }
+
+        var x;
+        for (x = 0; x < numToFilter; x++) {
+            var filteredItemsForIndex = [];
+            var y;
+            for (y = 0; y < items[x].length; y++) {
+                var item = items[x][y];
+                if (colors.includes(item.articles[0].color.text)) {
+                    filteredItemsForIndex.push(items[x][y]);
+                }
+            }
+            filteredItems[x] = filteredItemsForIndex;
+        }
+
+        // TODO need to implement checker to ensure no empty arrays are passed on
+        // TODO need to implement exact rule
+
+        console.log('filteredItems', filteredItems);
+        return filteredItems;
+    }
+
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
     getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
         var gender = this.state.gender;
@@ -76,22 +158,12 @@ class Recommend extends Component {
 
         // SELECTING CORRECT ITEMS FOR COLLECTION
         if (gender === surveyConstants.mens) {
-            if (collection === surveyConstants.premium_quality) {
+
+            if ([surveyConstants.premium_quality, surveyConstants.trend].includes(collection)) {
                 itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
-            } else if (collection === surveyConstants.modern_classic) {
+            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
                 itemsForCollection = [shirts, pants, outerwear];
-            } else if (collection === surveyConstants.conscious) {
-                itemsForCollection = [shirts, pants, outerwear];
-            } else if (collection === surveyConstants.hm_men) {
-                itemsForCollection = [shirts, pants, outerwear];
-            } else if (collection === surveyConstants.trend) {
-                itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
-            } else if (collection === surveyConstants.divided) {
-                itemsForCollection = [shirts, pants, outerwear];
-            } else if (collection === surveyConstants.logg) {
-                itemsForCollection = [shirts, pants];
-            } else if (collection === surveyConstants.basics) {
-                // fixed but needs resizing due to image pixelation
+            } else if ([surveyConstants.logg, surveyConstants.basics].includes(collection)) {
                 itemsForCollection = [shirts, pants];
             }
         } else if (gender === surveyConstants.womens) {
@@ -102,20 +174,14 @@ class Recommend extends Component {
                 mainItems = [shirts, pants];
             }
 
-            if (collection === surveyConstants.party) {
+            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.divided].includes(collection)) {
+                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
+            } else if ([surveyConstants.modern_classic, surveyConstants.logg].includes(collection)) {
+                itemsForCollection = mainItems.concat([outerwear]);
+            } else if ([surveyConstants.party].includes(collection)) {
                 itemsForCollection = mainItems.concat([outerwear, shoes]);
-            } else if (collection === surveyConstants.modern_classic) {
-                itemsForCollection = mainItems.concat([outerwear]);
-            } else if (collection === surveyConstants.conscious) {
+            } else if ([surveyConstants.conscious].includes(collection)) {
                 itemsForCollection = mainItems.concat([outerwear, accessories]);
-            } else if (collection === surveyConstants.premium_quality) {
-                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
-            } else if (collection === surveyConstants.trend) {
-                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
-            } else if (collection === surveyConstants.divided) {
-                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
-            } else if (collection === surveyConstants.logg) {
-                itemsForCollection = mainItems.concat([outerwear]);
             }
         }
 
@@ -173,17 +239,14 @@ class Recommend extends Component {
             filteredItems[1] = filteredPants
         }
 
-        if (color = surveyConstants.dark_colors) {
-
+        var colorFiltered = filteredItems;
+        if (itemsLoaded === true) {
+            console.log('items are loaded so color is being filtered');
+            colorFiltered = this.filterSimpleColors(filteredItems);
         }
 
-        //Color Filtering
-
-
-        return [filteredItems, itemsLoaded];
+        return [colorFiltered, itemsLoaded];
     }
-
-
 
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
