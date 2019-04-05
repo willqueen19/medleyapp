@@ -26,12 +26,12 @@ class Recommend extends Component {
 
         this.state = {
             items: [],
-            itemIndexes: [],
             gender: null,
             collection: null,
             womensClothingType: null,
             shirtType: null,
-            pantsType: null
+            pantsType: null,
+            colorFilterComplex: false
         };
 
         this.getCorrectItems = this.getCorrectItems.bind(this);
@@ -40,7 +40,6 @@ class Recommend extends Component {
         this.filterComplexColors = this.filterComplexColors.bind(this);
         this.filterSimpleColors = this.filterSimpleColors.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
-        this.getRandomInt = this.getRandomInt.bind(this);
     }
 
     componentWillMount() {
@@ -71,20 +70,23 @@ class Recommend extends Component {
     }
 
     getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories) {
+        console.log('SHIRTS', shirts);
+        console.log('PANTS', pants);
+        console.log('ONEPIECES', onePieces);
+        console.log('OUTERWEAR', outerwear);
+        console.log('SHOES', shoes);
+        console.log('ACCESSORIES', accessories);
         var gender = this.state.gender;
         var collection = this.state.collection;
         var womensClothingType = this.props.womenClothingType;
-        var shirtType = this.props.shirtType;
-        var pantsType = this.props.pantsType;
-        var color = this.props.color;
         var itemsForCollection = [];
         if (gender === surveyConstants.mens) {
 
             if ([surveyConstants.premium_quality, surveyConstants.trend].includes(collection)) {
                 itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
-            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
+            } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided, surveyConstants.logg].includes(collection)) {
                 itemsForCollection = [shirts, pants, outerwear];
-            } else if ([surveyConstants.logg, surveyConstants.basics].includes(collection)) {
+            } else if ([surveyConstants.basics].includes(collection)) {
                 itemsForCollection = [shirts, pants];
             }
         } else if (gender === surveyConstants.womens) {
@@ -127,46 +129,50 @@ class Recommend extends Component {
     }
 
     filterMensShirtsPants(items) {
-        var shirtType = this.props.shirtType;
-        var pantsType = this.props.pantsType;
-        var filteredItems = items;
-        var shirtsTypeFilterArray;
-        var pantsTypeFilterArray;
-        if (shirtType === surveyConstants.short_sleeve) {
-            shirtsTypeFilterArray = surveyConstants.shortSleeveCats;
-        } else if (shirtType === surveyConstants.long_sleeve) {
-            shirtsTypeFilterArray = surveyConstants.longSleeveCats;
-        }
-
-        if (pantsType === surveyConstants.shorts) {
-            pantsTypeFilterArray = surveyConstants.shortsCats;
-        } else if (pantsType === surveyConstants.pants) {
-            pantsTypeFilterArray = surveyConstants.pantsCats;
-        }
-
-        var s;
-        var shirtsForFilter = filteredItems[0];
-        var filteredShirts = [];
-        for (s = 0; s < shirtsForFilter.length; s++) {
-            var shirt = shirtsForFilter[s];
-            if (shirt.mainCategoryCode && shirtsTypeFilterArray.includes(shirt.mainCategoryCode)) {
-                filteredShirts.push(shirt);
+        if (this.props.gender === surveyConstants.mens) {
+            var shirtType = this.props.shirtType;
+            var pantsType = this.props.pantsType;
+            var filteredItems = items;
+            var shirtsTypeFilterArray;
+            var pantsTypeFilterArray;
+            if (shirtType === surveyConstants.short_sleeve) {
+                shirtsTypeFilterArray = surveyConstants.shortSleeveCats;
+            } else if (shirtType === surveyConstants.long_sleeve) {
+                shirtsTypeFilterArray = surveyConstants.longSleeveCats;
             }
-        }
-        filteredItems[0] = filteredShirts;
 
-        var p;
-        var pantsForFilter = filteredItems[1];
-        var filteredPants = [];
-        for (p = 0; p < pantsForFilter.length; p++) {
-            var pant = pantsForFilter[p];
-            if (pantsTypeFilterArray.includes(pant.mainCategoryCode)) {
-                filteredPants.push(pant);
+            if (pantsType === surveyConstants.shorts) {
+                pantsTypeFilterArray = surveyConstants.shortsCats;
+            } else if (pantsType === surveyConstants.pants) {
+                pantsTypeFilterArray = surveyConstants.pantsCats;
             }
-        }
-        filteredItems[1] = filteredPants;
 
-        return filteredItems;
+            var s;
+            var shirtsForFilter = filteredItems[0];
+            var filteredShirts = [];
+            for (s = 0; s < shirtsForFilter.length; s++) {
+                var shirt = shirtsForFilter[s];
+                if (shirt.mainCategoryCode && shirtsTypeFilterArray.includes(shirt.mainCategoryCode)) {
+                    filteredShirts.push(shirt);
+                }
+            }
+            filteredItems[0] = filteredShirts;
+
+            var p;
+            var pantsForFilter = filteredItems[1];
+            var filteredPants = [];
+            for (p = 0; p < pantsForFilter.length; p++) {
+                var pant = pantsForFilter[p];
+                if (pantsTypeFilterArray.includes(pant.mainCategoryCode)) {
+                    filteredPants.push(pant);
+                }
+            }
+            filteredItems[1] = filteredPants;
+
+            return filteredItems;
+        } else {
+            return items;
+        }
 
     }
 
@@ -176,11 +182,23 @@ class Recommend extends Component {
 
 
     filterSimpleColors(items) {
-        var gender = this.state.gender;
-        var collection = this.state.collection;
+        var gender = this.props.gender;
+        var collection;
         var color = this.props.color;
+        var shirtType = this.props.shirtType;
+        var pantsType = this.props.pantsType;
         var womensClothingType = this.props.womenClothingType;
         var colors;
+
+        if (gender === surveyConstants.mens) {
+            collection = this.props.mensCollection;
+        } else if (gender === surveyConstants.womens) {
+            collection = this.props.womensCollection;
+        }
+
+        console.log(collection + ', ' + color + ', ' + shirtType + ', ' + pantsType + ', ' + womensClothingType);
+
+
         if (color === surveyConstants.bright_colors) {
             if (gender === surveyConstants.mens) {
                 colors = surveyConstants.mensLight;
@@ -202,24 +220,114 @@ class Recommend extends Component {
         }
 
 
-        var filteredItems = items;
-        // TODO Filter by filtering indexes in the following array
-        /*
+        // TODO Filter by filtering indexes in the following array by way of doing for loop on this array
         var filterIndexes = [];
-
         if (gender === surveyConstants.mens) {
-
+            if (collection === surveyConstants.premium_quality) {
+                if (color === surveyConstants.bright_colors) {
+                    if (pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,2];
+                    } else {
+                        filterIndexes = [0,1,2];
+                    }
+                } else if (color === surveyConstants.dark_colors) {
+                    if (pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,2];
+                    } else {
+                        filterIndexes = [0,1,2];
+                    }
+                } else if (color === surveyConstants.patterns) {
+                    if (shirtType === surveyConstants.long_sleeve) {
+                        filterIndexes = [0];
+                    } else {
+                        filterIndexes = [];
+                    }
+                }
+            } else if (collection === surveyConstants.modern_classic) {
+                if (color === surveyConstants.bright_colors) {
+                    if (pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,2];
+                    } else {
+                        filterIndexes = [0,1,2];
+                    }
+                } else if (color === surveyConstants.dark_colors) {
+                    if (pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,2];
+                    } else {
+                        filterIndexes = [0,1,2];
+                    }
+                } else if (color === surveyConstants.patterns) {
+                    filterIndexes = [0];
+                }
+            } else if (collection === surveyConstants.conscious) {
+                if (color === surveyConstants.bright_colors) {
+                    if (pantsType === surveyConstants.pants) {
+                        filterIndexes = [0,1];
+                    } else {
+                        filterIndexes = [0];
+                    }
+                } else if (color === surveyConstants.dark_colors) {
+                    if (pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,2];
+                    } else {
+                        filterIndexes = [0,1,2];
+                    }
+                } else if (color === surveyConstants.patterns) {
+                    filterIndexes = [0];
+                }
+            } else if (collection === surveyConstants.trend) {
+                if (color === surveyConstants.bright_colors) {
+                    if (shirtType === surveyConstants.long_sleeve) {
+                        filterIndexes = [0];
+                    } else {
+                        filterIndexes = [];
+                    }
+                } else if (color === surveyConstants.dark_colors) {
+                    filterIndexes = [0,1,2];
+                } else if (color === surveyConstants.patterns) {
+                    if (shirtType === surveyConstants.short_sleeve && pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,1];
+                    } else if (shirtType === surveyConstants.long_sleeve && pantsType === surveyConstants.shorts) {
+                        filterIndexes = [1];
+                    } else if (shirtType === surveyConstants.short_sleeve && pantsType === surveyConstants.pants) {
+                        filterIndexes = [0];
+                    } else {
+                        filterIndexes = [];
+                    }
+                }
+            } else if (collection === surveyConstants.divided) {
+                filterIndexes = [0,1,2];
+            } else if (collection === surveyConstants.logg) {
+                if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                    filterIndexes = [0,1,2];
+                } else if (color === surveyConstants.patterns) {
+                    if (pantsType === surveyConstants.shorts) {
+                        filterIndexes = [0,1];
+                    } else {
+                        filterIndexes = [0];
+                    }
+                }
+            } else if (collection === surveyConstants.basics) {
+                if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                    filterIndexes = [0,1];
+                } else if (color === surveyConstants.patterns) {
+                    filterIndexes = [];
+                }
+            }
         } else if (gender === surveyConstants.womens) {
-
+            filterIndexes = [0];
         }
-        */
 
+
+
+
+        //console.log('prefilteredItems', filteredItems);
 
         var numToFilter;
         if (gender === surveyConstants.mens) {
-            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided].includes(collection)) {
+            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided, surveyConstants.logg].includes(collection)) {
                 numToFilter = 3;
-            } else if ([surveyConstants.logg, surveyConstants.basics].includes(collection)) {
+            } else if ([surveyConstants.basics].includes(collection)) {
                 numToFilter = 2
             }
         } else if (gender === surveyConstants.womens) {
@@ -234,23 +342,24 @@ class Recommend extends Component {
 
 
         var x;
-        for (x = 0; x < numToFilter; x++) {
+        for (x = 0; x < filterIndexes.length; x++) {
+            var itemsToBeFiltered = items[filterIndexes[x]];
             var filteredItemsForIndex = [];
             var y;
-            for (y = 0; y < items[x].length; y++) {
-                var item = items[x][y];
+            for (y = 0; y < itemsToBeFiltered.length; y++) {
+                var item = itemsToBeFiltered[y];
                 if (colors.includes(item.articles[0].color.text)) {
-                    filteredItemsForIndex.push(items[x][y]);
+                    filteredItemsForIndex.push(item);
                 }
             }
-            filteredItems[x] = filteredItemsForIndex;
+            items[filterIndexes[x]] = filteredItemsForIndex;
         }
 
         // TODO need to implement checker to ensure no empty arrays are passed on
         // TODO need to implement exact rule
 
-        console.log('filteredItems', filteredItems);
-        return filteredItems;
+        console.log('filteredItems', items);
+        return items;
     }
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
@@ -259,21 +368,17 @@ class Recommend extends Component {
         var itemsForCollection = this.getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories)
         var itemsLoaded = this.itemsLoaded(itemsForCollection);
 
-        var filteredItems = itemsForCollection;
-        if (itemsLoaded === true && gender === surveyConstants.mens) {
-            filteredItems = this.filterMensShirtsPants(filteredItems);
-        }
-
-        var colorFiltered = filteredItems;
+        var items = [];
         if (itemsLoaded === true) {
-            colorFiltered = this.filterSimpleColors(filteredItems);
+            var shirtsPantsFiltered = this.filterMensShirtsPants(itemsForCollection);
+            if (this.state.colorFilterComplex) {
+                items = this.filterComplexColors(shirtsPantsFiltered);
+            } else {
+                items = this.filterSimpleColors(shirtsPantsFiltered);
+            }
         }
 
-        return [colorFiltered, itemsLoaded];
-    }
-
-    getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
+        return [items, itemsLoaded];
     }
 
     render () {
