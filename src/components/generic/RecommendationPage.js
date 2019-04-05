@@ -11,20 +11,13 @@ import {dark_colors} from "../../constants/survey-constants";
 
 
 // TODO need to refresh state when new collections selected
-
-
 class Recommend extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            items: [],
-            gender: null,
             collection: null,
-            womensClothingType: null,
-            shirtType: null,
-            pantsType: null,
             colorFilterComplex: false
         };
 
@@ -37,8 +30,6 @@ class Recommend extends Component {
     }
 
     componentWillMount() {
-
-        // TODO: call function for every type of clothing, then only grab categories that have results
         var gender = this.props.gender;
         var collection;
         if (gender === surveyConstants.mens) {
@@ -55,22 +46,12 @@ class Recommend extends Component {
         this.props.actions.getClothingItem(surveyConstants.accessory, gender, collection);
 
         this.setState({
-            gender: gender,
-            collection: collection,
-            womensClothingType: this.props.womensClothingType,
-            shirtType: this.props.shirtType,
-            pantsType: this.props.pantsType
+            collection: collection
         });
     }
 
     getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories) {
-        console.log('SHIRTS', shirts);
-        console.log('PANTS', pants);
-        console.log('ONEPIECES', onePieces);
-        console.log('OUTERWEAR', outerwear);
-        console.log('SHOES', shoes);
-        console.log('ACCESSORIES', accessories);
-        var gender = this.state.gender;
+        var gender = this.props.gender;
         var collection = this.state.collection;
         var womensClothingType = this.props.womenClothingType;
         var itemsForCollection = [];
@@ -119,7 +100,6 @@ class Recommend extends Component {
         } else {
             return false;
         }
-
     }
 
     filterMensShirtsPants(items) {
@@ -167,33 +147,26 @@ class Recommend extends Component {
         } else {
             return items;
         }
-
     }
 
     filterComplexColors(items) {
-
+        // TODO write if needed
     }
 
-
     filterSimpleColors(items) {
-        var originalItems = items;
-        console.log('these are the original items in color', originalItems);
         var gender = this.props.gender;
-        var collection;
         var color = this.props.color;
         var shirtType = this.props.shirtType;
         var pantsType = this.props.pantsType;
         var womensClothingType = this.props.womenClothingType;
         var colors;
 
+        var collection;
         if (gender === surveyConstants.mens) {
             collection = this.props.mensCollection;
         } else if (gender === surveyConstants.womens) {
             collection = this.props.womensCollection;
         }
-
-        console.log(collection + ', ' + color + ', ' + shirtType + ', ' + pantsType + ', ' + womensClothingType);
-
 
         if (color === surveyConstants.bright_colors) {
             if (gender === surveyConstants.mens) {
@@ -215,9 +188,9 @@ class Recommend extends Component {
             }
         }
 
-
         // TODO Filter by filtering indexes in the following array by way of doing for loop on this array
         // TODO In most cases, indexes 1 or 2 are outerwear. Need to think about including patterns in these, might not want patterns
+        // TODO need to implement exact rule
         var filterIndexes = [];
         if (gender === surveyConstants.mens) {
             if (collection === surveyConstants.premium_quality) {
@@ -411,31 +384,6 @@ class Recommend extends Component {
             }
         }
 
-
-
-
-        //console.log('prefilteredItems', filteredItems);
-        /*
-
-        var numToFilter;
-        if (gender === surveyConstants.mens) {
-            if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided, surveyConstants.logg].includes(collection)) {
-                numToFilter = 3;
-            } else if ([surveyConstants.basics].includes(collection)) {
-                numToFilter = 2
-            }
-        } else if (gender === surveyConstants.womens) {
-            if (womensClothingType === surveyConstants.one_piece) {
-                numToFilter = 2;
-
-            } else if (womensClothingType === surveyConstants.two_piece) {
-                numToFilter = 3;
-            }
-
-        }
-        */
-
-        console.log('prefilteredItems', items);
         var itemsFiltered = items;
         var x;
         for (x = 0; x < filterIndexes.length; x++) {
@@ -451,16 +399,11 @@ class Recommend extends Component {
             itemsFiltered[filterIndexes[x]] = filteredItemsForIndex;
         }
 
-        // TODO need to implement checker to ensure no empty arrays are passed on
-        // TODO need to implement exact rule
-
-        console.log('filteredItems', itemsFiltered);
         return itemsFiltered;
     }
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
     getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
-        var gender = this.state.gender;
         var itemsForCollection = this.getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories)
         var itemsLoaded = this.itemsLoaded(itemsForCollection);
 
@@ -516,7 +459,6 @@ function mapStateToProps(state, ownProps) {
         shirtType: state.surveyReducer.shirtType,
         pantsType: state.surveyReducer.pantsType,
         womenClothingType: state.surveyReducer.womenClothingType,
-
         shirts: state.recommendReducer.shirts,
         pants: state.recommendReducer.pants,
         onePieces: state.recommendReducer.onePieces,
