@@ -51,6 +51,7 @@ class Recommend extends Component {
     }
 
     getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories) {
+        // TODO removed accessories from mens premium quality, mens trend, womens premium quality, womens trend, womens divided, womens conscious
         var gender = this.props.gender;
         var collection = this.state.collection;
         var womensClothingType = this.props.womenClothingType;
@@ -58,7 +59,7 @@ class Recommend extends Component {
         if (gender === surveyConstants.mens) {
 
             if ([surveyConstants.premium_quality, surveyConstants.trend].includes(collection)) {
-                itemsForCollection = [shirts, pants, outerwear, shoes, accessories];
+                itemsForCollection = [shirts, pants, outerwear, shoes];
             } else if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.divided, surveyConstants.logg].includes(collection)) {
                 itemsForCollection = [shirts, pants, outerwear];
             } else if ([surveyConstants.basics].includes(collection)) {
@@ -71,15 +72,14 @@ class Recommend extends Component {
             } else if (womensClothingType === surveyConstants.two_piece) {
                 mainItems = [shirts, pants];
             }
-
             if ([surveyConstants.premium_quality, surveyConstants.trend, surveyConstants.divided].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear, shoes, accessories]);
+                itemsForCollection = mainItems.concat([outerwear, shoes]);
             } else if ([surveyConstants.modern_classic, surveyConstants.logg].includes(collection)) {
                 itemsForCollection = mainItems.concat([outerwear]);
             } else if ([surveyConstants.party].includes(collection)) {
                 itemsForCollection = mainItems.concat([shoes]);
             } else if ([surveyConstants.conscious].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear, accessories]);
+                itemsForCollection = mainItems.concat([outerwear]);
             }
         }
 
@@ -421,7 +421,6 @@ class Recommend extends Component {
     }
 
     render () {
-
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
         var cardDeck;
 
@@ -438,7 +437,9 @@ class Recommend extends Component {
                 </Link>
             </div>
         } else {
-            cardDeck = <Spinner style={{marginTop: '200px', width: '10rem', height: '10rem'}} color="light"/>;
+            cardDeck = <div style={{'paddingTop': '18%'}}>
+                <Spinner style={{width: '10rem', height: '10rem'}} color="light"/>
+            </div>;
         }
 
         return(
