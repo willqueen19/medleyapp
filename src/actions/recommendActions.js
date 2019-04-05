@@ -29,8 +29,8 @@ export function getClothingItem(item, gender, collection) {
     }
     //mens only collections
     if (collection === surveyConstants.hm_men) {
-        // TODO fix
-        collectionString = queryConstants.concepts + 'h' + queryConstants.concepts + collection;
+        // TODO for all intents and purposes removed
+        collectionString = queryConstants.concepts + collection;
     } else if (collection === surveyConstants.basics) {
         collectionString = queryConstants.concepts + collection;
     }
@@ -74,5 +74,15 @@ export function getClothingItem(item, gender, collection) {
 export function setCurrentOutfit(item, itemKey) {
     return function (dispatch) {
         return dispatch({type: actionTypes.SET_CURRENT_OUTFIT, item: item, itemKey: itemKey});
+    }
+}
+
+export function callThisFunction() {
+    return 'hi there';
+}
+
+export function getFilterIndexes(gender, collection, color, shirtType, pantsType, womensClothingType) {
+    return {
+
     }
 }

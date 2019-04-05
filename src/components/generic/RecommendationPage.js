@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
-//import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, CardDeck } from "reactstrap";
 import RecCard from './RecommendationCard.js';
-import placeholdImg from '../../assets/MW-1.jpeg';
-import placeholdLogo from '../../assets/placeHoldLogo.svg'
-import hmLogo from '../../assets/hm-logo.png'
 import {bindActionCreators} from "redux";
 import * as recommendationActions from "../../actions/recommendActions";
 import {connect} from "react-redux";
 import * as surveyConstants from '../../constants/survey-constants';
-import {shirt} from "../../constants/survey-constants";
 import Spinner from "reactstrap/es/Spinner";
-import {trend} from "../../constants/survey-constants";
+import {dark_colors} from "../../constants/survey-constants";
 
-import _ from 'lodash';
-import {womensLight} from "../../constants/survey-constants";
+
+// TODO need to refresh state when new collections selected
 
 
 class Recommend extends Component {
@@ -102,7 +96,7 @@ class Recommend extends Component {
             } else if ([surveyConstants.modern_classic, surveyConstants.logg].includes(collection)) {
                 itemsForCollection = mainItems.concat([outerwear]);
             } else if ([surveyConstants.party].includes(collection)) {
-                itemsForCollection = mainItems.concat([outerwear, shoes]);
+                itemsForCollection = mainItems.concat([shoes]);
             } else if ([surveyConstants.conscious].includes(collection)) {
                 itemsForCollection = mainItems.concat([outerwear, accessories]);
             }
@@ -182,6 +176,8 @@ class Recommend extends Component {
 
 
     filterSimpleColors(items) {
+        var originalItems = items;
+        console.log('these are the original items in color', originalItems);
         var gender = this.props.gender;
         var collection;
         var color = this.props.color;
@@ -221,6 +217,7 @@ class Recommend extends Component {
 
 
         // TODO Filter by filtering indexes in the following array by way of doing for loop on this array
+        // TODO In most cases, indexes 1 or 2 are outerwear. Need to think about including patterns in these, might not want patterns
         var filterIndexes = [];
         if (gender === surveyConstants.mens) {
             if (collection === surveyConstants.premium_quality) {
@@ -315,13 +312,110 @@ class Recommend extends Component {
                 }
             }
         } else if (gender === surveyConstants.womens) {
-            filterIndexes = [];
+            if (collection === surveyConstants.party) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    filterIndexes = [0];
+                } else if (womensClothingType === surveyConstants.two_piece || color === surveyConstants.dark_colors) {
+                    if (color === surveyConstants.bright_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0];
+                    }
+                }
+            } else if (collection === surveyConstants.modern_classic) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1,2];
+                    }
+                }
+            } else if (collection === surveyConstants.conscious) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1,2];
+                    }
+                }
+            } else if (collection === surveyConstants.premium_quality) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors) {
+                        filterIndexes = [1];
+                    } else if (color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0];
+                    }
+                }
+            } else if (collection === surveyConstants.trend) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1,2];
+                    }
+                }
+            } else if (collection === surveyConstants.divided) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1,2];
+                    }
+                }
+            } else if (collection === surveyConstants.logg) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors || surveyConstants === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1,2];
+                    }
+                }
+            }
         }
 
 
 
 
         //console.log('prefilteredItems', filteredItems);
+        /*
 
         var numToFilter;
         if (gender === surveyConstants.mens) {
@@ -339,11 +433,13 @@ class Recommend extends Component {
             }
 
         }
+        */
 
-
+        console.log('prefilteredItems', items);
+        var itemsFiltered = items;
         var x;
         for (x = 0; x < filterIndexes.length; x++) {
-            var itemsToBeFiltered = items[filterIndexes[x]];
+            var itemsToBeFiltered = itemsFiltered[filterIndexes[x]];
             var filteredItemsForIndex = [];
             var y;
             for (y = 0; y < itemsToBeFiltered.length; y++) {
@@ -352,14 +448,14 @@ class Recommend extends Component {
                     filteredItemsForIndex.push(item);
                 }
             }
-            items[filterIndexes[x]] = filteredItemsForIndex;
+            itemsFiltered[filterIndexes[x]] = filteredItemsForIndex;
         }
 
         // TODO need to implement checker to ensure no empty arrays are passed on
         // TODO need to implement exact rule
 
-        console.log('filteredItems', items);
-        return items;
+        console.log('filteredItems', itemsFiltered);
+        return itemsFiltered;
     }
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
@@ -382,6 +478,7 @@ class Recommend extends Component {
     }
 
     render () {
+
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
         var cardDeck;
 

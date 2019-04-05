@@ -62,6 +62,8 @@ class RecommendationCard extends Component {
 
   render () {
 
+      // TODO add number of items in array to card, so user has idea of the selection
+
       var keyValue = this.props.keyValue;
       var item = this.state.item;
       var itemImage = item.images[0].url;
