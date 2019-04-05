@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from '../generic/TwoSurveyCard.js';
+import { Container, Row, Col } from 'reactstrap';
 import img1 from '../../assets/MShirt-1.jpeg';
 import img2 from '../../assets/MShirt-2.jpeg';
 
@@ -64,13 +65,15 @@ class MensShirts extends Component {
   render () {
     var imgs = this.selectImgs();
     return (
-      <div className="survey survey2">
+      <Container className="survey survey2">
+      <Row>
         <h1>What style of shirt do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
           <SurveyCard surveyImage={imgs[0]} surveyTitle={"Long sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectLongSleeve}/>
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Short sleeve"} surveyNext={'/men/pants'} passedFunction={this.selectShortSleeve}/>
         </CardDeck>
-      </div>
+        </Row>
+      </Container>
     )
   }
 }

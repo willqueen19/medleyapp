@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from '../generic/ThreeSurveyCard.js';
+import { Container, Row, Col } from 'reactstrap';
 import img1 from '../../assets/WVal-1.jpeg';
 import img2 from '../../assets/WVal-2.jpeg';
 import img3 from '../../assets/WVal-3.jpeg';
@@ -36,14 +37,16 @@ class WomensValues extends Component {
 
   render () {
     return (
-      <div className="survey survey3">
+      <Container className="survey survey3">
+      <Row>
         <h1>Which best describes you?</h1>
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/women/type'} passedFunction={this.selectSustainable} />
           <SurveyCard surveyImage={img2} surveyTitle={"I prefer to splurge for luxury quality"} surveyNext={'/women/type'} passedFunction={this.selectLuxury}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/women/style'}/>
         </CardDeck>
-      </div>
+        </Row>
+      </Container>
     )
   }
 }

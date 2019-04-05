@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import SurveyCard from './TwoSurveyCard.js';
 import womensImg from '../../assets/MW-1.jpeg';
 import mensImg from '../../assets/MW-2.jpeg';
@@ -37,13 +38,13 @@ class SurveyMensWomens extends Component {
   render () {
 
     return (
-      <div className="survey survey2">
+      <Container className="survey survey2">
         <h1 onClick={(e) => this.selectGender(e, 'mens')}>Choose a Department</h1>
-        <CardDeck className="carddeck carddeck2">
+        <CardDeck className="carddeck carddeck2 row">
           <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} passedFunction={this.selectWomens}/>
           <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'} passedFunction={this.selectMens}/>
         </CardDeck>
-      </div>
+      </Container>
     )
   }
 }

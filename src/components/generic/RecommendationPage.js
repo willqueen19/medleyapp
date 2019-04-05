@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from "reactstrap";
+import { Container, Row, Col } from 'reactstrap';
 import RecCard from './RecommendationCard.js';
 import placeholdImg from '../../assets/MW-1.jpeg';
 import placeholdLogo from '../../assets/placeHoldLogo.svg'
@@ -210,10 +211,12 @@ class Recommend extends Component {
         }
 
         return(
-          <div className="recommendations">
+          <Container className="recommendations">
+          <Row>
             <h1>Here's what we found for you</h1>
               {cardDeck}
-          </div>
+              </Row>
+          </Container>
         )
     }
 }

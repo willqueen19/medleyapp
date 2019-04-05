@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from '../generic/ThreeSurveyCard.js';
+import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import _ from 'lodash';
@@ -139,14 +140,16 @@ class WomensColors extends Component {
     var imgs = this.selectImgs();
 
     return (
-      <div className="survey survey3">
+      <Container className="survey survey3">
+      <Row>
         <h1>What do you prefer?</h1>
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={imgs[0]} surveyTitle={"Bright Colors"} surveyNext={'/recommend'} passedFunction={this.selectBright()}/>
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Dark Colors"} surveyNext={'/recommend'} passedFunction={this.selectDark}/>
           <SurveyCard surveyImage={imgs[2]} surveyTitle={"Patterns"}surveyNext={'/recommend'} passedFunction={this.selectPattern()}/>
         </CardDeck>
-      </div>
+        </Row>
+      </Container>
     )
   }
 }

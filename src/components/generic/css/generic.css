@@ -2,6 +2,7 @@
 nav {
   background-color: black;
   color: white;
+  height: 15%;
 }
 
 nav img {
@@ -19,13 +20,30 @@ nav a:hover {
 
 /* Main body */
 html, body, div#root, div.App {
-  height: 100%;
+  height: 100vh;
   background-color: #303030;
 }
 
 .app-body {
+  height: 85%;
   background-color: #303030;
 }
+
+div.container, div.row {
+  height: 100%;
+}
+
+div.carddeck, div.card-deck, div.col, div.card {
+  height: 100%;
+}
+div.card img {
+  height:90%;
+  width: auto !important;
+  position:absolute;
+z-index:1;
+
+}
+
 /* Landing page */
 div.landing {
   color: #f88788;
@@ -61,11 +79,11 @@ div.card-deck .card {
 }
 
 div.card-deck .card .card-title {
-  margin: 0px;
+  /*margin: 0px;*/
   font-weight: bold;
 }
 
-/* Survey Cards */
+/* Survey Cards
 div.carddeck2 {
   margin: 25px 250px 0px 250px;
 }
@@ -82,12 +100,14 @@ div.carddeck3 .card3 {
     margin: 0px 50px;
 }
 
+*/
+
 div.survey {
   color: #fff;
   padding: 25px 0;
 }
 
-/* Recommendation Cards */
+/* Recommendation Cards
 div.carddeckRec {
   margin: 25px 100px 0px 100px;
 }
@@ -95,6 +115,7 @@ div.carddeckRec {
 div.carddeckRec .cardRec {
       margin: 0px 25px;
 }
+*/
 
 div.recommendations {
   color: #fff;

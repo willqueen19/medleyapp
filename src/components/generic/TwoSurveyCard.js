@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
 import { Card, Button, CardImg, CardTitle, CardText,
   CardSubtitle, CardBody } from 'reactstrap';
 
@@ -31,13 +32,15 @@ class TwoSurveyCard extends Component {
     }
 
     return (
+      <Col>
         <Card className="card2" onClick={ ()=>this.cardClicked(this.props.surveyNext)}>
-          <CardImg top width="100%" src={this.props.surveyImage} alt="Card image cap" />
+          <CardImg top src={this.props.surveyImage} alt="Card image cap" />
           <CardBody>
             <CardTitle>{this.props.surveyTitle}</CardTitle>
             <CardText>{this.props.surveySubtitle}</CardText>
           </CardBody>
         </Card>
+        </Col>
     )
   }
 }
