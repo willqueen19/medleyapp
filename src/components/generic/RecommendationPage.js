@@ -315,7 +315,7 @@ class Recommend extends Component {
                 }
             }
         } else if (gender === surveyConstants.womens) {
-            filterIndexes = [0];
+            filterIndexes = [];
         }
 
 
