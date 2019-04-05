@@ -495,7 +495,7 @@ class Recommend extends Component {
                 </Link>
             </div>
         } else {
-            cardDeck = <Spinner/>;
+            cardDeck = <Spinner style={{marginTop: '200px', width: '10rem', height: '10rem'}} color="light"/>;
         }
 
         return(
