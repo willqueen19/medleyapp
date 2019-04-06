@@ -72,13 +72,15 @@ class MensShirts extends Component {
 
       var imgs = this.selectImgs();
         return (
-          <div className="survey survey2">
+          <Container className="survey survey2">
+          <Row>
             <h1>What style of shirt do you prefer?</h1>
             <CardDeck className="carddeck carddeck2">
               <SurveyCard surveyImage={imgs[0]} surveyTitle={"Long sleeve"} surveyNext={route} passedFunction={this.selectLongSleeve}/>
               <SurveyCard surveyImage={imgs[1]} surveyTitle={"Short sleeve"} surveyNext={route} passedFunction={this.selectShortSleeve}/>
             </CardDeck>
-          </div>
+            </Row>
+          </Container>
         )
       }
 }
