@@ -1,4 +1,5 @@
 import * as types from '../actions/actionTypes';
+import * as surveyConstants from '../constants/survey-constants';
 import _ from 'lodash';
 
 var initialState = {
@@ -7,7 +8,7 @@ var initialState = {
     womensCollection: null,
     color: null,
     shirtType: null,
-    pantsType: null,
+    pantsType: surveyConstants.pants,
     womenClothingType: null
 };
 
