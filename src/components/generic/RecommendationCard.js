@@ -101,18 +101,22 @@ class RecommendationCard extends Component {
                       </Input>
                   </FormGroup>
               </Form>
-              <Button className="newItem" onClick={this.getNewItem}>New</Button>
-              <Button className="showItem" onClick={this.changeCardState}>Hide/Show</Button>
+
               {itemShow ?
                 <Card key={keyValue} className="cardRec">
+
                     <CardImg top width="100%" src={itemImage} alt="Card image cap" />
-                    <CardBody>
+                    <CardBody className="cardbody">
                         <CardTitle>{itemName}</CardTitle>
                         <CardText>{itemPrice}</CardText>
+                        <Button className="newItem" onClick={this.getNewItem}>New</Button>
+                        <Button className="showItem" onClick={this.changeCardState}>Hide/Show</Button>
                     </CardBody>
                 </Card>
                 :
-                <div>hello</div>
+                <div>
+                    <Button className="showItem" onClick={this.changeCardState}>Hide/Show</Button>
+                </div>
               }
           </Col>
     )
