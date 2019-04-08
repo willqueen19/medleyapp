@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import { Card, Button, CardImg, CardTitle, CardText,
   CardSubtitle, CardBody } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 class ThreeSurveyCard extends Component {
 
@@ -32,13 +33,15 @@ class ThreeSurveyCard extends Component {
     }
 
     return (
+      <Col>
         <Card className="card3" onClick={()=>this.cardClicked(this.props.surveyNext)}>
-          <CardImg top width="100%" src={this.props.surveyImage} alt="Card image cap" />
+          <CardImg top src={this.props.surveyImage} alt="Card image cap" />
           <CardBody>
             <CardTitle>{this.props.surveyTitle}</CardTitle>
             <CardText>{this.props.surveySubtitle}</CardText>
           </CardBody>
         </Card>
+        </Col>
     )
   }
 }

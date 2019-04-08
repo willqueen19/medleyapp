@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
 import SurveyCard from '../generic/ThreeSurveyCard.js';
+import { Container, Row, Col } from 'reactstrap';
 import img1 from '../../assets/MOcc-1.jpeg';
 import img2 from '../../assets/MOcc-2.jpeg';
 import img3 from '../../assets/MOcc-3.jpeg';
@@ -36,14 +37,16 @@ class MensOccasion extends Component {
 
   render () {
     return (
-      <div className="survey survey3">
+      <Container className="survey survey3">
+      <Row>
         <h1>What's the occasion?</h1>
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/men/shirt'} passedFunction={this.selectParty}/>
           <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/men/shirt'} passedFunction={this.selectWork}/>
           <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/men/value'}/>
         </CardDeck>
-      </div>
+        </Row>
+      </Container>
     )
   }
 }

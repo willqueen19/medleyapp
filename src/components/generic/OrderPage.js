@@ -16,12 +16,17 @@ class OrderPage extends Component {
   }
 
   render() {
+      var hour = new Date().getHours();
+      var min = new Date().getMinutes();
+      var sec = new Date().getSeconds();
+      var orderNum = String(new Date().getHours()) + String(new Date().getMinutes())+ String(new Date().getSeconds());
 
-    return(
+      return(
+
       <div className="order">
           <h1 className="display-3">Order Submitted!</h1>
           <p className="lead">We are delivering your outfit to the fitting room.</p>
-          <h3>Order #5109</h3>
+          <h3>Order {orderNum}</h3>
           <Label for="firstName" className="mr-sm-2">Supply your name for the associate!</Label>
           <Form inline>
               <Input type="text" name="name" id="firstName" placeholder="First Name" />

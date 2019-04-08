@@ -2,6 +2,7 @@
 nav {
   background-color: black;
   color: white;
+  height: 15%;
 }
 
 nav img {
@@ -19,13 +20,29 @@ nav a:hover {
 
 /* Main body */
 html, body, div#root, div.App {
-  height: 100%;
+  height: 100vh;
   background-color: #303030;
+  font-family: cresta, sans-serif;
 }
 
 .app-body {
+  height: 85%;
   background-color: #303030;
 }
+
+div.container, div.row {
+  height: 100%;
+  text-align: center;
+}
+
+div.carddeck, div.card-deck, div.col, div.card {
+  height: 100%;
+}
+div.card img {
+  object-fit: contain;
+  max-height: 80%;
+}
+
 /* Landing page */
 div.landing {
   color: #f88788;
@@ -52,42 +69,54 @@ div.landing button a:hover {
 }
 
 /* All Cards */
-div.card-deck .card {
+div.card {
+  background: none;
+  outline: none;
+}
+
+div.card-body {
   background-color: #f88788;
   color: #fff;
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
+  max-height: 20%;
+  margin-bottom: 50px;
+  padding: .5rem;
 }
 
 div.card-deck .card .card-title {
-  margin: 0px;
+  /*margin: 0px;*/
   font-weight: bold;
+  margin-bottom: 0;
 }
 
-/* Survey Cards */
+/* Survey Cards
 div.carddeck2 {
   margin: 25px 250px 0px 250px;
-}
-
-div.carddeck2 .card2 {
-    margin: 0px 75px;
 }
 
 div.carddeck3 {
   margin: 25px 100px 0px 100px;
 }
+*/
+div.carddeck2 .card2 {
+    margin: 0px 140px;
+}
+
 
 div.carddeck3 .card3 {
     margin: 0px 50px;
 }
 
+
+
 div.survey {
   color: #fff;
-  padding: 25px 0;
+  padding: 25px;
 }
 
-/* Recommendation Cards */
+/* Recommendation Cards
 div.carddeckRec {
   margin: 25px 100px 0px 100px;
 }
@@ -95,6 +124,7 @@ div.carddeckRec {
 div.carddeckRec .cardRec {
       margin: 0px 25px;
 }
+*/
 
 div.recommendations {
   color: #fff;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Button, CardDeck } from "reactstrap";
+import { Container, Row, Col } from 'reactstrap';
 import RecCard from './RecommendationCard.js';
 import {bindActionCreators} from "redux";
 import * as recommendationActions from "../../actions/recommendActions";
@@ -460,7 +461,7 @@ class Recommend extends Component {
             }
             cardDeck = <div>
                 <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
-                <Link to="/sizing/">
+                <Link to="/order/">
                     <Button className="tryOn">Try on these items</Button>
                 </Link>
             </div>
@@ -471,10 +472,12 @@ class Recommend extends Component {
         }
 
         return(
-          <div className="recommendations">
+          <Container className="recommendations">
+          <Row>
             <h1>Here's what we found for you</h1>
               {cardDeck}
-          </div>
+              </Row>
+          </Container>
         )
     }
 }
