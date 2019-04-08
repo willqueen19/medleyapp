@@ -23,7 +23,7 @@ class Recommend extends Component {
 
         this.getCorrectItems = this.getCorrectItems.bind(this);
         this.itemsLoaded = this.itemsLoaded.bind(this);
-        this.filterMensShirtsPants = this.filterMensShirtsPants.bind(this);
+        this.filterUnnecessaryItems = this.filterUnnecessaryItems.bind(this);
         this.filterComplexColors = this.filterComplexColors.bind(this);
         this.filterSimpleColors = this.filterSimpleColors.bind(this);
         this.getItemsForCollection = this.getItemsForCollection.bind(this);
@@ -102,11 +102,19 @@ class Recommend extends Component {
         }
     }
 
-    filterMensShirtsPants(items) {
+    filterUnnecessaryItems(items) {
+        var gender = this.props.gender;
+        var collection;
+        if (gender === surveyConstants.mens) {
+            collection = this.props.mensCollection;
+        } else if (gender === surveyConstants.womens) {
+            collection = this.props.womensCollection;
+        }
+
+        var filteredItems = items;
         if (this.props.gender === surveyConstants.mens) {
             var shirtType = this.props.shirtType;
             var pantsType = this.props.pantsType;
-            var filteredItems = items;
             var shirtsTypeFilterArray;
             var pantsTypeFilterArray;
             if (shirtType === surveyConstants.short_sleeve) {
@@ -141,12 +149,31 @@ class Recommend extends Component {
                     filteredPants.push(pant);
                 }
             }
-            filteredItems[1] = filteredPants;
 
-            return filteredItems;
-        } else {
-            return items;
+            filteredItems[1] = filteredPants;
+        } else if (gender === surveyConstants.womens && collection === surveyConstants.premium_quality) {
+            var x;
+            for (x = 0; x < filteredItems.length; x++) {
+                var filteredItemsForIndex = [];
+                var y;
+                for (y = 0; y < filteredItems[x].length; y++) {
+                    var item = filteredItems[x][y];
+                    console.log(item);
+                    var markerInd = 0;
+                    if (item.articles.length === 2) {
+                        markerInd = 1
+                    }
+                    console.log(item.articles[markerInd].markers[0].text);
+                    if (item.articles[markerInd].markers[0].text !== 'BABY EXCLUSIVE') {
+                        filteredItemsForIndex.push(item);
+                    }
+                }
+                filteredItems[x] = filteredItemsForIndex;
+            }
         }
+
+        return filteredItems;
+
     }
 
     filterComplexColors(items) {
@@ -404,12 +431,12 @@ class Recommend extends Component {
 
     // Returns all item catergories that have items (this is just organizing the payloads from the database)
     getItemsForCollection(shirts, pants, onePieces, outerwear, shoes, accessories) {
-        var itemsForCollection = this.getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories)
+        var itemsForCollection = this.getCorrectItems(shirts, pants, onePieces, outerwear, shoes, accessories);
         var itemsLoaded = this.itemsLoaded(itemsForCollection);
 
         var items = [];
         if (itemsLoaded === true) {
-            var shirtsPantsFiltered = this.filterMensShirtsPants(itemsForCollection);
+            var shirtsPantsFiltered = this.filterUnnecessaryItems(itemsForCollection);
             if (this.state.colorFilterComplex) {
                 items = this.filterComplexColors(shirtsPantsFiltered);
             } else {
@@ -423,6 +450,7 @@ class Recommend extends Component {
     render () {
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
         var cardDeck;
+        console.log(this.props.womensCollection);
 
         if (itemsResult[1] === true) {
             var cards = [];
