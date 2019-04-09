@@ -142,28 +142,6 @@ class Recommend extends Component {
                 filteredItems[t] = filteredItemsForIndex;
             }
 
-            /*
-            var shirtsForFilter = filteredItems[0];
-            var filteredShirts = [];
-            for (var s = 0; s < shirtsForFilter.length; s++) {
-                var shirt = shirtsForFilter[s];
-                if (shirt.mainCategoryCode && shirtsTypeFilterArray.includes(shirt.mainCategoryCode)) {
-                    filteredShirts.push(shirt);
-                }
-            }
-            filteredItems[0] = filteredShirts;
-
-            var pantsForFilter = filteredItems[1];
-            var filteredPants = [];
-            for (var p = 0; p < pantsForFilter.length; p++) {
-                var pant = pantsForFilter[p];
-                if (pantsTypeFilterArray.includes(pant.mainCategoryCode)) {
-                    filteredPants.push(pant);
-                }
-            }
-            filteredItems[1] = filteredPants;
-            */
-
         } else if (gender === surveyConstants.womens && collection === surveyConstants.premium_quality) {
             for (var x = 0; x < filteredItems.length; x++) {
                 var filteredItemsForIndex = [];
@@ -323,7 +301,21 @@ class Recommend extends Component {
                 }
             }
         } else if (gender === surveyConstants.womens) {
-            if (collection === surveyConstants.party) {
+            if ([surveyConstants.modern_classic, surveyConstants.conscious, surveyConstants.trend, surveyConstants.divided, surveyConstants.logg].includes(collection)) {
+                if (womensClothingType === surveyConstants.one_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1];
+                    }
+                } else if (womensClothingType === surveyConstants.two_piece) {
+                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
+                        filterIndexes = [0,1,2];
+                    } else if (color === surveyConstants.patterns) {
+                        filterIndexes = [0,1,2];
+                    }
+                }
+            } else if (collection === surveyConstants.party) {
                 if (womensClothingType === surveyConstants.one_piece) {
                     filterIndexes = [0];
                 } else if (womensClothingType === surveyConstants.two_piece || color === surveyConstants.dark_colors) {
@@ -331,34 +323,6 @@ class Recommend extends Component {
                         filterIndexes = [0,1];
                     } else if (color === surveyConstants.patterns) {
                         filterIndexes = [0];
-                    }
-                }
-            } else if (collection === surveyConstants.modern_classic) {
-                if (womensClothingType === surveyConstants.one_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1];
-                    }
-                } else if (womensClothingType === surveyConstants.two_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1,2];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1,2];
-                    }
-                }
-            } else if (collection === surveyConstants.conscious) {
-                if (womensClothingType === surveyConstants.one_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1];
-                    }
-                } else if (womensClothingType === surveyConstants.two_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1,2];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1,2];
                     }
                 }
             } else if (collection === surveyConstants.premium_quality) {
@@ -375,48 +339,6 @@ class Recommend extends Component {
                         filterIndexes = [0,1,2];
                     } else if (color === surveyConstants.patterns) {
                         filterIndexes = [0];
-                    }
-                }
-            } else if (collection === surveyConstants.trend) {
-                if (womensClothingType === surveyConstants.one_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1];
-                    }
-                } else if (womensClothingType === surveyConstants.two_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1,2];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1,2];
-                    }
-                }
-            } else if (collection === surveyConstants.divided) {
-                if (womensClothingType === surveyConstants.one_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1];
-                    }
-                } else if (womensClothingType === surveyConstants.two_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1,2];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1,2];
-                    }
-                }
-            } else if (collection === surveyConstants.logg) {
-                if (womensClothingType === surveyConstants.one_piece) {
-                    if (color === surveyConstants.bright_colors || surveyConstants === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1];
-                    }
-                } else if (womensClothingType === surveyConstants.two_piece) {
-                    if (color === surveyConstants.bright_colors || color === surveyConstants.dark_colors) {
-                        filterIndexes = [0,1,2];
-                    } else if (color === surveyConstants.patterns) {
-                        filterIndexes = [0,1,2];
                     }
                 }
             }
