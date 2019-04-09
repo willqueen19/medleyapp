@@ -89,8 +89,7 @@ class Recommend extends Component {
 
     itemsLoaded(items) {
         var numPopArrays = 0;
-        var n;
-        for (n = 0; n < items.length; n++) {
+        for (var n = 0; n < items.length; n++) {
             if (items[n].length > 0) {
                 numPopArrays += 1;
             }
@@ -130,10 +129,23 @@ class Recommend extends Component {
                 pantsTypeFilterArray = surveyConstants.pantsCats;
             }
 
-            var s;
+            var cats = [shirtsTypeFilterArray, pantsTypeFilterArray];
+
+            for (var t = 0; t < 2; t++) {
+                var filteredItemsForIndex = [];
+                for (var i = 0; i < filteredItems[t].length; i++) {
+                    var item = filteredItems[t][i];
+                    if (item.mainCategoryCode && cats[t].includes(item.mainCategoryCode)) {
+                        filteredItemsForIndex.push(item);
+                    }
+                }
+                filteredItems[t] = filteredItemsForIndex;
+            }
+
+            /*
             var shirtsForFilter = filteredItems[0];
             var filteredShirts = [];
-            for (s = 0; s < shirtsForFilter.length; s++) {
+            for (var s = 0; s < shirtsForFilter.length; s++) {
                 var shirt = shirtsForFilter[s];
                 if (shirt.mainCategoryCode && shirtsTypeFilterArray.includes(shirt.mainCategoryCode)) {
                     filteredShirts.push(shirt);
@@ -141,32 +153,30 @@ class Recommend extends Component {
             }
             filteredItems[0] = filteredShirts;
 
-            var p;
             var pantsForFilter = filteredItems[1];
             var filteredPants = [];
-            for (p = 0; p < pantsForFilter.length; p++) {
+            for (var p = 0; p < pantsForFilter.length; p++) {
                 var pant = pantsForFilter[p];
                 if (pantsTypeFilterArray.includes(pant.mainCategoryCode)) {
                     filteredPants.push(pant);
                 }
             }
-
             filteredItems[1] = filteredPants;
+            */
+
         } else if (gender === surveyConstants.womens && collection === surveyConstants.premium_quality) {
-            var x;
-            for (x = 0; x < filteredItems.length; x++) {
+            for (var x = 0; x < filteredItems.length; x++) {
                 var filteredItemsForIndex = [];
-                var y;
-                for (y = 0; y < filteredItems[x].length; y++) {
+                for (var y = 0; y < filteredItems[x].length; y++) {
                     var item = filteredItems[x][y];
-                    console.log(item);
-                    var markerInd = 0;
-                    if (item.articles.length === 2) {
-                        markerInd = 1
-                    }
-                    console.log(item.articles[markerInd].markers[0].text);
-                    if (item.articles[markerInd].markers[0].text !== 'BABY EXCLUSIVE') {
-                        filteredItemsForIndex.push(item);
+                    for (var a = 0; a < item.articles.length; a++) {
+                        if (item.articles[a].hasOwnProperty('markers')) {
+                            if (item.articles[a].markers[0].text !== 'BABY EXCLUSIVE') {
+                                filteredItemsForIndex.push(item);
+                            } else if (item.articles[a].markers[0].text === 'BABY EXCLUSIVE') {
+                                console.log('this item is baby clothings', item);
+                            }
+                        }
                     }
                 }
                 filteredItems[x] = filteredItemsForIndex;
@@ -413,12 +423,10 @@ class Recommend extends Component {
         }
 
         var itemsFiltered = items;
-        var x;
-        for (x = 0; x < filterIndexes.length; x++) {
+        for (var x = 0; x < filterIndexes.length; x++) {
             var itemsToBeFiltered = itemsFiltered[filterIndexes[x]];
             var filteredItemsForIndex = [];
-            var y;
-            for (y = 0; y < itemsToBeFiltered.length; y++) {
+            for (var y = 0; y < itemsToBeFiltered.length; y++) {
                 var item = itemsToBeFiltered[y];
                 if (colors.includes(item.articles[0].color.text)) {
                     filteredItemsForIndex.push(item);
@@ -455,8 +463,7 @@ class Recommend extends Component {
 
         if (itemsResult[1] === true) {
             var cards = [];
-            var i;
-            for (i = 0; i < itemsResult[0].length; i++) {
+            for (var i = 0; i < itemsResult[0].length; i++) {
                 cards.push(<RecCard itemKey={i} items={itemsResult[0][i]}/>)
             }
             cardDeck = <div>

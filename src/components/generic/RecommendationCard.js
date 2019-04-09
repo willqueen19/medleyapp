@@ -110,12 +110,12 @@ class RecommendationCard extends Component {
                         <CardTitle>{itemName}</CardTitle>
                         <CardText>{itemPrice}</CardText>
                         <CardText onClick={this.getNewItem}>New Item</CardText>
-                        <CardText onClick={this.changeCardState}>Hide Item</CardText>
+                        <CardText onClick={this.changeCardState}>Remove Item</CardText>
                     </CardBody>
                 </Card>
                 :
                 <div>
-                    <Button className="showItem" onClick={this.changeCardState}>Show item</Button>
+                    <Button className="showItem" onClick={this.changeCardState}>Add Item</Button>
                 </div>
               }
           </Col>
