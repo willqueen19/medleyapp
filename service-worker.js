@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/willqueen19.github.io/medleyapp/precache-manifest.1d576b3c9169f2e281740efb65377e10.js"
+  "/medleyapp/precache-manifest.81791a39a5255da6d7ef0094464aa012.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/willqueen19.github.io/medleyapp/index.html", {
+workbox.routing.registerNavigationRoute("/medleyapp/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
