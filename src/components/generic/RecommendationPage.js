@@ -407,30 +407,34 @@ class Recommend extends Component {
                 cards.push(<RecCard itemKey={i} items={itemsResult[0][i]} itemWidth={itemWidth}/>)
             }
             cardDeck =
+            <Container>
+              <Row>
+                <h1>Here's what we found for you</h1>
                 <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
-
+              </Row>
+              <Row className="rowtryOn">
+                <Col sm={{ size: 4, offset: 4 }}>
+                  <Link className="tryOn" to="/order/">
+                      <Button className="tryOn">Try on these items</Button>
+                  </Link>
+                </Col>
+              </Row>
+              </Container>
 
         } else {
-            cardDeck = <div style={{'paddingTop': '18%'}}>
-                <Spinner style={{width: '10rem', height: '10rem'}} color="light"/>
-            </div>;
+            cardDeck =
+              <Row>
+                <Col sm={{ size: 6, offset: 3}}>
+                  <Spinner style={{width: '10rem', height: '10rem'}} color="light"/>
+                </Col>
+              </Row>
         }
 
 
 
         return(
           <Container className="recommendations">
-          <Row>
-            <h1>Here's what we found for you</h1>
-              {cardDeck}
-          </Row>
-          <Row className="rowtryOn">
-            <Col sm={{ size: 4, offset: 4 }}>
-              <Link className="tryOn" to="/order/">
-                  <Button className="tryOn">Try on these items</Button>
-              </Link>
-            </Col>
-          </Row>
+            {cardDeck}
           </Container>
         )
     }
