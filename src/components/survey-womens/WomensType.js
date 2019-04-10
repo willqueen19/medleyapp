@@ -80,8 +80,9 @@ class WomensType extends Component {
       <Row>
         <h1>What do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
-        <SurveyCard surveyImage={imgs[0]} surveyTitle={"One piece outfits"} surveySubtitle={"Dresses + Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
-        <SurveyCard surveyImage={imgs[1]} surveyTitle={"Two piece outfits"} surveySubtitle={"Top + Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
+          <Col sm = "2" xs = "0"></Col>
+          <SurveyCard surveyImage={imgs[0]} surveyTitle={"Dresses and Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
+          <SurveyCard surveyImage={imgs[1]} surveyTitle={"Tops and Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
         </CardDeck>
         </Row>
       </Container>

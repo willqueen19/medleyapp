@@ -42,6 +42,7 @@ class SurveyMensWomens extends Component {
         <Row>
         <h1 onClick={(e) => this.selectGender(e, 'mens')}>Choose a Department</h1>
           <CardDeck className="carddeck carddeck2">
+            <Col sm = "2" xs = "0"></Col>
             <SurveyCard surveyImage={womensImg} surveyTitle={"Womens"} surveyNext={'/women/occasion'} passedFunction={this.selectWomens}/>
             <SurveyCard surveyImage={mensImg} surveyTitle={"Mens"} surveyNext={'/men/occasion'} passedFunction={this.selectMens}/>
           </CardDeck>

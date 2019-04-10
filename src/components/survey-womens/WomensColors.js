@@ -144,7 +144,7 @@ class WomensColors extends Component {
       <Row>
         <h1>What do you prefer?</h1>
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={imgs[0]} surveyTitle={"Bright Colors"} surveyNext={'/recommend'} passedFunction={this.selectBright}/>
+          <SurveyCard surveyImage={imgs[0]} surveyTitle={"Light Colors"} surveyNext={'/recommend'} passedFunction={this.selectBright}/>
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Dark Colors"} surveyNext={'/recommend'} passedFunction={this.selectDark}/>
           <SurveyCard surveyImage={imgs[2]} surveyTitle={"Patterns"}surveyNext={'/recommend'} passedFunction={this.selectPattern}/>
         </CardDeck>

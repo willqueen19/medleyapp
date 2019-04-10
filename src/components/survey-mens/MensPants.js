@@ -88,6 +88,7 @@ class MensPants extends Component {
       <Row>
         <h1>What style of pants do you prefer?</h1>
         <CardDeck className="carddeck carddeck2">
+          <Col sm = "2" xs = "0"></Col>
           <SurveyCard surveyImage={imgs[0]} surveyTitle={"Shorts"} surveyNext={'/men/colors'} passedFunction={this.selectShorts}/>
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Pants"} surveyNext={'/men/colors'} passedFunction={this.selectPants}/>
         </CardDeck>

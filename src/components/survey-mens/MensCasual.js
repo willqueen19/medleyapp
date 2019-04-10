@@ -40,6 +40,7 @@ class MensCasual extends Component {
       <Row>
         <h1>What side of casual clothing are you looking for?</h1>
         <CardDeck className="carddeck carddeck2">
+          <Col sm = "2" xs = "0"></Col>
           <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/men/shirt'} passedFunction={this.selectOutdoorsy}/>
           <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/men/shirt'} passedFunction={this.selectHomewear}/>
         </CardDeck>

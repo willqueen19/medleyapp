@@ -36,11 +36,12 @@ div.container, div.row {
 }
 
 div.carddeck, div.card-deck, div.col, div.card {
-  height: 100%;
+  max-height: 100%;
+  margin: 0 30px;
 }
 div.card img {
   object-fit: contain;
-  max-height: 80%;
+  width: 100%;
 }
 
 /* Landing page */
@@ -49,7 +50,7 @@ div.landing {
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
-  padding-top: 15%;
+  padding-top: 10%;
 }
 
 div.landing img {
@@ -81,8 +82,8 @@ div.card-body {
   font-style: normal;
   font-weight: 200;
   max-height: 20%;
-  margin-bottom: 50px;
   padding: .5rem;
+  border-radius: 0 0 5px 5px ;
 }
 
 div.card-deck .card .card-title {
@@ -99,7 +100,7 @@ div.carddeck2 {
 div.carddeck3 {
   margin: 25px 100px 0px 100px;
 }
-*/
+
 div.carddeck2 .card2 {
     margin: 0px 140px;
 }
@@ -109,13 +110,17 @@ div.carddeck3 .card3 {
     margin: 0px 50px;
 }
 
-
+*/
 
 div.survey {
   color: #fff;
   padding: 25px;
 }
 
+div.survey h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 /* Recommendation Cards
 div.carddeckRec {
   margin: 25px 100px 0px 100px;
@@ -162,6 +167,10 @@ div.order h1 {
 div.order button {
   background-color: #f88788;
 }
+div.order button {
+  background-color: #f88788;
+}
+
 
 div.order button a {
   color: #fff;
