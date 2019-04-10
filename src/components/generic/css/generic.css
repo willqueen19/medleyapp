@@ -261,3 +261,13 @@ div.recCards div.cardRec {
   width: 65%;
   margin-left: 17.5%;
 }
+
+div.footer {
+    float: left;
+}
+
+button.back {
+  bottom: 15px;
+  left: 15px;
+  position: fixed;
+}

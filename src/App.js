@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from "./store/index";
 
 import Header from './components/generic/Header';
+import Footer from './components/generic/Footer';
 import Landing from './components/generic/LandingPage'
 import Survey from './components/generic/SurveyMensWomens'
 import Recommend from './components/generic/RecommendationPage';
@@ -64,6 +65,7 @@ class App extends Component {
                   <Route path="/order/" component={ Order } />
                 </div>
               </Router>
+              <Footer />
           </Provider>
       </div>
     );
