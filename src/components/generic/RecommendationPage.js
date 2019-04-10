@@ -408,8 +408,9 @@ class Recommend extends Component {
             }
             cardDeck =
             <Container>
+            <h1>Here's what we found for you</h1>
               <Row>
-                <h1>Here's what we found for you</h1>
+
                 <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
               </Row>
               <Row className="rowtryOn">

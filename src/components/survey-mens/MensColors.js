@@ -179,8 +179,9 @@ class MensColors extends Component {
     var imgs = this.selectImgs();
     return (
       <Container className="survey survey3">
+      <h1>What do you prefer?</h1>
       <Row>
-        <h1>What do you prefer?</h1>
+
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={imgs[0]} surveyTitle={"Light Colors"} surveyNext={'/recommend'} passedFunction={this.selectBright}/>
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Dark Colors"} surveyNext={'/recommend'} passedFunction={this.selectDark}/>

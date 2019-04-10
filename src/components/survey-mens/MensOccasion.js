@@ -38,8 +38,9 @@ class MensOccasion extends Component {
   render () {
     return (
       <Container className="survey survey3">
+      <h1>What's the occasion?</h1>
       <Row>
-        <h1>What's the occasion?</h1>
+
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/men/shirt'} passedFunction={this.selectParty}/>
           <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/men/shirt'} passedFunction={this.selectWork}/>
