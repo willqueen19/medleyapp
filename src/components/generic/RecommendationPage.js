@@ -423,10 +423,14 @@ class Recommend extends Component {
           <Row>
             <h1>Here's what we found for you</h1>
               {cardDeck}
-              </Row>
-              <Link to="/order/">
+          </Row>
+          <Row className="rowtryOn">
+            <Col sm={{ size: 4, offset: 4 }}>
+              <Link className="tryOn" to="/order/">
                   <Button className="tryOn">Try on these items</Button>
               </Link>
+            </Col>
+          </Row>
           </Container>
         )
     }

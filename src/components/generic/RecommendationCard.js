@@ -93,29 +93,33 @@ class RecommendationCard extends Component {
 
       return (
           <Col sm={this.props.itemWidth} className="recCards">
-              <Form>
-                  <FormGroup>
-                      <Label for="exampleSelect">Choose a size</Label>
-                      <Input type="select" name="select" id="exampleSelect">
-                          {itemSizes}
-                      </Input>
-                  </FormGroup>
-              </Form>
+
 
               {itemShow ?
+
                 <Card key={keyValue} className="cardRec">
+                <Form>
+                    <FormGroup>
+                        <Input type="select" name="select" id="exampleSelect" placeholder="choose size">
+                        <option value="">Choose a size</option>
+                            {itemSizes}
+                        </Input>
+                    </FormGroup>
+                </Form>
 
                     <CardImg top width="100%" src={itemImage} alt="Card image cap" />
-                    <CardBody className="cardbody">
+                    <CardBody className="recCardBody">
                         <CardTitle>{itemName}</CardTitle>
                         <CardText>{itemPrice}</CardText>
-                        <CardText onClick={this.getNewItem}>New Item</CardText>
-                        <CardText onClick={this.changeCardState}>Remove Item</CardText>
                     </CardBody>
+                    <div className="recButtons">
+                      <Button className="recButton recNew" onClick={this.getNewItem}>New</Button>
+                      <Button className="recButton recRem" onClick={this.changeCardState}>Remove</Button>
+                    </div>
                 </Card>
                 :
                 <div>
-                    <Button className="showItem" onClick={this.changeCardState}>Add Item</Button>
+                    <Button className="recButton recShow" onClick={this.changeCardState}>Add Item</Button>
                 </div>
               }
           </Col>
