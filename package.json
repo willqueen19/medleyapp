@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/willqueen19/medleyapp#readme",
   "name": "medleyapp",
   "version": "0.1.0",
   "private": true,
@@ -6,6 +7,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "connected-react-router": "^6.3.1",
+    "gh-pages": "^2.0.1",
     "graphql": "^14.1.1",
     "history": "^4.7.2",
     "lodash": "^4.17.11",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,6 +54,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/willqueen19/medleyapp/issues"
-  },
-  "homepage": "https://github.com/willqueen19/medleyapp#readme"
+  }
 }
