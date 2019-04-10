@@ -133,10 +133,39 @@ class MensColors extends Component {
           img3 = imageConstants.bassp3;
         }
       }
+      else if (this.props.mensCollection === surveyConstants.divided) {
+        if (this.props.shirtType === surveyConstants.long_sleeve && this.props.pantsType === surveyConstants.shorts) {
+          img1 = imageConstants.divls1;
+          img2 = imageConstants.divls2;
+          img3 = imageConstants.divls3;
+        }
+        else if (this.props.shirtType === surveyConstants.long_sleeve && this.props.pantsType === surveyConstants.pants) {
+          img1 = imageConstants.divlp1;
+          img2 = imageConstants.divlp2;
+          img3 = imageConstants.divlp3;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve && this.props.pantsType === surveyConstants.shorts) {
+          img1 = imageConstants.divss1;
+          img2 = imageConstants.divss2;
+          img3 = imageConstants.divss3;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve && this.props.pantsType === surveyConstants.pants) {
+          img1 = imageConstants.divsp1;
+          img2 = imageConstants.divsp2;
+          img3 = imageConstants.divsp3;
+        }
+      }
       else if (this.props.mensCollection === surveyConstants.modern_classic) {
-        img1 = imageConstants.mod1;
-        img2 = imageConstants.mod2;
-        img3 = imageConstants.mod3;
+        if (this.props.shirtType === surveyConstants.long_sleeve) {
+          img1 = imageConstants.modl1;
+          img2 = imageConstants.modl2;
+          img3 = imageConstants.modl3;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve) {
+          img1 = imageConstants.mods1;
+          img2 = imageConstants.mods2;
+          img3 = imageConstants.mods3;
+        }
       }
       else {
         img1 = imageConstants.placehold1;

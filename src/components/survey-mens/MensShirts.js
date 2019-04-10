@@ -55,6 +55,12 @@ class MensShirts extends Component {
       } else if (this.props.mensCollection === surveyConstants.basics) {
         img1 = imageConstants.bas1;
         img2 = imageConstants.bas2;
+      } else if (this.props.mensCollection === surveyConstants.divided) {
+        img1 = imageConstants.div1;
+        img2 = imageConstants.div2;
+      } else if (this.props.mensCollection === surveyConstants.modern_classic) {
+        img1 = imageConstants.mod1;
+        img2 = imageConstants.mod2;
       } else {
         img1 = imageConstants.placehold1;
         img2 = imageConstants.placehold2;
