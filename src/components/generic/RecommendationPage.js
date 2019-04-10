@@ -381,24 +381,42 @@ class Recommend extends Component {
     render () {
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
         var cardDeck;
+        var offset;
+        var itemWidth;
         console.log(this.props.womensCollection);
 
         if (itemsResult[1] === true) {
             var cards = [];
-            for (var i = 0; i < itemsResult[0].length; i++) {
-                cards.push(<RecCard itemKey={i} items={itemsResult[0][i]}/>)
+            if (itemsResult[0].length == 1) {
+              offset = 4;
+              itemWidth = 4;
             }
-            cardDeck = <div>
-                <CardDeck className='carddeck carddeckRec'>{cards}</CardDeck>
-                <Link to="/order/">
-                    <Button className="tryOn">Try on these items</Button>
-                </Link>
-            </div>
+            else if (itemsResult[0].length == 2) {
+              offset = 2;
+              itemWidth = 4;
+            }
+            else if (itemsResult[0].length == 3 ) {
+              offset = 0;
+              itemWidth = 4;
+            }
+            else if (itemsResult[0].length == 4 ) {
+              offset = 0;
+              itemWidth = 3;
+            }
+            for (var i = 0; i < itemsResult[0].length; i++) {
+                cards.push(<RecCard itemKey={i} items={itemsResult[0][i]} itemWidth={itemWidth}/>)
+            }
+            cardDeck =
+                <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
+
+
         } else {
             cardDeck = <div style={{'paddingTop': '18%'}}>
                 <Spinner style={{width: '10rem', height: '10rem'}} color="light"/>
             </div>;
         }
+
+
 
         return(
           <Container className="recommendations">
@@ -406,6 +424,9 @@ class Recommend extends Component {
             <h1>Here's what we found for you</h1>
               {cardDeck}
               </Row>
+              <Link to="/order/">
+                  <Button className="tryOn">Try on these items</Button>
+              </Link>
           </Container>
         )
     }

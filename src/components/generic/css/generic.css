@@ -121,15 +121,19 @@ div.survey h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+div.recommendations h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 /* Recommendation Cards
 div.carddeckRec {
   margin: 25px 100px 0px 100px;
 }
-
-div.carddeckRec .cardRec {
-      margin: 0px 25px;
-}
 */
+div.carddeckRec {
+  width: 100%
+}
+
 
 div.recommendations {
   color: #fff;

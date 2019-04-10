@@ -92,7 +92,7 @@ class RecommendationCard extends Component {
       }
 
       return (
-          <Col className="recCards">
+          <Col sm={this.props.itemWidth} className="recCards">
               <Form>
                   <FormGroup>
                       <Label for="exampleSelect">Choose a size</Label>
