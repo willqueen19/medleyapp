@@ -43,12 +43,12 @@ class MensCasual extends Component {
   render () {
     return (
       <Container className="survey survey3">
-      <h1>What side of casual clothing are you looking for?</h1>
+      <h1>Which of these best describes you?</h1>
       <Row>
 
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/men/shirt'} passedFunction={this.selectOutdoorsy}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/men/shirt'} passedFunction={this.selectHomewear}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"I prefer a laid-back style"} surveyNext={'/men/shirt'} passedFunction={this.selectOutdoorsy}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"I like to stick with the basics"} surveyNext={'/men/shirt'} passedFunction={this.selectHomewear}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/men/shirt'} passedFunction={this.selectSustainable}/>
         </CardDeck>
         </Row>
