@@ -44,7 +44,7 @@ class MensOccasion extends Component {
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/men/shirt'} passedFunction={this.selectParty}/>
           <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/men/shirt'} passedFunction={this.selectWork}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/men/value'}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/men/style'}/>
         </CardDeck>
         </Row>
       </Container>

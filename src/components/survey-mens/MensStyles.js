@@ -43,7 +43,7 @@ class MensStyles extends Component {
       <Row>
 
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"I like to take risks"} surveyNext={'/men/shirt'} passedFunction={this.selectTrendsetter}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"I like to take risks"} surveyNext={'/men/colors'} passedFunction={this.selectTrendsetter}/>
           <SurveyCard surveyImage={img2} surveyTitle={"I like to wear what is in style"} surveyNext={'/men/shirt'} passedFunction={this.selectTrendy}/>
           <SurveyCard surveyImage={img3} surveyTitle={"I like casual, comfortable clothes"} surveyNext={'/men/casual'}/>
         </CardDeck>

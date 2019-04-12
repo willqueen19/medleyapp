@@ -70,7 +70,9 @@ class MensShirts extends Component {
 
   render () {
       var route;
-      if (this.props.mensCollection === surveyConstants.conscious) {
+      if (this.props.mensCollection === surveyConstants.conscious
+        || this.props.mensCollection === surveyConstants.premium_quality
+        || this.props.mensCollection === surveyConstants.modern_classic) {
           route = '/men/colors'
       } else {
           route = '/men/pants'
