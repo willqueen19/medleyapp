@@ -20,7 +20,7 @@ class Footer extends Component {
             {(window.location.pathname === "/") ?
 
             <div className="footer">
-                <Button className="back"><i class="fas fa-arrow-left"></i></Button>
+                <Button className="back"><i class="fas fa-arrow-left"></i>  Back</Button>
             </div>
             :
             <div></div> }

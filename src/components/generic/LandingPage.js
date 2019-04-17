@@ -20,10 +20,9 @@ class Landing extends Component {
     return(
       <div className="landing">
           <img className="ml-auto" src={logo} alt="Logo" />
-          <p className="lead" style={{'fontSize': '40px'}}>Personalized Outfit Recommendations</p>
           <p className="lead">
               <Link to={'/survey/'}>
-                 <Button size="lg">Style me: Create my outfit</Button>
+                 <Button size="lg" className="start">Build an Outfit</Button>
               </Link>
           </p>
       </div>

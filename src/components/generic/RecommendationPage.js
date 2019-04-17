@@ -414,9 +414,9 @@ class Recommend extends Component {
                 <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
               </Row>
               <Row className="rowtryOn">
-                <Col sm={{ size: 4, offset: 4 }}>
+                <Col sm={{ size: 2, offset: 10 }}>
                   <Link className="tryOn" to="/order/">
-                      <Button className="tryOn">Try on these items</Button>
+                      <Button className="tryOn"><i class="fas fa-arrow-right"></i>  Try On</Button>
                   </Link>
                 </Col>
               </Row>

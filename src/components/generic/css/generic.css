@@ -59,7 +59,11 @@ div.landing img {
 }
 
 div.landing button {
-  background-color: #f88788;
+  background: #000;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px 40px;
 }
 
 div.landing button a {
@@ -78,8 +82,8 @@ div.card {
 }
 
 div.card-body {
-  background-color: #f88788;
-  color: #fff;
+  background-color: #aaa;
+  color: #000;
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -143,12 +147,6 @@ div.recommendations {
   padding: 25px 0;
 }
 
-div.recommendations button {
-  background-color: #f88788;
-  float: right;
-  margin: 25px 125px 0px 0px;
-}
-
 div.recommendations button a {
   color: #fff;
 }
@@ -159,7 +157,7 @@ div.recommendations button a:hover {
 
 /* Order Page */
 div.order {
-  color: #f88788;
+  color: #fff;
   font-family: cresta, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -171,13 +169,19 @@ div.order h1 {
   font-weight: bold;
 }
 
-div.order button {
-  background-color: #f88788;
-}
-div.order button {
-  background-color: #f88788;
+div.order h2 {
+  margin: 25px 0px 15px 0px;
 }
 
+div.order button {
+  border: none;
+  padding: 10px 15px;
+  background: #000;
+  border-radius: 30px;
+  border: none;
+  margin-top: 50px;
+  font-size: 1.3rem;
+}
 
 div.order button a {
   color: #fff;
@@ -186,9 +190,9 @@ div.order button a {
 div.order button a:hover {
   text-decoration: none;
 }
-
-div.order .form-inline {
-  display: inherit;
+div.order input.form-control {
+  width: 30%;
+  margin: auto;
 }
 
 /* Sizing Page */
@@ -232,6 +236,9 @@ div.recButtons {
 div.recButtons button.recButton {
     margin: 1rem 0px;
     width: 45%;
+    background: #000;
+    color: #fff;
+    border: none;
 }
 div.recButtons button.recNew {
   float: left;
@@ -248,8 +255,13 @@ div.rowtryOn {
 }
 
 div.recommendations div.rowtryOn button.tryOn {
-  width: 80%;
-  margin: 2% 10% 10% 10%;
+  bottom: 15px;
+  right: 15px;
+  position: fixed;
+  padding: 10px 15px;
+  background: #000;
+  border-radius: 30px;
+  border: none;
 }
 
 div.carddeckRec div.col-sm-3 div.cardRec {
@@ -271,4 +283,7 @@ button.back {
   left: 15px;
   position: fixed;
   padding: 10px 15px;
+  background: #000;
+  border-radius: 30px;
+  border: none;
 }
