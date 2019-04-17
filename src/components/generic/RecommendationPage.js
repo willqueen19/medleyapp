@@ -387,19 +387,19 @@ class Recommend extends Component {
 
         if (itemsResult[1] === true) {
             var cards = [];
-            if (itemsResult[0].length == 1) {
+            if (itemsResult[0].length === 1) {
               offset = 4;
               itemWidth = 4;
             }
-            else if (itemsResult[0].length == 2) {
+            else if (itemsResult[0].length === 2) {
               offset = 2;
               itemWidth = 4;
             }
-            else if (itemsResult[0].length == 3 ) {
+            else if (itemsResult[0].length === 3 ) {
               offset = 0;
               itemWidth = 4;
             }
-            else if (itemsResult[0].length == 4 ) {
+            else if (itemsResult[0].length === 4 ) {
               offset = 0;
               itemWidth = 3;
             }
@@ -429,8 +429,6 @@ class Recommend extends Component {
                 </Col>
               </Row>
         }
-
-
 
         return(
           <Container className="recommendations">

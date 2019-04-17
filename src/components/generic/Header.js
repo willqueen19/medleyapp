@@ -19,7 +19,7 @@ class Header extends Component {
     }
     toggle() {
         this.setState({
-            redirect: '/'
+            redirect: 'medley/'
         });
     }
 

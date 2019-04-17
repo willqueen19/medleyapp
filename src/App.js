@@ -44,7 +44,7 @@ class App extends Component {
         <div className="App">
           <Provider store={ store }>
               <Header/>
-              <Router>
+              <Router basename={process.env.PUBLIC_URL}>
                 <div className="app-body">
                   <Route path="/" exact component={ Landing } />
                   <Route path="/survey/" component={ Survey } />
