@@ -408,8 +408,9 @@ class Recommend extends Component {
             }
             cardDeck =
             <Container>
+            <h1>Here's what we found for you</h1>
               <Row>
-                <h1>Here's what we found for you</h1>
+
                 <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
               </Row>
               <Row className="rowtryOn">
@@ -423,7 +424,7 @@ class Recommend extends Component {
 
         } else {
             cardDeck =
-              <Row>
+              <Row className="spinner">
                 <Col sm={{ size: 6, offset: 3}}>
                   <Spinner style={{width: '10rem', height: '10rem'}} color="light"/>
                 </Col>

@@ -223,7 +223,7 @@ div.sizingPage button a:hover {
 }
 
 div.spinner {
-
+  margin-top: 15%;
 }
 
 div.recButtons {
@@ -270,4 +270,5 @@ button.back {
   bottom: 15px;
   left: 15px;
   position: fixed;
+  padding: 10px 15px;
 }

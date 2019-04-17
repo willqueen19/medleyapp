@@ -18,6 +18,14 @@ import ilogg2 from '../assets/MShirtLogg-2.jpeg';
 import ibas1 from '../assets/MShirtBas-1.jpeg';
 import ibas2 from '../assets/MShirtBas-2.jpeg';
 
+// divided
+import idiv1 from '../assets/MShirtDiv-1.jpeg';
+import idiv2 from '../assets/MShirtDiv-2.jpeg';
+
+// modern classic
+import imod1 from '../assets/MShirtMod-1.jpeg';
+import imod2 from '../assets/MShirtMod-2.jpeg';
+
 // placeholder
 import iplacehold1 from '../assets/MShirt-1.jpeg';
 import iplacehold2 from '../assets/MShirt-2.jpeg';
@@ -32,5 +40,9 @@ export const logg1 = ilogg1;
 export const logg2 = ilogg2;
 export const bas1 = ibas1;
 export const bas2 = ibas2;
+export const div1 = idiv1;
+export const div2 = idiv2;
+export const mod1 = imod1;
+export const mod2 = imod2;
 export const placehold1 = iplacehold1;
 export const placehold2 = iplacehold2;

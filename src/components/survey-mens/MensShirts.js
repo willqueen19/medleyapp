@@ -55,6 +55,12 @@ class MensShirts extends Component {
       } else if (this.props.mensCollection === surveyConstants.basics) {
         img1 = imageConstants.bas1;
         img2 = imageConstants.bas2;
+      } else if (this.props.mensCollection === surveyConstants.divided) {
+        img1 = imageConstants.div1;
+        img2 = imageConstants.div2;
+      } else if (this.props.mensCollection === surveyConstants.modern_classic) {
+        img1 = imageConstants.mod1;
+        img2 = imageConstants.mod2;
       } else {
         img1 = imageConstants.placehold1;
         img2 = imageConstants.placehold2;
@@ -64,7 +70,9 @@ class MensShirts extends Component {
 
   render () {
       var route;
-      if (this.props.mensCollection === surveyConstants.conscious) {
+      if (this.props.mensCollection === surveyConstants.conscious
+        || this.props.mensCollection === surveyConstants.premium_quality
+        || this.props.mensCollection === surveyConstants.modern_classic) {
           route = '/men/colors'
       } else {
           route = '/men/pants'
@@ -73,8 +81,9 @@ class MensShirts extends Component {
       var imgs = this.selectImgs();
         return (
           <Container className="survey survey2">
+          <h1>What style of shirt do you prefer?</h1>
           <Row>
-            <h1>What style of shirt do you prefer?</h1>
+
             <CardDeck className="carddeck carddeck2">
               <Col sm = "2" xs = "0"></Col>
               <SurveyCard surveyImage={imgs[0]} surveyTitle={"Long sleeve"} surveyNext={route} passedFunction={this.selectLongSleeve}/>

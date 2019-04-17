@@ -56,10 +56,27 @@ import ibasSP1 from '../assets/MColBasSP-1.jpeg';
 import ibasSP2 from '../assets/MColBasSP-2.jpeg';
 import ibasSP3 from '../assets/MColBasSP-3.jpeg';
 
+// divided
+import idivLS1 from '../assets/MColDivLS-1.jpeg';
+import idivLS2 from '../assets/MColDivLS-2.jpeg';
+import idivLS3 from '../assets/MColDivLS-3.jpeg';
+import idivLP1 from '../assets/MColDivLP-1.jpeg';
+import idivLP2 from '../assets/MColDivLP-2.jpeg';
+import idivLP3 from '../assets/MColDivLP-3.jpeg';
+import idivSS1 from '../assets/MColDivSS-1.jpeg';
+import idivSS2 from '../assets/MColDivSS-2.jpeg';
+import idivSS3 from '../assets/MColDivSS-3.jpeg';
+import idivSP1 from '../assets/MColDivSP-1.jpeg';
+import idivSP2 from '../assets/MColDivSP-2.jpeg';
+import idivSP3 from '../assets/MColDivSP-3.jpeg';
+
 // modern classic
-import imod1 from '../assets/MColMod-1.jpeg';
-import imod2 from '../assets/MColMod-2.jpeg';
-import imod3 from '../assets/MColMod-3.jpeg';
+import imodl1 from '../assets/MColModL-1.jpeg';
+import imodl2 from '../assets/MColModL-2.jpeg';
+import imodl3 from '../assets/MColModL-3.jpeg';
+import imods1 from '../assets/MColModS-1.jpeg';
+import imods2 from '../assets/MColModS-2.jpeg';
+import imods3 from '../assets/MColModS-3.jpeg';
 
 // placeholder
 import iplacehold1 from '../assets/MCol-1.jpeg';
@@ -119,9 +136,25 @@ export const bassp1 = ibasSP1;
 export const bassp2 = ibasSP2;
 export const bassp3 = ibasSP3;
 
-export const mod1 = imod1;
-export const mod2 = imod2;
-export const mod3 = imod3;
+export const divls1 = idivLS1;
+export const divls2 = idivLS2;
+export const divls3 = idivLS3;
+export const divlp1 = idivLP1;
+export const divlp2 = idivLP2;
+export const divlp3 = idivLP3;
+export const divss1 = idivSS1;
+export const divss2 = idivSS2;
+export const divss3 = idivSS3;
+export const divsp1 = idivSP1;
+export const divsp2 = idivSP2;
+export const divsp3 = idivSP3;
+
+export const modl1 = imodl1;
+export const modl2 = imodl2;
+export const modl3 = imodl3;
+export const mods1 = imods1;
+export const mods2 = imods2;
+export const mods3 = imods3;
 
 export const placehold1 = iplacehold1;
 export const placehold2 = iplacehold2;

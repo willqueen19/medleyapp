@@ -74,6 +74,17 @@ class MensPants extends Component {
           img2 = imageConstants.bass2;
         }
       }
+      else if (this.props.mensCollection === surveyConstants.divided) {
+        if (this.props.shirtType === surveyConstants.long_sleeve)
+        {
+          img1 = imageConstants.divl1;
+          img2 = imageConstants.divl2;
+        }
+        else if (this.props.shirtType === surveyConstants.short_sleeve) {
+          img1 = imageConstants.divs1;
+          img2 = imageConstants.divs2;
+        }
+      }
       else {
         img1 = imageConstants.placehold1;
         img2 = imageConstants.placehold2;
@@ -85,8 +96,9 @@ class MensPants extends Component {
     var imgs = this.selectImgs();
     return (
       <Container className="survey survey2">
+      <h1>What style of pants do you prefer?</h1>
       <Row>
-        <h1>What style of pants do you prefer?</h1>
+
         <CardDeck className="carddeck carddeck2">
           <Col sm = "2" xs = "0"></Col>
           <SurveyCard surveyImage={imgs[0]} surveyTitle={"Shorts"} surveyNext={'/men/colors'} passedFunction={this.selectShorts}/>

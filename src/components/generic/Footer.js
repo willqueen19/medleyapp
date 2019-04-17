@@ -14,11 +14,19 @@ class Footer extends Component {
     }
 
     render () {
-        return (
-          <div className="footer">
-            <Button className="back"><i class="fas fa-arrow-left"></i></Button>
+        console.log(window.location.pathname);
+         return (
+           <div>
+            {(window.location.pathname === "/") ?
+
+            <div className="footer">
+                <Button className="back"><i class="fas fa-arrow-left"></i></Button>
+            </div>
+            :
+            <div></div> }
           </div>
         )
+
     }
 }
 

@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, CardDeck } from 'reactstrap';
-import SurveyCard from '../generic/TwoSurveyCard.js';
+import SurveyCard from '../generic/ThreeSurveyCard.js';
 import { Container, Row, Col } from 'reactstrap';
 import img1 from '../../assets/MCas-1.jpeg';
 import img2 from '../../assets/MCas-2.jpeg';
+import img3 from '../../assets/MVal-1.jpeg';
 
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
@@ -24,6 +25,7 @@ class MensCasual extends Component {
 
     this.selectOutdoorsy = this.selectOutdoorsy.bind(this);
     this.selectHomewear = this.selectHomewear.bind(this);
+    this.selectSustainable = this.selectSustainable.bind(this);
   }
 
   selectOutdoorsy() {
@@ -34,15 +36,20 @@ class MensCasual extends Component {
       this.props.actions.selectMensCollection(surveyConstants.basics);
   }
 
+  selectSustainable() {
+    this.props.actions.selectMensCollection(surveyConstants.conscious);
+  }
+
   render () {
     return (
-      <Container className="survey survey2">
+      <Container className="survey survey3">
+      <h1>Which of these best describes you?</h1>
       <Row>
-        <h1>What side of casual clothing are you looking for?</h1>
-        <CardDeck className="carddeck carddeck2">
-          <Col sm = "2" xs = "0"></Col>
-          <SurveyCard surveyImage={img1} surveyTitle={"Outdoorsy"} surveyNext={'/men/shirt'} passedFunction={this.selectOutdoorsy}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"Home wear"} surveyNext={'/men/shirt'} passedFunction={this.selectHomewear}/>
+
+        <CardDeck className="carddeck carddeck3">
+          <SurveyCard surveyImage={img1} surveyTitle={"I prefer a laid-back style"} surveyNext={'/men/shirt'} passedFunction={this.selectOutdoorsy}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"I like to stick with the basics"} surveyNext={'/men/shirt'} passedFunction={this.selectHomewear}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/men/shirt'} passedFunction={this.selectSustainable}/>
         </CardDeck>
         </Row>
       </Container>

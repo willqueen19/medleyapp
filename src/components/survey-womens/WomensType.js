@@ -77,8 +77,9 @@ class WomensType extends Component {
 
     return (
       <Container className="survey survey2">
-      <Row>
         <h1>What do you prefer?</h1>
+      <Row>
+
         <CardDeck className="carddeck carddeck2">
           <Col sm = "2" xs = "0"></Col>
           <SurveyCard surveyImage={imgs[0]} surveyTitle={"Dresses and Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>

@@ -38,8 +38,9 @@ class WomensValues extends Component {
   render () {
     return (
       <Container className="survey survey3">
+      <h1>Which best describes you?</h1>
       <Row>
-        <h1>Which best describes you?</h1>
+
         <CardDeck className="carddeck carddeck3">
           <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/women/type'} passedFunction={this.selectSustainable} />
           <SurveyCard surveyImage={img2} surveyTitle={"I prefer to splurge for luxury quality"} surveyNext={'/women/type'} passedFunction={this.selectLuxury}/>
