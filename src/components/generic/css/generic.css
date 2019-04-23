@@ -310,3 +310,8 @@ button.back {
 .hover:hover {
   transform: scale(1.03);
 }
+
+.logo {
+  transform: scale(1.5);
+}
+
