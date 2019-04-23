@@ -407,7 +407,7 @@ class Recommend extends Component {
               itemWidth = 3;
             }
             for (var i = 0; i < itemsResult[0].length; i++) {
-                cards.push(<RecCard itemKey={i} items={itemsResult[0][i]} itemWidth={itemWidth}/>)
+                cards.push(<RecCard key={i} itemKey={i} items={itemsResult[0][i]} itemWidth={itemWidth}/>)
             }
             cardDeck =
             <Container>

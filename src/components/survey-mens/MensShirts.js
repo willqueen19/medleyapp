@@ -11,6 +11,7 @@ import img2 from '../../assets/MShirt-2.jpeg';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as surveyActions from '../../actions/surveyActions';
+import * as recommendActions from '../../actions/recommendActions';
 import * as surveyConstants from '../../constants/survey-constants';
 import * as imageConstants from '../../constants/mens-shirt-const.js';
 
@@ -26,6 +27,8 @@ class MensShirts extends Component {
     this.selectLongSleeve = this.selectLongSleeve.bind(this);
     this.selectShortSleeve = this.selectShortSleeve.bind(this);
     this.selectImgs = this.selectImgs.bind(this);
+    this.reset = this.reset.bind(this);
+
   }
 
   selectLongSleeve() {
@@ -66,7 +69,11 @@ class MensShirts extends Component {
         img2 = imageConstants.placehold2;
       }
       return [img1, img2];
-  }
+    }
+
+    reset() {
+        this.props.actions.resetRecommendation();
+    }
 
   render () {
       var route;
@@ -102,7 +109,7 @@ class MensShirts extends Component {
               <Row className="rowtryOn">
                   <Col sm={{size: 2, offset: 5}}>
                       <Link className="tryOn" to={prevRoute}>
-                          <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+                          <Button onClick={this.reset} className="back"><i className="fas fa-arrow-left"></i> Back</Button>
                       </Link>
                   </Col>
               </Row>
@@ -120,7 +127,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+        actions: bindActionCreators(Object.assign({}, surveyActions, recommendActions), dispatch)
     };
 }
 

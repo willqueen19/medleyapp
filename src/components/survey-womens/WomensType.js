@@ -8,6 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as surveyActions from '../../actions/surveyActions';
+import * as recommendActions from '../../actions/recommendActions'
 import * as surveyConstants from '../../constants/survey-constants';
 import * as imageConstants from '../../constants/womens-type-const.js';
 
@@ -23,6 +24,7 @@ class WomensType extends Component {
     this.selectOnePiece = this.selectOnePiece.bind(this);
     this.selectTwoPiece = this.selectTwoPiece.bind(this);
     this.selectImgs = this.selectImgs.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   selectOnePiece() {
@@ -72,6 +74,10 @@ class WomensType extends Component {
       return [img1, img2];
   }
 
+  reset() {
+    this.props.actions.resetRecommendation();
+  }
+
 
   render () {
     //console.log('womens collection', this.props.womensCollection);
@@ -101,7 +107,7 @@ class WomensType extends Component {
         <Row className="rowtryOn">
           <Col sm={{size: 2, offset: 5}}>
             <Link className="tryOn" to={prevRoute}>
-              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+              <Button onClick={this.reset} className="back"><i className="fas fa-arrow-left"></i> Back</Button>
             </Link>
           </Col>
         </Row>
@@ -119,7 +125,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(Object.assign({}, surveyActions), dispatch)
+        actions: bindActionCreators(Object.assign({}, surveyActions, recommendActions), dispatch)
     };
 }
 

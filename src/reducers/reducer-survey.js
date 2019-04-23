@@ -30,6 +30,11 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {womenClothingType: action.payload});
         case types.RESET_SURVEY:
             return initialState;
+        case types.RESET_GENDER:
+            return Object.assign({}, state, {gender: null});
+        case types.RESET_COLLECTION:
+            return Object.assign({}, state, {mensCollection: null,
+                                                            womensCollection: null});
         default:
             return state;
     }

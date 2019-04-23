@@ -1,5 +1,7 @@
 //SURVEY
 export const RESET_SURVEY               = 'RESET_SURVEY';
+export const RESET_GENDER               = 'RESET_GENDER';
+export const RESET_COLLECTION           = 'RESET_COLLECTION';
 export const SELECT_GENDER              = 'SELECT_GENDER';
 export const SELECT_MENS_COLLECTION     = 'SELECT_MENS_COLLECTION';
 export const SELECT_WOMENS_COLLECTION   = 'SELECT_WOMENS_COLLECTION';

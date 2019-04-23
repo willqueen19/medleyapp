@@ -95,7 +95,7 @@ class RecommendationCard extends Component {
 
       var i;
       for (i = 0; i < itemSizesObject.length; i++) {
-          itemSizes.push(<option>{itemSizesObject[i].filterCode}</option>)
+          itemSizes.push(<option key={keyValue}>{itemSizesObject[i].filterCode}</option>)
       }
 
       var card = {

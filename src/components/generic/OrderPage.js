@@ -22,7 +22,7 @@ class OrderPage extends Component {
     }
 
     resetApp() {
-        this.props.actions.resetSurvey();
+        //this.props.actions.resetSurvey();
         this.props.actions.resetRecommendation();
     }
 
@@ -36,7 +36,7 @@ class OrderPage extends Component {
         var itemNames = [];
         for (var i = 0; i < currentOutfit.length; i++) {
             if (currentOutfit[i] != null) {
-                itemNames.push(<h2 style={{color: 'pink'}}>{currentOutfit[i].name}</h2>);
+                itemNames.push(<h2 key={i} style={{color: 'pink'}}>{currentOutfit[i].name}</h2>);
             }
         }
 
@@ -60,7 +60,7 @@ class OrderPage extends Component {
                             {itemNames}
                             <h1>Order #{orderNum}</h1>
                             <Link className="submit" to="/">
-                                <Button onClick={this.resetApp} className="submit">Finish  <i class="fas fa-check"></i></Button>
+                                <Button onClick={this.resetApp} className="submit">Finish  <i className="fas fa-check"></i></Button>
                             </Link>
                         </div>
                     </Col>
