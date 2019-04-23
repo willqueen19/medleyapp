@@ -36,7 +36,6 @@ class OrderPage extends Component {
         var itemNames = [];
         for (var i = 0; i < currentOutfit.length; i++) {
             if (currentOutfit[i] != null) {
-                console.log('true');
                 itemNames.push(<h2 style={{color: 'pink'}}>{currentOutfit[i].name}</h2>);
             }
         }

@@ -151,8 +151,6 @@ class Recommend extends Component {
                         if (item.articles[a].hasOwnProperty('markers')) {
                             if (item.articles[a].markers[0].text !== 'BABY EXCLUSIVE') {
                                 filteredItemsForIndex.push(item);
-                            } else if (item.articles[a].markers[0].text === 'BABY EXCLUSIVE') {
-                                console.log('this item is baby clothings', item);
                             }
                         }
                     }
@@ -285,9 +283,9 @@ class Recommend extends Component {
                     filterIndexes = [0,1,2];
                 } else if (color === surveyConstants.patterns) {
                     if (pantsType === surveyConstants.shorts) {
-                        filterIndexes = [0,1];
+                        filterIndexes = [1];
                     } else {
-                        filterIndexes = [0];
+                        filterIndexes = [];
                     }
                 }
             } else if (collection === surveyConstants.basics) {

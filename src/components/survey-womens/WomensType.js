@@ -61,7 +61,7 @@ class WomensType extends Component {
         img2 = imageConstants.div2;
       }
       else if (this.props.womensCollection === surveyConstants.logg) {
-        console.log('got to logg in womens type!!!')
+        //console.log('got to logg in womens type!!!')
         img1 = imageConstants.cas1;
         img2 = imageConstants.cas2;
       }
@@ -74,7 +74,7 @@ class WomensType extends Component {
 
 
   render () {
-    console.log('womens collection', this.props.womensCollection);
+    //console.log('womens collection', this.props.womensCollection);
     //returns array of two
     var imgs = this.selectImgs();
 

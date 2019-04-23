@@ -91,7 +91,7 @@ class RecommendationCard extends Component {
       var itemSizesObject = item.variantSizes;
       var itemSizes = [];
       var itemShow = this.state.cardState;
-      console.log('Current Outfit', this.props.currentOutfit);
+      //console.log('Current Outfit', this.props.currentOutfit);
 
       var i;
       for (i = 0; i < itemSizesObject.length; i++) {
