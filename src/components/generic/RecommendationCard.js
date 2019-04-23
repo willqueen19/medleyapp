@@ -93,28 +93,24 @@ class RecommendationCard extends Component {
 
       return (
           <Col sm={this.props.itemWidth} className="recCards">
-
-
               {itemShow ?
-
-                <Card key={keyValue} className="cardRec">
-                <Form>
-                    <FormGroup>
-                        <Input type="select" name="select" id="exampleSelect" placeholder="choose size">
-                        <option value="">Choose a size</option>
-                            {itemSizes}
-                        </Input>
-                    </FormGroup>
-                </Form>
-
-                    <CardImg top width="100%" src={itemImage} alt="Card image cap" />
+                <Card key={keyValue} className="cardRec hover">
+                    <Form>
+                        <FormGroup>
+                            <Input type="select" name="select" id="exampleSelect" placeholder="choose size">
+                                <option value="">Choose a size</option>
+                                {itemSizes}
+                            </Input>
+                        </FormGroup>
+                    </Form>
+                        <CardImg top width="100%" src={itemImage} alt="Card image cap" />
                     <CardBody className="recCardBody">
                         <CardTitle>{itemName}</CardTitle>
                         <CardText>{itemPrice}</CardText>
                     </CardBody>
                     <div className="recButtons">
-                      <Button className="recButton recNew" onClick={this.getNewItem}>New</Button>
-                      <Button className="recButton recRem" onClick={this.changeCardState}>Remove</Button>
+                        <Button className="recButton recNew" onClick={this.getNewItem}>New</Button>
+                        <Button className="recButton recRem" onClick={this.changeCardState}>Remove</Button>
                     </div>
                 </Card>
                 :

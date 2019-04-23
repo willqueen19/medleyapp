@@ -425,7 +425,7 @@ class Recommend extends Component {
                     </Col>
                     <Col sm={{ size: 2, offset: 10 }}>
                         <Link className="tryOn" to="/order/">
-                            <Button className="tryOn"><i class="fas fa-arrow-right"></i>  Try On</Button>
+                            <Button className="tryOn"><i className="fas fa-arrow-right"></i>  Try On</Button>
                         </Link>
                     </Col>
                 </Row>

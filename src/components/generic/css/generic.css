@@ -287,3 +287,10 @@ button.back {
   border-radius: 30px;
   border: none;
 }
+
+.hover { transition: all .2s ease-in-out; }
+
+
+.hover:hover {
+  transform: scale(1.2);
+}
