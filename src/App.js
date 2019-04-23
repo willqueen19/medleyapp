@@ -47,7 +47,7 @@ class App extends Component {
               <Header/>
               <Router basename={process.env.PUBLIC_URL}>
                 <div className="app-body">
-                  <Route path={process.env.PUBLIC_URL + "/"} exact component={ Landing } />
+                  <Route path="/" exact component={ Landing } />
                   <Route path="/survey/" component={ Survey } />
                   <Route path="/women/occasion/" component={ WomensOccasion } />
                   <Route path="/women/values/" component={ WomensValues } />
