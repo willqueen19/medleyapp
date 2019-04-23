@@ -60,7 +60,8 @@ class WomensType extends Component {
         img1 = imageConstants.div1;
         img2 = imageConstants.div2;
       }
-      else if (this.props.womensCollection === surveyConstants.casual) {
+      else if (this.props.womensCollection === surveyConstants.logg) {
+        console.log('got to logg in womens type!!!')
         img1 = imageConstants.cas1;
         img2 = imageConstants.cas2;
       }
@@ -73,6 +74,7 @@ class WomensType extends Component {
 
 
   render () {
+    console.log('womens collection', this.props.womensCollection);
     //returns array of two
     var imgs = this.selectImgs();
 
@@ -82,7 +84,7 @@ class WomensType extends Component {
       prevRoute = '/women/occasion/';
     } else if ([surveyConstants.conscious, surveyConstants.premium_quality].includes(this.props.womensCollection)) {
       prevRoute = '/women/values/';
-    } else if ([surveyConstants.trend, surveyConstants.divided, surveyConstants.casual].includes(this.props.womensCollection)) {
+    } else if ([surveyConstants.trend, surveyConstants.divided, surveyConstants.logg].includes(this.props.womensCollection)) {
       prevRoute = '/women/style';
     }
 

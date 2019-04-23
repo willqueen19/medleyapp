@@ -50,9 +50,9 @@ class WomensStyles extends Component {
       <Row>
 
         <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"I like to take risks"} surveyNext={'/women/type'} passedFunction={this.selectTrendsetter}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"I like to wear what is in style"} surveyNext={'/women/type'} passedFunction={this.selectTrendy}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"I like casual, comfortable clothes"} surveyNext={'/women/type'} passedFunction={this.selectCasual}/>
+          <SurveyCard surveyImage={img1} surveyTitle={"I like to take risks"} surveyNext={'/women/type/'} passedFunction={this.selectTrendsetter}/>
+          <SurveyCard surveyImage={img2} surveyTitle={"I like to wear what is in style"} surveyNext={'/women/type/'} passedFunction={this.selectTrendy}/>
+          <SurveyCard surveyImage={img3} surveyTitle={"I like casual, comfortable clothes"} surveyNext={'/women/type/'} passedFunction={this.selectCasual}/>
         </CardDeck>
         </Row>
         <Row className="rowtryOn">

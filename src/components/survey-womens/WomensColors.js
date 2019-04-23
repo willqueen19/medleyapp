@@ -114,7 +114,8 @@ class WomensColors extends Component {
           img3 = imageConstants.divtwo3;
         }
       }
-      else if (this.props.womensCollection === surveyConstants.casual) {
+      else if (this.props.womensCollection === surveyConstants.logg) {
+        console.log()
         if (this.props.womenClothingType === surveyConstants.one_piece) {
           img1 = imageConstants.casone1;
           img2 = imageConstants.casone2;
