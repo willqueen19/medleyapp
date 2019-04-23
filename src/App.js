@@ -41,29 +41,31 @@ class App extends Component {
   }
 
   render() {
+
+    var publicURL = process.env.PUBLIC_URL;
     return (
         <div className="App">
           <Provider store={ store }>
               <Header/>
-              <Router basename={process.env.PUBLIC_URL}>
+              <Router basename={publicURL}>
                 <div className="app-body">
-                  <Route path="/" exact component={ Landing } />
-                  <Route path="/survey/" component={ Survey } />
-                  <Route path="/women/occasion/" component={ WomensOccasion } />
-                  <Route path="/women/values/" component={ WomensValues } />
-                  <Route path="/women/style/" component={ WomensStyle } />
-                  <Route path="/women/type/" component={ WomensType } />
-                  <Route path="/women/color/" component={ WomensColors } />
-                  <Route path="/men/occasion/" component={ MensOccasion} />
-                  <Route path="/men/value/" component={ MensValues } />
-                  <Route path="/men/style/" component={ MensStyles } />
-                  <Route path="/men/casual/" component={ MensCasual } />
-                  <Route path="/men/shirt/" component={ MensShirts } />
-                  <Route path="/men/pants/" component={ MensPants } />
-                  <Route path="/men/colors/" component={ MensColors} />
-                  <Route path="/recommend/" component={ Recommend }/>
-                  <Route path="/sizing/" component={ Sizing }/>
-                  <Route path="/order/" component={ OrderPage }/>
+                  <Route path={publicURL + "/"} exact component={ Landing } />
+                  <Route path={publicURL + "/survey/"} component={ Survey } />
+                  <Route path={publicURL + "/women/occasion/"} component={ WomensOccasion } />
+                  <Route path={publicURL + "/women/values/"} component={ WomensValues } />
+                  <Route path={publicURL + "/women/style/"} component={ WomensStyle } />
+                  <Route path={publicURL + "/women/type/"} component={ WomensType } />
+                  <Route path={publicURL + "/women/color/"} component={ WomensColors } />
+                  <Route path={publicURL + "/men/occasion/"} component={ MensOccasion} />
+                  <Route path={publicURL + "/men/value/"} component={ MensValues } />
+                  <Route path={publicURL + "/men/style/"} component={ MensStyles } />
+                  <Route path={publicURL + "/men/casual/"} component={ MensCasual } />
+                  <Route path={publicURL + "/men/shirt/"} component={ MensShirts } />
+                  <Route path={publicURL + "/men/pants/"} component={ MensPants } />
+                  <Route path={publicURL + "/men/colors/"} component={ MensColors} />
+                  <Route path={publicURL + "/recommend/"} component={ Recommend }/>
+                  <Route path={publicURL + "/sizing/"} component={ Sizing }/>
+                  <Route path={publicURL + "/order/"} component={ OrderPage }/>
                 </div>
               </Router>
               <Footer />

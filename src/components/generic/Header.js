@@ -33,7 +33,7 @@ class Header extends Component {
         return (
             <div>
                 <Navbar expand="md">
-                    {<NavbarBrand><img src={medleyLogo}/></NavbarBrand>}
+                    {<NavbarBrand href="/"><img src={medleyLogo}/></NavbarBrand>}
                     <NavbarToggler onClick={this.toggle} />
                     <img className="ml-auto" src={logo} alt="Logo" />
                 </Navbar>

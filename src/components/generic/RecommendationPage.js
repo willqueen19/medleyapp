@@ -430,7 +430,6 @@ class Recommend extends Component {
                     </Col>
                 </Row>
             </Container>
-
         } else {
             cardDeck =
               <Row className="spinner">
