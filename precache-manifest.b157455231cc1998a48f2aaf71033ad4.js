@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/medleyapp/static/media/MShirtHM-1.c68fc9ed.jpeg"
   },
   {
-    "revision": "937b8d0d964f59612096",
+    "revision": "db147a2cbbc528bfef3f",
     "url": "/medleyapp/static/css/main.94c37ec6.chunk.css"
   },
   {
@@ -388,8 +388,8 @@ self.__precacheManifest = [
     "url": "/medleyapp/static/media/MShirtCon-2.d0832e4e.jpeg"
   },
   {
-    "revision": "937b8d0d964f59612096",
-    "url": "/medleyapp/static/js/main.ab8dba37.chunk.js"
+    "revision": "db147a2cbbc528bfef3f",
+    "url": "/medleyapp/static/js/main.3a54511f.chunk.js"
   },
   {
     "revision": "1d605f7113d6825dd954cdd227983ff7",
@@ -776,7 +776,7 @@ self.__precacheManifest = [
     "url": "/medleyapp/static/css/2.271fc9e3.chunk.css"
   },
   {
-    "revision": "6a8836f7763bd24624a63fa9e42d505a",
+    "revision": "4f7ef31ac5770ad76c54c0cbdaec06b8",
     "url": "/medleyapp/index.html"
   }
 ];
