@@ -33,7 +33,7 @@ class TwoSurveyCard extends Component {
 
     return (
       <Col xs = "6" sm = "4">
-        <Card className="card2" onClick={ ()=>this.cardClicked(this.props.surveyNext)}>
+        <Card className="card2 hover" onClick={ ()=>this.cardClicked(this.props.surveyNext)}>
           <CardImg top src={this.props.surveyImage} alt="Card image cap" />
           <CardBody>
             <CardTitle>{this.props.surveyTitle}</CardTitle>

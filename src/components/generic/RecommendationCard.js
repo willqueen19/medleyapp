@@ -114,9 +114,11 @@ class RecommendationCard extends Component {
                     </div>
                 </Card>
                 :
-                <div>
-                    <Button className="recButton recShow" onClick={this.changeCardState}>Add Item</Button>
-                </div>
+                <Card className="cardRec">
+                    <CardBody className="recCardBody" stlye={{height: '100%', }}>
+                        <Button className="recButton recShow" onClick={this.changeCardState}>Add Item</Button>
+                    </CardBody>
+                </Card>
               }
           </Col>
     )
