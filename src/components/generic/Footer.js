@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './css/generic.css';
 //import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import { Button } from 'reactstrap';
-import $ from 'jquery';
 import {bindActionCreators} from "redux";
 
 
@@ -15,15 +14,6 @@ class Footer extends Component {
         this.state = {
         };
     }
-
-    /*
-                {($("*:contains('Build an Outfit')").length > 0) ?
-                <div></div>
-            :
-                < div className="footer">
-                    <Button className="back"><i className="fas fa-arrow-left"></i>  Back</Button>
-                </div>}
-     */
 
     render () {
         console.log($);
