@@ -16,11 +16,8 @@ class Footer extends Component {
     }
 
     render () {
-        console.log($);
-        var pathname = window.location.href;
          return (
            <div>
-
           </div>
         )
 
