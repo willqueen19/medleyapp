@@ -60,7 +60,7 @@ class OrderPage extends Component {
                             {itemNames}
                             <h1>Order #{orderNum}</h1>
                             <Link className="submit" to="/">
-                                <Button onClick={this.resetApp} className="submit">Finish  <i className="fas fa-check"></i></Button>
+                                <Button style={{marginTop: '10px'}} onClick={this.resetApp} className="submit">Finish  <i className="fas fa-check"></i></Button>
                             </Link>
                         </div>
                     </Col>
