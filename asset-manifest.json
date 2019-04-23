@@ -1,17 +1,17 @@
 {
-  "main.css": "/medleyapp/static/css/main.f02368e0.chunk.css",
-  "main.js": "/medleyapp/static/js/main.0100fbfe.chunk.js",
-  "main.js.map": "/medleyapp/static/js/main.0100fbfe.chunk.js.map",
+  "main.css": "/medleyapp/static/css/main.460f91de.chunk.css",
+  "main.js": "/medleyapp/static/js/main.97cfaa70.chunk.js",
+  "main.js.map": "/medleyapp/static/js/main.97cfaa70.chunk.js.map",
   "runtime~main.js": "/medleyapp/static/js/runtime~main.c0541131.js",
   "runtime~main.js.map": "/medleyapp/static/js/runtime~main.c0541131.js.map",
   "static/css/2.271fc9e3.chunk.css": "/medleyapp/static/css/2.271fc9e3.chunk.css",
-  "static/js/2.2deb76e1.chunk.js": "/medleyapp/static/js/2.2deb76e1.chunk.js",
-  "static/js/2.2deb76e1.chunk.js.map": "/medleyapp/static/js/2.2deb76e1.chunk.js.map",
+  "static/js/2.923afde0.chunk.js": "/medleyapp/static/js/2.923afde0.chunk.js",
+  "static/js/2.923afde0.chunk.js.map": "/medleyapp/static/js/2.923afde0.chunk.js.map",
   "index.html": "/medleyapp/index.html",
-  "precache-manifest.14f508fc417252a03a3f78bc836885a1.js": "/medleyapp/precache-manifest.14f508fc417252a03a3f78bc836885a1.js",
+  "precache-manifest.de5a23b99b53193c496063dca8674abd.js": "/medleyapp/precache-manifest.de5a23b99b53193c496063dca8674abd.js",
   "service-worker.js": "/medleyapp/service-worker.js",
   "static/css/2.271fc9e3.chunk.css.map": "/medleyapp/static/css/2.271fc9e3.chunk.css.map",
-  "static/css/main.f02368e0.chunk.css.map": "/medleyapp/static/css/main.f02368e0.chunk.css.map",
+  "static/css/main.460f91de.chunk.css.map": "/medleyapp/static/css/main.460f91de.chunk.css.map",
   "static/media/Final Logo.png": "/medleyapp/static/media/Final Logo.5ebd9d12.png",
   "static/media/MCas-1.jpeg": "/medleyapp/static/media/MCas-1.7c3d2d2b.jpeg",
   "static/media/MCas-2.jpeg": "/medleyapp/static/media/MCas-2.7b834219.jpeg",
@@ -199,5 +199,6 @@
   "static/media/WVal-1.jpeg": "/medleyapp/static/media/WVal-1.7242b345.jpeg",
   "static/media/WVal-2.jpeg": "/medleyapp/static/media/WVal-2.0de43fbc.jpeg",
   "static/media/WVal-3.jpeg": "/medleyapp/static/media/WVal-3.a067cc2e.jpeg",
-  "static/media/hm-logo.png": "/medleyapp/static/media/hm-logo.619404ea.png"
+  "static/media/hm-logo.png": "/medleyapp/static/media/hm-logo.619404ea.png",
+  "static/media/logo.svg": "/medleyapp/static/media/logo.5d5d9eef.svg"
 }
