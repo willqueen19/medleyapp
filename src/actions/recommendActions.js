@@ -4,7 +4,6 @@ import * as surveyConstants from '../constants/survey-constants';
 import * as queryConstants from '../constants/query-constants';
 import * as unirest from 'unirest';
 
-// TODO: Premium Quality does not work
 
 // export const GET_CLOTHING_ITEM  = 'GET_CLOTHING_ITEM
 export function getClothingItem(item, gender, collection) {
@@ -77,12 +76,9 @@ export function setCurrentOutfit(item, itemKey) {
     }
 }
 
-export function callThisFunction() {
-    return 'hi there';
-}
-
-export function getFilterIndexes(gender, collection, color, shirtType, pantsType, womensClothingType) {
-    return {
-
+export function resetRecommendation() {
+    return function (dispatch) {
+        return dispatch({type: actionTypes.RESET_RECOMMENDATION});
     }
 }
+

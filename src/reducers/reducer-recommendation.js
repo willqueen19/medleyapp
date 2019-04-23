@@ -37,6 +37,8 @@ export default function (state = initialState, action) {
             var newCurrentOutfit = state.currentOutfit;
             newCurrentOutfit[action.itemKey] = action.item;
             return Object.assign({}, state, {currentOutfit: newCurrentOutfit});
+        case types.RESET_RECOMMENDATION:
+            return initialState;
         default:
             return state;
     }

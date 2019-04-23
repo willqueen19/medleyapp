@@ -6,6 +6,7 @@ import { Jumbotron, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import {bindActionCreators} from "redux";
 import * as recommendationActions from "../../actions/recommendActions";
+import * as surveyActions from '../../actions/surveyActions';
 import {connect} from "react-redux";
 
 
@@ -16,6 +17,13 @@ class OrderPage extends Component {
         this.state = {
 
         };
+
+        this.resetApp = this.resetApp.bind(this);
+    }
+
+    resetApp() {
+        this.props.actions.resetSurvey();
+        this.props.actions.resetRecommendation();
     }
 
     render() {
@@ -49,7 +57,7 @@ class OrderPage extends Component {
                                 </FormGroup>
                             </Form>
                             <Link className="submit" to="/">
-                                <Button className="submit">Finish  <i class="fas fa-check"></i></Button>
+                                <Button onClick={this.resetApp} className="submit">Finish  <i class="fas fa-check"></i></Button>
                             </Link>
                         </div>
                     </Col>
@@ -74,7 +82,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(Object.assign(recommendationActions), dispatch)
+        actions: bindActionCreators(Object.assign(recommendationActions, surveyActions), dispatch)
     };
 }
 
