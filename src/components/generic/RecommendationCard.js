@@ -11,6 +11,7 @@ import * as surveyActions from "../../actions/surveyActions";
 import * as recommendationActions from '../../actions/recommendActions';
 import {connect} from "react-redux";
 import {nonInputTypeOnVarMessage} from "graphql/validation/rules/VariablesAreInputTypes";
+import greyImage from '../../assets/gray image.png';
 
 class RecommendationCard extends Component {
 
@@ -58,15 +59,24 @@ class RecommendationCard extends Component {
 
         this.setState({
             item: item
-        })
+        });
 
         this.props.actions.setCurrentOutfit(item, this.props.itemKey);
     };
 
     changeCardState() {
+        var item = this.state.item;
         this.setState({
           cardState: !this.state.cardState
         })
+
+        //console.log('card state', this.state.cardState);
+
+        if (this.state.cardState) {
+            this.props.actions.setCurrentOutfit(null, this.props.itemKey);
+        } else {
+            this.props.actions.setCurrentOutfit(item, this.props.itemKey);
+        }
     }
 
   render () {
@@ -81,6 +91,7 @@ class RecommendationCard extends Component {
       var itemSizesObject = item.variantSizes;
       var itemSizes = [];
       var itemShow = this.state.cardState;
+      console.log('Current Outfit', this.props.currentOutfit);
 
       var i;
       for (i = 0; i < itemSizesObject.length; i++) {
@@ -103,7 +114,7 @@ class RecommendationCard extends Component {
                             </Input>
                         </FormGroup>
                     </Form>
-                        <CardImg top width="100%" src={itemImage} alt="Card image cap" />
+                    <CardImg top width="100%" src={itemImage} alt="Card image cap" />
                     <CardBody className="recCardBody">
                         <CardTitle>{itemName}</CardTitle>
                         <CardText>{itemPrice}</CardText>
@@ -115,7 +126,8 @@ class RecommendationCard extends Component {
                 </Card>
                 :
                 <Card className="cardRec">
-                    <CardBody className="recCardBody" stlye={{height: '100%', }}>
+                    <CardImg top width="100%" src={greyImage} alt="Card image cap" />
+                    <CardBody className="recCardBody" stlye={{height: '100%'}}>
                         <Button className="recButton recShow" onClick={this.changeCardState}>Add Item</Button>
                     </CardBody>
                 </Card>

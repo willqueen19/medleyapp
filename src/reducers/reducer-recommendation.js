@@ -10,7 +10,7 @@ var initialState = {
     outerwear: [],
     shoes: [],
     accessories: [],
-    currentOutfit: []
+    currentOutfit: [null, null, null, null]
 };
 
 export default function (state = initialState, action) {

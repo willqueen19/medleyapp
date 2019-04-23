@@ -14,7 +14,7 @@ import Landing from './components/generic/LandingPage'
 import Survey from './components/generic/SurveyMensWomens'
 import Recommend from './components/generic/RecommendationPage';
 import Sizing from './components/generic/SizingPage'
-import Order from './components/generic/OrderPage'
+import OrderPage from './components/generic/OrderPage'
 import WomensOccasion from "./components/survey-womens/WomensOccasion";
 import MensOccasion from "./components/survey-mens/MensOccasion";
 import WomensValues from "./components/survey-womens/WomensValues";
@@ -40,8 +40,6 @@ class App extends Component {
     }
   }
 
-  // TODO: need to specify survey page for each specific collection
-
   render() {
     return (
         <div className="App">
@@ -65,7 +63,7 @@ class App extends Component {
                   <Route path="/men/colors/" component={ MensColors} />
                   <Route path="/recommend/" component={ Recommend }/>
                   <Route path="/sizing/" component={ Sizing }/>
-                  <Route path="/order/" component={ Order }/>
+                  <Route path="/order/" component={ OrderPage }/>
                 </div>
               </Router>
               <Footer />
