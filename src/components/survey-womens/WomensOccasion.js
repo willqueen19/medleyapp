@@ -37,17 +37,23 @@ class WomensOccasion extends Component {
 
   render () {
     return (
-      <Container className="survey survey3">
-      <h1>What's the occasion?</h1>
-      <Row>
-
-        <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/women/type'} passedFunction={this.selectParty}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/women/type'} passedFunction={this.selectWork}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/women/values'}/>
-        </CardDeck>
-        </Row>
-      </Container>
+        <Container className="survey survey3">
+          <h1>What's the occasion?</h1>
+          <Row>
+            <CardDeck className="carddeck carddeck3">
+              <SurveyCard surveyImage={img1} surveyTitle={"Party"} surveyNext={'/women/type'} passedFunction={this.selectParty}/>
+              <SurveyCard surveyImage={img2} surveyTitle={"Work"} surveyNext={'/women/type'} passedFunction={this.selectWork}/>
+              <SurveyCard surveyImage={img3} surveyTitle={"Everyday Wear"} surveyNext={'/women/values'}/>
+            </CardDeck>
+          </Row>
+          <Row className="rowtryOn">
+            <Col sm={{size: 2, offset: 5}}>
+              <Link className="tryOn" to='/survey/'>
+                <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
     )
   }
 }

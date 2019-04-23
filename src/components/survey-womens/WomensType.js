@@ -71,20 +71,37 @@ class WomensType extends Component {
       return [img1, img2];
   }
 
+
   render () {
     //returns array of two
     var imgs = this.selectImgs();
 
+    var prevRoute;
+
+    if ([surveyConstants.party, surveyConstants.modern_classic].includes(this.props.womensCollection)) {
+      prevRoute = '/women/occasion/';
+    } else if ([surveyConstants.conscious, surveyConstants.premium_quality].includes(this.props.womensCollection)) {
+      prevRoute = '/women/values/';
+    } else if ([surveyConstants.trend, surveyConstants.divided, surveyConstants.casual].includes(this.props.womensCollection)) {
+      prevRoute = '/women/style';
+    }
+
     return (
       <Container className="survey survey2">
         <h1>What do you prefer?</h1>
-      <Row>
-
-        <CardDeck className="carddeck carddeck2">
-          <Col sm = "2" xs = "0"></Col>
-          <SurveyCard surveyImage={imgs[0]} surveyTitle={"Dresses and Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
-          <SurveyCard surveyImage={imgs[1]} surveyTitle={"Tops and Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
-        </CardDeck>
+        <Row>
+          <CardDeck className="carddeck carddeck2">
+            <Col sm = "2" xs = "0"></Col>
+            <SurveyCard surveyImage={imgs[0]} surveyTitle={"Dresses and Jumpsuits"} surveyNext={'/women/color'} passedFunction={this.selectOnePiece}/>
+            <SurveyCard surveyImage={imgs[1]} surveyTitle={"Tops and Bottoms"} surveyNext={'/women/color'} passedFunction={this.selectTwoPiece}/>
+          </CardDeck>
+        </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to={prevRoute}>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
         </Row>
       </Container>
     )

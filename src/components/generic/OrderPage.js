@@ -23,26 +23,32 @@ class OrderPage extends Component {
       var orderNum = String(new Date().getHours()) + String(new Date().getMinutes())+ String(new Date().getSeconds());
 
       return(
-        <Container>
-        <Row>
-        <Col>
-      <div className="order">
-          <h1 className="display-3">All Set!</h1>
-          <h3 className="lead">Your clothes will be in the dressing room, ready for you to try on in a few minutes.</h3>
-          <h2>Order #{orderNum}</h2>
-          <Form>
-          <FormGroup>
-          <Label for="firstName" className="mr-sm-2">Tell a store associate your order number or enter your name!</Label>
-
-              <Input type="text" name="name" id="firstName" placeholder="Enter your name" />
-              </FormGroup>
-          </Form>
-          <Link className="submit" to="/">
-              <Button className="submit">Finish  <i class="fas fa-check"></i></Button>
-          </Link>
-      </div>
-      </Col>
-      </Row>
+      <Container>
+         <Row>
+            <Col>
+                <div className="order">
+                    <h1 className="display-3">All Set!</h1>
+                    <h3 className="lead">Your clothes will be in the dressing room, ready for you to try on in a few minutes.</h3>
+                    <h2>Order #{orderNum}</h2>
+                    <Form>
+                        <FormGroup>
+                            <Label for="firstName" className="mr-sm-2">Tell a store associate your order number or enter your name!</Label>
+                            <Input type="text" name="name" id="firstName" placeholder="Enter your name" />
+                        </FormGroup>
+                    </Form>
+                    <Link className="submit" to="/">
+                        <Button className="submit">Finish  <i class="fas fa-check"></i></Button>
+                    </Link>
+                </div>
+            </Col>
+         </Row>
+          <Row className="rowtryOn">
+              <Col sm={{size: 2, offset: 5}}>
+                  <Link className="tryOn" to='/recommend/'>
+                      <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+                  </Link>
+              </Col>
+          </Row>
       </Container>
 )
   }

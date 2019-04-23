@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './css/generic.css';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+//import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import { Button } from 'reactstrap';
+import $ from 'jquery';
+import {bindActionCreators} from "redux";
+
 
 class Footer extends Component {
 
@@ -13,17 +16,21 @@ class Footer extends Component {
         };
     }
 
+    /*
+                {($("*:contains('Build an Outfit')").length > 0) ?
+                <div></div>
+            :
+                < div className="footer">
+                    <Button className="back"><i className="fas fa-arrow-left"></i>  Back</Button>
+                </div>}
+     */
+
     render () {
-        console.log(window.location.pathname);
+        console.log($);
+        var pathname = window.location.href;
          return (
            <div>
-            {(window.location.pathname === "/") ?
 
-            <div className="footer">
-                <Button className="back"><i class="fas fa-arrow-left"></i>  Back</Button>
-            </div>
-            :
-            <div></div> }
           </div>
         )
 

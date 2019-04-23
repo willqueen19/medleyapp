@@ -150,6 +150,13 @@ class WomensColors extends Component {
           <SurveyCard surveyImage={imgs[2]} surveyTitle={"Patterns"}surveyNext={'/recommend'} passedFunction={this.selectPattern}/>
         </CardDeck>
         </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to='/women/type/'>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
+        </Row>
       </Container>
     )
   }

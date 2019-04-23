@@ -204,9 +204,6 @@ class Recommend extends Component {
             }
         }
 
-        // TODO Filter by filtering indexes in the following array by way of doing for loop on this array
-        // TODO In most cases, indexes 1 or 2 are outerwear. Need to think about including patterns in these, might not want patterns
-        // TODO need to implement exact rule
         var filterIndexes = [];
         if (gender === surveyConstants.mens) {
             if (collection === surveyConstants.premium_quality) {
@@ -379,11 +376,19 @@ class Recommend extends Component {
     }
 
     render () {
+
+        //console.log('THESE ARE THE PROPS', this.props);
         var itemsResult = this.getItemsForCollection(this.props.shirts, this.props.pants, this.props.onePieces, this.props.outerwear, this.props.shoes, this.props.accessories);
         var cardDeck;
         var offset;
         var itemWidth;
-        console.log(this.props.womensCollection);
+        var prevRoute;
+
+        if (this.props.gender === surveyConstants.mens) {
+            prevRoute = '/men/colors/';
+        } else if (this.props.gender === surveyConstants.womens) {
+            prevRoute = 'women/color/';
+        }
 
         if (itemsResult[1] === true) {
             var cards = [];
@@ -408,19 +413,23 @@ class Recommend extends Component {
             }
             cardDeck =
             <Container>
-            <h1>Here's what we found for you</h1>
-              <Row>
-
-                <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
-              </Row>
-              <Row className="rowtryOn">
-                <Col sm={{ size: 2, offset: 10 }}>
-                  <Link className="tryOn" to="/order/">
-                      <Button className="tryOn"><i class="fas fa-arrow-right"></i>  Try On</Button>
-                  </Link>
-                </Col>
-              </Row>
-              </Container>
+                <h1>Here's what we found for you</h1>
+                <Row>
+                    <CardDeck className='carddeck carddeckRec'><Col sm = {offset} xs = "0"></Col>{cards}</CardDeck>
+                </Row>
+                <Row className="rowtryOn">
+                    <Col sm={{size: 2, offset: 5}}>
+                        <Link className="tryOn" to={prevRoute}>
+                            <Button className="back"><i className="fas fa-arrow-left"></i>  Back</Button>
+                        </Link>
+                    </Col>
+                    <Col sm={{ size: 2, offset: 10 }}>
+                        <Link className="tryOn" to="/order/">
+                            <Button className="tryOn"><i class="fas fa-arrow-right"></i>  Try On</Button>
+                        </Link>
+                    </Col>
+                </Row>
+            </Container>
 
         } else {
             cardDeck =

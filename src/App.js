@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import BrowserHistory from 'react-router';
 import { Provider } from 'react-redux';
 import store from "./store/index";
+import {connect} from "react-redux";
+
 
 import Header from './components/generic/Header';
 import Footer from './components/generic/Footer';
@@ -62,7 +65,7 @@ class App extends Component {
                   <Route path="/men/colors/" component={ MensColors} />
                   <Route path="/recommend/" component={ Recommend }/>
                   <Route path="/sizing/" component={ Sizing }/>
-                  <Route path="/order/" component={ Order } />
+                  <Route path="/order/" component={ Order }/>
                 </div>
               </Router>
               <Footer />

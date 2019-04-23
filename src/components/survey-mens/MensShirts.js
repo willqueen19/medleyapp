@@ -78,18 +78,34 @@ class MensShirts extends Component {
           route = '/men/pants'
       }
 
+      var prevRoute;
+
+      if ([surveyConstants.premium_quality, surveyConstants.modern_classic].includes(this.props.mensCollection)) {
+          prevRoute = '/men/occasion/';
+      } else if ([surveyConstants.trend, surveyConstants.divided].includes(this.props.mensCollection)) {
+          prevRoute = '/men/style/';
+      } else if ([surveyConstants.logg, surveyConstants.basics, surveyConstants.conscious].includes(this.props.mensCollection)) {
+          prevRoute = '/men/casual/';
+      }
+
       var imgs = this.selectImgs();
         return (
           <Container className="survey survey2">
-          <h1>What style of shirt do you prefer?</h1>
-          <Row>
-
-            <CardDeck className="carddeck carddeck2">
-              <Col sm = "2" xs = "0"></Col>
-              <SurveyCard surveyImage={imgs[0]} surveyTitle={"Long sleeve"} surveyNext={route} passedFunction={this.selectLongSleeve}/>
-              <SurveyCard surveyImage={imgs[1]} surveyTitle={"Short sleeve"} surveyNext={route} passedFunction={this.selectShortSleeve}/>
-            </CardDeck>
-            </Row>
+              <h1>What style of shirt do you prefer?</h1>
+              <Row>
+                  <CardDeck className="carddeck carddeck2">
+                      <Col sm = "2" xs = "0"></Col>
+                      <SurveyCard surveyImage={imgs[0]} surveyTitle={"Long sleeve"} surveyNext={route} passedFunction={this.selectLongSleeve}/>
+                      <SurveyCard surveyImage={imgs[1]} surveyTitle={"Short sleeve"} surveyNext={route} passedFunction={this.selectShortSleeve}/>
+                  </CardDeck>
+              </Row>
+              <Row className="rowtryOn">
+                  <Col sm={{size: 2, offset: 5}}>
+                      <Link className="tryOn" to={prevRoute}>
+                          <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+                      </Link>
+                  </Col>
+              </Row>
           </Container>
         )
       }

@@ -55,6 +55,13 @@ class WomensStyles extends Component {
           <SurveyCard surveyImage={img3} surveyTitle={"I like casual, comfortable clothes"} surveyNext={'/women/type'} passedFunction={this.selectCasual}/>
         </CardDeck>
         </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to='/women/values/'>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
+        </Row>
       </Container>
     )
   }

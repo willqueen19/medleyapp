@@ -105,6 +105,13 @@ class MensPants extends Component {
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Pants"} surveyNext={'/men/colors'} passedFunction={this.selectPants}/>
         </CardDeck>
         </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to='/men/shirt/'>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
+        </Row>
       </Container>
     )
   }

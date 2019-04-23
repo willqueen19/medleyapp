@@ -39,14 +39,20 @@ class MensStyles extends Component {
   render () {
     return (
       <Container className="survey survey3">
-      <h1>Which of these best describes you?</h1>
-      <Row>
-
-        <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"I like to take risks"} surveyNext={'/men/shirt'} passedFunction={this.selectTrendsetter}/>
-          <SurveyCard surveyImage={img2} surveyTitle={"I like to wear what is in style"} surveyNext={'/men/shirt'} passedFunction={this.selectTrendy}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"I like casual, comfortable clothes"} surveyNext={'/men/casual'}/>
-        </CardDeck>
+        <h1>Which of these best describes you?</h1>
+        <Row>
+          <CardDeck className="carddeck carddeck3">
+            <SurveyCard surveyImage={img1} surveyTitle={"I like to take risks"} surveyNext={'/men/shirt'} passedFunction={this.selectTrendsetter}/>
+            <SurveyCard surveyImage={img2} surveyTitle={"I like to wear what is in style"} surveyNext={'/men/shirt'} passedFunction={this.selectTrendy}/>
+            <SurveyCard surveyImage={img3} surveyTitle={"I like casual, comfortable clothes"} surveyNext={'/men/casual'}/>
+          </CardDeck>
+        </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to='/men/occasion/'>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
         </Row>
       </Container>
     )

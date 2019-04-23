@@ -38,14 +38,20 @@ class WomensValues extends Component {
   render () {
     return (
       <Container className="survey survey3">
-      <h1>Which best describes you?</h1>
-      <Row>
-
-        <CardDeck className="carddeck carddeck3">
-          <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/women/type'} passedFunction={this.selectSustainable} />
-          <SurveyCard surveyImage={img2} surveyTitle={"I prefer to splurge for luxury quality"} surveyNext={'/women/type'} passedFunction={this.selectLuxury}/>
-          <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/women/style'}/>
-        </CardDeck>
+        <h1>Which best describes you?</h1>
+        <Row>
+          <CardDeck className="carddeck carddeck3">
+            <SurveyCard surveyImage={img1} surveyTitle={"I prefer sustainable clothing items"} surveyNext={'/women/type'} passedFunction={this.selectSustainable} />
+            <SurveyCard surveyImage={img2} surveyTitle={"I prefer to splurge for luxury quality"} surveyNext={'/women/type'} passedFunction={this.selectLuxury}/>
+            <SurveyCard surveyImage={img3} surveyTitle={"I prefer casual, everyday clothes"} surveyNext={'/women/style'}/>
+          </CardDeck>
+        </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to='/women/occasion/'>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
         </Row>
       </Container>
     )

@@ -177,6 +177,15 @@ class MensColors extends Component {
 
   render () {
     var imgs = this.selectImgs();
+
+    var prevRoute;
+
+    if ([surveyConstants.premium_quality, surveyConstants.modern_classic, surveyConstants.conscious].includes(this.props.mensCollection)) {
+      prevRoute = '/men/shirt/';
+    } else {
+      prevRoute = '/men/pants'
+    }
+
     return (
       <Container className="survey survey3">
       <h1>What do you prefer?</h1>
@@ -187,6 +196,13 @@ class MensColors extends Component {
           <SurveyCard surveyImage={imgs[1]} surveyTitle={"Dark Colors"} surveyNext={'/recommend'} passedFunction={this.selectDark}/>
           <SurveyCard surveyImage={imgs[2]} surveyTitle={"Patterns"}surveyNext={'/recommend'} passedFunction={this.selectPattern}/>
         </CardDeck>
+        </Row>
+        <Row className="rowtryOn">
+          <Col sm={{size: 2, offset: 5}}>
+            <Link className="tryOn" to={prevRoute}>
+              <Button className="back"><i className="fas fa-arrow-left"></i> Back</Button>
+            </Link>
+          </Col>
         </Row>
       </Container>
     )
