@@ -29,11 +29,12 @@ class Header extends Component {
             return <Redirect push to={this.state.redirect}/>
         }
 
+        // TODO: reroute needs to be added
 
         return (
             <div>
                 <Navbar expand="md">
-                    {<NavbarBrand href="/"><img src={medleyLogo}/></NavbarBrand>}
+                    {<NavbarBrand><img src={medleyLogo}/></NavbarBrand>}
                     <NavbarToggler onClick={this.toggle} />
                     <img className="ml-auto" src={logo} alt="Logo" />
                 </Navbar>

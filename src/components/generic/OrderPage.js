@@ -41,6 +41,16 @@ class OrderPage extends Component {
             }
         }
 
+        // TODO: make sure this works with keyboard return button
+        /*
+        <Form>
+             <FormGroup>
+                 <Label for="firstName" className="mr-sm-2">Tell a store associate your order number or enter your name!</Label>
+                    <Input type="text" name="name" id="firstName" placeholder="Enter your name" />
+             </FormGroup>
+         </Form>
+         */
+
         return(
             <Container>
                 <Row>
@@ -49,13 +59,7 @@ class OrderPage extends Component {
                             <h1 className="display-3">All Set!</h1>
                             <h3 className="lead">Your clothes will be in the dressing room, ready for you to try on in a few minutes.</h3>
                             {itemNames}
-                            <h2>Order #{orderNum}</h2>
-                            <Form>
-                                <FormGroup>
-                                    <Label for="firstName" className="mr-sm-2">Tell a store associate your order number or enter your name!</Label>
-                                    <Input type="text" name="name" id="firstName" placeholder="Enter your name" />
-                                </FormGroup>
-                            </Form>
+                            <h1>Order #{orderNum}</h1>
                             <Link className="submit" to="/">
                                 <Button onClick={this.resetApp} className="submit">Finish  <i class="fas fa-check"></i></Button>
                             </Link>
