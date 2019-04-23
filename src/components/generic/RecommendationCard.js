@@ -125,8 +125,7 @@ class RecommendationCard extends Component {
                     </div>
                 </Card>
                 :
-                <Card className="cardRec">
-                    <CardImg top width="100%" src={greyImage} alt="Card image cap" />
+                <Card className="cardRec cardRecNew">
                     <CardBody className="recCardBody" stlye={{height: '100%'}}>
                         <Button className="recButton recShow" onClick={this.changeCardState}>Add Item</Button>
                     </CardBody>

@@ -21,14 +21,14 @@ nav a:hover {
 /* Main body */
 html, body, div#root, div.App {
   height: 100vh;
-  background-color: #303030;
+  background-color: #424242;
   font-family: cresta, sans-serif;
   font-size: .9rem;
 }
 
 .app-body {
   height: 85%;
-  background-color: #303030;
+  background-color: #424242;
 }
 
 div.container, div.row {
@@ -272,6 +272,22 @@ div.carddeckRec div.col-sm-3 div.cardRec {
 div.recCards div.cardRec {
   width: 65%;
   margin-left: 17.5%;
+}
+
+div.recCards div.cardRecNew {
+  margin-top: 50px;
+}
+
+div.recCards div.cardRecNew div.recCardBody {
+  padding-top: 155px;
+  padding-bottom: 185px;
+  border-radius: 5px;
+}
+
+div.recCards div.cardRecNew button.recShow {
+  border: none;
+  background-color: #000;
+  color: #fff;
 }
 
 div.footer {
