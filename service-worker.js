@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/medleyapp/precache-manifest.aaecb7cb5ff3915dcf39e0e39d3bd214.js"
+  "/medleyapp/precache-manifest.7478aeb316cef731958461a5f8006660.js"
 );
 
 workbox.clientsClaim();
